@@ -30,7 +30,9 @@
         </div>
 
         <sui-segment class="segment">
-          <router-view class="router-view" />
+          <keep-alive>
+              <router-view class="router-view" />
+          </keep-alive>
         </sui-segment>
         <footer>
             COPYRIGHT © 2020 Nomura Orient International Securities Co.,Ltd. ALL RIGHTS RESERVED.
