@@ -1,0 +1,55 @@
+.common-card-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 40px;
+  width: inherit - 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 2px dashed #808695;
+}
+.account {
+  position: relative;
+  width: inherit;
+  height: inherit;
+}
+.account-card-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 40px;
+  width: inherit - 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 2px dashed #808695;
+}
+.icon {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+.bar {
+  position: relative;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.list {
+  position: relative;
+  margin-left: 30px;
+  cursor: pointer;
+}
+.image {
+  width: 30px;
+  height: 30px;
+}
+.date-picker {
+  width: 120px;
+  margin-right: 20px;
+}
+/*# sourceMappingURL=account.css.map */

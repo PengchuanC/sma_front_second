@@ -1,0 +1,85 @@
+@import "variables";
+
+.head{
+  position: fixed;
+  display: flex;
+  top: 0;
+  z-index: 1;
+  min-width: @header-min-width;
+  max-width: @header-max-width;
+  width: @header-width;
+  height: @header-height;
+  justify-content: center;
+  font-family: @font-family;
+}
+
+.head-child{
+  position: relative;
+  width: calc(@header-width * 0.8);
+  max-width: 1000px;
+  min-width: @header-min-width;
+  height: @header-height;
+  padding: 0 170px 0 60px;
+  background: url(../images/head-bg-logo2.png) no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.logo {
+  position: absolute;
+  width: 100px;
+  top: 30px;
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  border: 0;
+  margin: 0;
+}
+
+.menu-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  top: 30px;
+  width: 100%;
+  padding-left: 130px;
+}
+
+.menu {
+  display: flex;
+  position: relative;
+  height: 20px;
+}
+
+.menu-user {
+  display: flex;
+  transform: translateY(-12px);
+  cursor: pointer;
+}
+
+.segment {
+  position: fixed;
+  width: @segment-width;
+  min-width: @segment-min-width;
+  height: calc(100vh - @header-height - @footer-height - 40px);
+  top: @header-height;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0;
+  border: none;
+
+  .router-view {
+    height: inherit;
+    color: black;
+  }
+}
+
+footer{
+  position: fixed;
+  bottom: @footer-height;
+  font-family: Arial, 'Times New Roman', serif;
+}

@@ -1,0 +1,68 @@
+.home {
+  display: inline-flex;
+}
+.row-9 {
+  width: 33.75vw;
+  height: inherit;
+}
+.row-6 {
+  width: 22.5vw;
+  height: inherit;
+}
+.column {
+  height: inherit;
+}
+.card-header {
+  height: 30px;
+  width: 100%;
+  background: #f9fafb;
+  line-height: 30px;
+  padding-left: 20px;
+  font-weight: bold;
+}
+.portfolio {
+  position: relative;
+  height: 100%;
+  border: 1px solid rgba(34, 36, 38, 0.1);
+}
+.portfolio .flex {
+  position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  width: calc(100% - 20px);
+  justify-content: space-between;
+  align-content: center;
+}
+.portfolio .flex .title {
+  position: relative;
+  line-height: 30px;
+}
+.portfolio .flex .date-picker {
+  position: relative;
+  line-height: 27px;
+  padding-right: 20px;
+  width: 150px;
+}
+.news {
+  height: 50%;
+  border: rgba(34, 36, 38, 0.1) 1px solid;
+  border-left: none;
+}
+.reports {
+  height: 50%;
+  border: rgba(34, 36, 38, 0.1) 1px solid;
+  border-left: none;
+  border-top: none;
+}
+.notice {
+  height: 50%;
+  border: rgba(34, 36, 38, 0.1) 1px solid;
+  border-left: none;
+}
+.messages {
+  height: 50%;
+  border: rgba(34, 36, 38, 0.1) 1px solid;
+  border-left: none;
+  border-top: none;
+}
+/*# sourceMappingURL=home.css.map */

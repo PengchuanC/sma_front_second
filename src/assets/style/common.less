@@ -1,0 +1,48 @@
+.common-card-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 40px;
+  width: inherit - 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 2px dashed #808695;
+}
+
+.icon {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.image{
+  width: 30px;
+  height: 30px;
+  transition: font-size 0.25s linear, width 0.25s linear;
+
+  &:hover{
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.active {
+  color: #C00000;
+  fill: currentColor;
+}
+
+.icon-item {
+  position: relative;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+
+.date-picker {
+  width: 120px;
+  margin-right: 20px;
+}

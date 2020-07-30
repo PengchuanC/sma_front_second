@@ -1,0 +1,49 @@
+@import "home";
+
+@port-info-height: 30px;
+
+.portfolio {
+  position: relative;
+  height: 100%;
+  border: 1px solid @border-color;
+  color: black;
+
+  .card-header {
+  }
+
+  .flex {
+    position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
+    width: calc(100% - @header-padding);
+    justify-content: space-between;
+    align-content: center;
+
+    .title {
+      position: relative;
+      line-height: 30px;
+      padding-left: @header-padding;
+    }
+
+    .date-picker {
+      position: relative;
+      line-height: 27px;
+      padding-right: 20px;
+      width: 150px;
+    }
+
+  }
+}
+
+.port-info {
+  display: inline-flex;
+  position: relative;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height: @port-info-height;
+  width: 100%;
+  background: #de7c77;
+  line-height: @port-info-height;
+  align-items: center;
+  color: white;
+}

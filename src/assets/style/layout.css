@@ -1,0 +1,75 @@
+.head {
+  position: fixed;
+  display: flex;
+  top: 0;
+  z-index: 1;
+  min-width: 1000px;
+  max-width: 100vw;
+  width: 100vw;
+  height: 80px;
+  justify-content: center;
+  font-family: 'SourceHanSansCN', '思源宋体', 'Noto Serif CJK SC', 'Noto Serif CJK', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, '宋体', serif;
+}
+.head-child {
+  position: relative;
+  width: calc(100vw * 0.8);
+  max-width: 1000px;
+  min-width: 1000px;
+  height: 80px;
+  padding: 0 170px 0 60px;
+  background: url(../images/head-bg-logo2.png) no-repeat center center;
+  background-size: 100% 100%;
+}
+.logo {
+  position: absolute;
+  width: 100px;
+  top: 30px;
+}
+img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  border: 0;
+  margin: 0;
+}
+.menu-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  top: 30px;
+  width: 100%;
+  padding-left: 130px;
+}
+.menu {
+  display: flex;
+  position: relative;
+  height: 20px;
+}
+.menu-user {
+  display: flex;
+  transform: translateY(-12px);
+  cursor: pointer;
+}
+.segment {
+  position: fixed;
+  width: 90vw;
+  min-width: 900px;
+  height: calc(100vh - 80px - 15px - 40px);
+  top: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0;
+  border: none;
+}
+.segment .router-view {
+  height: inherit;
+  color: black;
+}
+footer {
+  position: fixed;
+  bottom: 15px;
+  font-family: Arial, 'Times New Roman', serif;
+}
+/*# sourceMappingURL=layout.css.map */

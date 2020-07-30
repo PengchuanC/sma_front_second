@@ -1,0 +1,45 @@
+@import "variables";
+
+// 行宽
+@column-width: @segment-width / 24;
+@border-color: rgba(34,36,38,.1);
+@card-bg-color: #f9fafb;
+@header-padding: 20px;
+@header-height: 30px;
+
+.home {
+  display: inline-flex;
+}
+
+.row(@width: 1) {
+  width: @column-width * @width;
+  height: inherit;
+}
+
+.row-9 {
+  .row(9)
+}
+
+.row-6{
+  .row(6)
+}
+
+.column {
+  height: inherit;
+}
+
+// 新闻、报告、公告、留言的header
+.card-header {
+  height: @header-height;
+  width: 100%;
+  background: @card-bg-color;
+  line-height: @header-height;
+  font-weight: bold;
+}
+
+.messages{
+  height: 50%;
+  border: @border-color 1px solid;
+  border-left: none;
+  border-top: none;
+}

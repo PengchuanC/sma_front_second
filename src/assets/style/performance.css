@@ -1,0 +1,43 @@
+.common-card-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 40px;
+  width: inherit - 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 2px dashed #808695;
+}
+.performance {
+  position: relative;
+  width: inherit;
+  height: inherit;
+}
+.performance-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 40px;
+  width: inherit - 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 2px dashed #808695;
+}
+.icon-item {
+  position: relative;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.image {
+  width: 30px;
+  height: 30px;
+}
+.date-picker {
+  width: 120px;
+  margin-right: 20px;
+}
+/*# sourceMappingURL=performance.css.map */

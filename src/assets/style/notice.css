@@ -1,0 +1,49 @@
+.home {
+  display: inline-flex;
+}
+.row-9 {
+  width: 33.75vw;
+  height: inherit;
+}
+.row-6 {
+  width: 22.5vw;
+  height: inherit;
+}
+.column {
+  height: inherit;
+}
+.card-header {
+  height: 30px;
+  width: 100%;
+  background: #f9fafb;
+  line-height: 30px;
+  font-weight: bold;
+}
+.messages {
+  height: 50%;
+  border: rgba(34, 36, 38, 0.1) 1px solid;
+  border-left: none;
+  border-top: none;
+}
+.notice {
+  height: 50%;
+  border: rgba(34, 36, 38, 0.1) 1px solid;
+  border-left: none;
+}
+.content {
+  position: relative;
+  display: inline-flex;
+}
+.card-header {
+  padding-left: 20px;
+}
+.logo {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.image {
+  width: 60px;
+  height: 60px;
+}
+/*# sourceMappingURL=notice.css.map */
