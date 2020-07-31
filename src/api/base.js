@@ -1,7 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
 import {baseUrl} from '../common/variables'
-import LocalStorage from "../common/localstorage";
+import LocalStorage from "../common/localstorage"
 
 
 const ls = LocalStorage

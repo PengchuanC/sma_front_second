@@ -39,13 +39,18 @@ export default new Router({
                     name: 'user',
                     path: '/user',
                     component: () => import('../components/users/Profile')
-                }
+                },
             ]
         },
         {
             name: '404',
             path: '/404',
             component: ()=>import('../components/errors/NotFind')
+        },
+        {
+            name: 'login',
+            path: '/login',
+            component: () => import('../components/auth/Login')
         }
     ]
 })
