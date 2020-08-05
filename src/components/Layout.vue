@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <sui-segment class="segment">
+        <sui-segment class="segment slide-in-fwd-center">
           <keep-alive>
               <router-view class="router-view" />
           </keep-alive>
