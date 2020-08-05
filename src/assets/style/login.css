@@ -40,8 +40,8 @@
   margin-right: 20px;
 }
 .focus-in-contract-bck {
-  -webkit-animation: focus-in-contract-bck 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: focus-in-contract-bck 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: focus-in-contract-bck 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: focus-in-contract-bck 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @-webkit-keyframes focus-in-contract-bck {
   0% {
@@ -176,6 +176,20 @@
     transform: scale3d(1, 1, 1);
   }
 }
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+img {
+  width: 150px;
+}
+.login-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/login.jpeg) no-repeat;
+  background-size: cover;
+}
 .login {
   position: absolute;
   display: flex;
@@ -183,17 +197,21 @@
   align-items: center;
   width: 540px;
   height: 360px;
-  top: 50%;
-  left: 50%;
+  top: 25%;
+  left: 35%;
   transform: translate(-50%, -60%);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
 }
 .welcome {
   position: relative;
   text-align: center;
   margin-bottom: 10px;
-  font-size: 48px;
-  height: 50px;
   width: 100%;
+  color: ghostwhite;
+}
+.label {
+  color: ghostwhite;
 }
 .form {
   width: 360px;

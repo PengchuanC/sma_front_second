@@ -1,5 +1,22 @@
 @import "common";
 
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+img {
+  width: 150px;
+}
+
+.login-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/login.jpeg) no-repeat;
+  background-size: cover;
+}
+
 .login {
   position: absolute;
   display: flex;
@@ -7,20 +24,23 @@
   align-items: center;
   width: 540px;
   height: 360px;
-  top: 50%;
-  left: 50%;
+  top: 25%;
+  left: 35%;
   transform: translate(-50%, -60%);
-  //border: 2px solid #A6A6A6;
-  //border-radius: 5px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .welcome {
   position: relative;
   text-align: center;
   margin-bottom: 10px;
-  font-size: 48px;
-  height: 50px;
   width: 100%;
+  color: ghostwhite;
+}
+
+.label {
+  color: ghostwhite;
 }
 
 .form {
