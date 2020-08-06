@@ -30,7 +30,7 @@
           <sui-table-row v-for="(row, i) in ratio" :key="i">
             <sui-table-cell><span class="box" :style="{'background': color[i]}"></span>{{ row.category }}</sui-table-cell>
             <sui-table-cell style="text-align: right; padding-right: 50px">{{ (row.ratio*100).toFixed(2) }}%</sui-table-cell>
-            <sui-table-cell style="text-align: right; padding-right: 50px">{{ row.mkt.toFixed(2) }}</sui-table-cell>
+            <sui-table-cell style="text-align: right; padding-right: 50px">{{ row.mkt }}</sui-table-cell>
           </sui-table-row>
         </sui-table-body>
       </sui-table>
