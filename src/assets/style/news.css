@@ -33,6 +33,30 @@
 }
 .card-header {
   padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.header-title {
+  line-height: inherit;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.header-icon {
+  color: darkgrey;
+  cursor: pointer;
+}
+.header-icon:hover {
+  height: inherit;
+  color: red;
+  -webkit-animation: spin 1s linear 1s 5 alternate;
+  animation: spin 1s linear infinite;
 }
 .logo {
   position: absolute;

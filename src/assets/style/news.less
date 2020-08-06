@@ -9,6 +9,33 @@
 
 .card-header {
   padding-left: @header-padding;
+  padding-right: @header-padding;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-title {
+  line-height: inherit;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header-icon {
+  color: darkgrey;
+  cursor: pointer;
+  &:hover{
+    height: inherit;
+    color: red;
+    -webkit-animation: spin 1s linear 1s 5 alternate;
+    animation: spin 1s linear infinite;
+  }
 }
 
 .logo {

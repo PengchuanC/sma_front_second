@@ -5,6 +5,7 @@ import router from './router'
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
 import 'view-design/dist/styles/iview.css'
+import './common/iconfont'
 
 Vue.config.productionTip = false
 Vue.use(SuiVue)

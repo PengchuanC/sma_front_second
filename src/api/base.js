@@ -1,22 +1,23 @@
 import axios from 'axios'
 import moment from 'moment'
-import {baseUrl} from '../common/variables'
-import LocalStorage from "../common/localstorage"
+import {baseUrl} from '@/common/variables'
+import LocalStorage from "@/common/localstorage"
 
 
-const ls = LocalStorage
+let ls = LocalStorage
 
 // 创建axios instance
-const api = axios.create({
+let api = axios.create({
     baseURL: baseUrl,
     timeout: 5000,
     headers: {
         'content-type': 'application/json',
+        'Authorization': ''
     }
 })
 
 // 创建专门用于登录的axios instance
-const loginApi = axios.create({
+let loginApi = axios.create({
     baseURL: baseUrl,
     timeout: 5000,
     headers: {
@@ -60,7 +61,7 @@ async function addToken(config) {
             }
         )
     }
-    config['Authorization'] = LocalStorage.getToken()
+    config.headers['Authorization'] = 'Bearer ' + LocalStorage.getToken()
     return config
 }
 

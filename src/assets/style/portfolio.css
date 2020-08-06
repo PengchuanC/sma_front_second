@@ -62,4 +62,18 @@
   align-items: center;
   color: white;
 }
+.asset-table {
+  position: relative;
+  left: 5%;
+  width: 90%;
+}
+.box {
+  margin-top: 1px;
+  margin-right: 5px;
+  width: 5px;
+  height: 15px;
+  background: #0d71bb;
+  float: left;
+  align-content: center;
+}
 /*# sourceMappingURL=portfolio.css.map */
