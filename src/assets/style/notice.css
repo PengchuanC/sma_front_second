@@ -30,6 +30,12 @@
   border: rgba(34, 36, 38, 0.1) 1px solid;
   border-left: none;
 }
+.message {
+  height: 50%;
+  border: rgba(34, 36, 38, 0.1) 1px solid;
+  border-left: none;
+  border-top: none;
+}
 .content {
   position: relative;
   display: inline-flex;

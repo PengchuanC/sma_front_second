@@ -203,4 +203,32 @@
   margin-left: 30px;
   cursor: pointer;
 }
+.account-content {
+  width: inherit;
+  height: calc(100% - 40px);
+}
+.account-chart {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 45%;
+  width: 95%;
+  border-bottom: lavender 2px dashed;
+}
+.account-table {
+  position: relative;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+}
+.box {
+  margin-top: 1px;
+  margin-right: 5px;
+  width: 5px;
+  height: 15px;
+  background: #0d71bb;
+  float: left;
+  align-content: center;
+}
 /*# sourceMappingURL=account.css.map */

@@ -10,7 +10,7 @@ export default new Router({
         {
             name: 'layout',
             path: '/',
-            component: ()=>import('../components/Layout'),
+            component: ()=>import('@/components/Layout'),
             redirect: '/home',
             meta: {
                 title: 'SMA',
@@ -18,39 +18,56 @@ export default new Router({
             },
             children: [
                 {
+                    name: 'info',
+                    path: '/info/:port_code',
+                    component: ()=>import('@/components/home/Home'),
+                    meta: {
+                        title: '首页',
+                        keepAlive: true
+                    }
+                },
+                {
                     name: 'home',
                     path: '/home',
-                    component: ()=>import('../components/home/Home'),
+                    component: ()=>import('@/components/home/Home'),
                     meta: {
-                        title: '首页'
+                        title: '首页',
+                        keepAlive: true
                     }
                 },
                 {
                     name: 'account',
                     path: '/account',
-                    component: ()=>import('../components/account/Account')
+                    component: ()=>import('@/components/account/Account'),
+                    children: [
+                        {
+                            name: 'chart',
+                            path: '/chart',
+                            component: () => import('@/components/account/AccountChart')
+                        }
+                    ]
                 },
                 {
                     name: 'performance',
                     path: '/performance',
-                    component: ()=>import('../components/performance/Performance')
+                    component: ()=>import('@/components/performance/Performance')
                 },
                 {
                     name: 'user',
                     path: '/user',
-                    component: () => import('../components/users/Profile')
+                    component: () => import('@/components/users/Profile')
                 },
             ]
         },
         {
             name: '404',
             path: '/404',
-            component: ()=>import('../components/errors/NotFind')
+            component: ()=>import('@/components/errors/NotFind')
         },
         {
             name: 'login',
             path: '/login',
-            component: () => import('../components/auth/Login')
+            component: () => import('@/components/auth/Login')
         }
     ]
 })

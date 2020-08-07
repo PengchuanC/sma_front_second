@@ -51,6 +51,16 @@ class LocalStorage {
         return localStorage.getItem('expire')
     }
 
+    // 保存组合ID
+    static setPortCode(portCode) {
+        localStorage.setItem('portCode', portCode)
+    }
+
+    // 获取组合ID
+    static getPortCode(){
+        return localStorage.getItem('portCode')
+    }
+
 }
 
 export default LocalStorage

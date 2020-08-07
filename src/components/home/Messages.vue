@@ -1,5 +1,5 @@
 <template>
-<div class="notice">
+<div class="message">
   <p class="card-header">留言</p>
   <div class="content">
     <div class="logo">

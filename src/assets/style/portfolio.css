@@ -62,10 +62,25 @@
   align-items: center;
   color: white;
 }
+.asset-chart {
+  position: relative;
+  left: 50%;
+  top: 5%;
+  width: 90%;
+  height: 300px;
+  transform: translateX(-50%);
+  border: 1px lavender solid;
+}
+.asset-chart .allocate-chart {
+  width: 100%;
+  height: inherit;
+}
 .asset-table {
   position: relative;
-  left: 5%;
+  left: 50%;
+  top: 25%;
   width: 90%;
+  transform: translate(-50%, -50%);
 }
 .box {
   margin-top: 1px;
