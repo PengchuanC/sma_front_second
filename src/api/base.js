@@ -52,7 +52,7 @@ async function addToken(config) {
     if (now > expire) {
         return new Promise(
             function (resolve, reject) {
-                loginApi.post('/token/refresh', {'refresh': ls.getRefreshToken()}).then(resp=>{
+                loginApi.post('/token/refresh/', {'refresh': ls.getRefreshToken()}).then(resp=>{
                     config.headers['Authorization'] = `Bearer ${resp.data.access}`
                     resolve(config)
                 }).catch(e=>{

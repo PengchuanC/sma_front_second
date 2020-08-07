@@ -3,14 +3,18 @@
     <div class="account-card-header">
       <div class="icon">
         <div class="bar" @click="selectIcon(1)">
-          <svg class="font-icon image" aria-hidden="true">
-            <use xlink:href="#iconzhuzhuangtu" :class="activeId === 1? 'active': ''"></use>
-          </svg>
+          <div class="image-wrapper">
+            <svg class="font-icon image" aria-hidden="true">
+              <use xlink:href="#iconzhuzhuangtu" :class="activeId === 1? 'active': ''"></use>
+            </svg>
+          </div>
         </div>
         <div class="list" @click="selectIcon(2)">
-          <svg class="font-icon image" aria-hidden="true">
-            <use xlink:href="#iconliebiao" :class="activeId === 2? 'active': ''"></use>
-          </svg>
+          <div class="image-wrapper">
+            <svg class="font-icon image" aria-hidden="true">
+              <use xlink:href="#iconliebiao" :class="activeId === 2? 'active': ''"></use>
+            </svg>
+          </div>
         </div>
       </div>
       <div class="date-picker">
@@ -18,6 +22,7 @@
             size="small"
             v-model="selectedDate"
             @on-change="changeDate"
+            format="yyyy-MM-dd"
         >
         </date-picker>
       </div>
@@ -25,6 +30,9 @@
     <div class="account-content" v-if="activeId === 1">
       <AccountChart :ratio="ratio" v-if="fetched" />
       <AccountTable :ratio="ratio" v-if="fetched" />
+    </div>
+    <div class="account-holding" v-if="activeId === 2">
+      <Holding :selectedDate="selectedDate"></Holding>
     </div>
   </div>
 </template>
@@ -35,10 +43,11 @@
   import AccountChart from "@/components/account/AccountChart";
   import {getAllocate} from "@/api/home";
   import AccountTable from "@/components/account/AccountTable";
+  import Holding from "@/components/account/Holding";
 
   export default {
     name: "Account",
-    components: {AccountTable, AccountChart, DatePicker},
+    components: {Holding, AccountTable, AccountChart, DatePicker},
     data(){
       return {
         selectedDate: moment().format('YYYY-MM-DD'),

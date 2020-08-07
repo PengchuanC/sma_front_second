@@ -3,19 +3,25 @@
     <div class="performance-header">
       <div class="icon">
         <div class="icon-item" @click="selectIcon(1)">
-          <svg class="font-icon image"  aria-hidden="true">
-            <use xlink:href="#iconliebiao"  :class="activeId === 1? 'active': ''"></use>
-          </svg>
+          <div class="image-wrapper">
+            <svg class="font-icon image"  aria-hidden="true">
+              <use xlink:href="#iconliebiao"  :class="activeId === 1? 'active': ''"></use>
+            </svg>
+          </div>
         </div>
         <div class="icon-item" @click="selectIcon(2)">
-          <svg class="font-icon image" aria-hidden="true">
-            <use xlink:href="#iconzhutu" :class="activeId === 2? 'active': ''"></use>
-          </svg>
+          <div class="image-wrapper">
+            <svg class="font-icon image" aria-hidden="true">
+              <use xlink:href="#iconzhutu" :class="activeId === 2? 'active': ''"></use>
+            </svg>
+          </div>
         </div>
         <div class="icon-item" @click="selectIcon(3)">
-          <svg class="font-icon image" aria-hidden="true">
-            <use xlink:href="#iconlinechart" :class="activeId === 3? 'active': ''"></use>
-          </svg>
+          <div class="image-wrapper">
+            <svg class="font-icon image" aria-hidden="true">
+              <use xlink:href="#iconlinechart" :class="activeId === 3? 'active': ''"></use>
+            </svg>
+          </div>
         </div>
       </div>
       <div class="date-picker">

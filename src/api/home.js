@@ -24,7 +24,10 @@ export function getAllocate(self) {
             self.selectedDate = data.date
             self.ratio = data.ratio
             self.ratio = data.ratio.map(x=>{
-                return {category: x.category, mkt: numeral(x.mkt).format('0,0.00'), ratio: x.ratio}
+                return {
+                    category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
+                    ratio: (x.ratio * 100).toFixed(2), children: [], _loading: false, id :x.id
+                }
             })
             self.ret = data.ret
             self.net_asset = numeral(data.net_asset).format('0,0')

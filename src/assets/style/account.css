@@ -17,14 +17,22 @@
   align-items: center;
   align-content: center;
 }
+.image-wrapper {
+  width: 40px;
+  height: 40px;
+}
 .image {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 30px;
   height: 30px;
   transition: font-size 0.25s linear, width 0.25s linear;
 }
 .image:hover {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 .active {
   color: #C00000;
@@ -230,5 +238,9 @@
   background: #0d71bb;
   float: left;
   align-content: center;
+}
+.account-holding {
+  height: calc(100% - 40px);
+  padding: 20px 10px;
 }
 /*# sourceMappingURL=account.css.map */

@@ -53,7 +53,7 @@ export default {
               name: '配置比例',
               type: 'bar',
               barWidth: '25%',
-              data: this.ratio.map((e)=>{return (e.ratio*100).toFixed(2)}),
+              data: this.ratio.map((e)=>{return e.ratio}),
               itemStyle: {
                 normal: {
                   color: (x)=>{
