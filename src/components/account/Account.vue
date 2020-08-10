@@ -20,9 +20,8 @@
       <div class="date-picker">
         <date-picker
             size="small"
-            v-model="selectedDate"
+            :value="selectedDate"
             @on-change="changeDate"
-            format="yyyy-MM-dd"
         >
         </date-picker>
       </div>
@@ -32,7 +31,7 @@
       <AccountTable :ratio="ratio" v-if="fetched" />
     </div>
     <div class="account-holding" v-if="activeId === 2">
-      <Holding :selectedDate="selectedDate"></Holding>
+      <Holding :selectedDate="selectedDate" v-if="fetched"></Holding>
     </div>
   </div>
 </template>
@@ -60,7 +59,8 @@
       selectIcon(i){
         this.activeId = i;
       },
-      changeDate(){
+      changeDate(e){
+        this.selectedDate = this.selectedDate? e: this.selectedDate
         getAllocate(this)
       },
     },

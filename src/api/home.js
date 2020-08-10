@@ -10,7 +10,7 @@ export function getNews(self) {
 }
 
 // 获取收益资产配置数据
-export function getAllocate(self) {
+export function getAllocate(self, modifyDate=true) {
     self.fetched = false
     let date;
     if (self.selectedDate) {
@@ -21,18 +21,24 @@ export function getAllocate(self) {
     }).then(resp=>{
         let data = resp.data
         if (data) {
-            self.selectedDate = data.date
+            self.selectedDate = modifyDate? data.date: self.selectedDate
             self.ratio = data.ratio
             self.ratio = data.ratio.map(x=>{
+                if (x.category !== '现金') {
+                    return {
+                        category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
+                        ratio: (x.ratio * 100).toFixed(2), children: [], _loading: false, id :x.id
+                    }
+                }
                 return {
                     category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
-                    ratio: (x.ratio * 100).toFixed(2), children: [], _loading: false, id :x.id
+                    ratio: (x.ratio * 100).toFixed(2)
                 }
             })
             self.ret = data.ret
             self.net_asset = numeral(data.net_asset).format('0,0')
         } else {
-            self.selectedDate = data.date
+            self.selectedDate = modifyDate? data.date: self.selectedDate
             self.ratio = []
             self.ret = null
             self.net_asset = null

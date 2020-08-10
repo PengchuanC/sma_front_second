@@ -243,4 +243,8 @@
   height: calc(100% - 40px);
   padding: 20px 10px;
 }
+.transaction {
+  position: relative;
+  top: 50%;
+}
 /*# sourceMappingURL=account.css.map */

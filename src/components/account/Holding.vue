@@ -5,20 +5,31 @@
         :columns="columns"
         :data="ratio"
         :load-data="asyncLoadData"
+        @on-row-click="selectRow"
     >
     </Table>
+    <Modal v-model="showTrans"
+           title="交易流水"
+           :width="80"
+           :scrollable="true"
+    >
+      <Transaction :data="transaction" />
+    </Modal>
   </div>
 </template>
 
 <script>
-  import {Table} from 'view-design'
+  import moment from 'moment'
+
   import {getAllocate} from "@/api/home";
   import {api} from '@/api/base'
   import LocalStorage from "@/common/localstorage";
+  import Transaction from "@/components/account/Transaction";
+  import {getTransaction} from "@/api/account";
 
   export default {
     name: "Holding",
-    components: {Table},
+    components: {Transaction},
     props: {
       selectedDate: String
     },
@@ -26,9 +37,13 @@
       return {
         columns: [
           {
+            title: '#',
+            width: 60,
+            tree: true
+          },
+          {
             title: '基金代码',
             key: 'category',
-            tree: true
           },
           {
             title: '基金名称',
@@ -60,24 +75,33 @@
             align: 'center'
           },
         ],
-        ratio: []
+        ratio: [],
+        transaction: [],
+        showTrans: false
       }
     },
     methods: {
       asyncLoadData(item, callback){
         let category = item.category
+        let date = moment(this.selectedDate).format('YYYY-MM-DD')
         api.get('/v2/portfolio/asset/category', {
           params: {
-            port_code: LocalStorage.getPortCode(), date: this.selectedDate, category: category
+            port_code: LocalStorage.getPortCode(), date: date, category: category
           }
         }).then(resp=>{
           let data = resp.data
           callback(data)
         })
+      },
+      selectRow(item){
+        if (!item.children) {
+          this.port_code = LocalStorage.getPortCode()
+          getTransaction(this, item.category)
+        }
       }
     },
     mounted() {
-      getAllocate(this)
+      getAllocate(this, false)
     }
   }
 </script>
