@@ -28,7 +28,9 @@
     </div>
     <div class="account-content" v-if="activeId === 1">
       <AccountChart :ratio="ratio" v-if="fetched" />
-      <AccountTable :ratio="ratio" v-if="fetched" />
+      <div class="account-table">
+        <AssetTable :data="ratio" v-if="fetched"/>
+      </div>
     </div>
     <div class="account-holding" v-if="activeId === 2">
       <Holding :selectedDate="selectedDate" v-if="fetched"></Holding>
@@ -41,12 +43,12 @@
   import moment from 'moment'
   import AccountChart from "@/components/account/AccountChart";
   import {getAllocate} from "@/api/home";
-  import AccountTable from "@/components/account/AccountTable";
   import Holding from "@/components/account/Holding";
+  import AssetTable from "@/components/common/AssetTable";
 
   export default {
     name: "Account",
-    components: {Holding, AccountTable, AccountChart, DatePicker},
+    components: {AssetTable, Holding, AccountChart, DatePicker},
     data(){
       return {
         selectedDate: moment().format('YYYY-MM-DD'),

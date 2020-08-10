@@ -67,20 +67,20 @@
   left: 50%;
   top: 5%;
   width: 90%;
-  height: 300px;
+  height: 40%;
   transform: translateX(-50%);
-  border: 1px lavender solid;
+  border: none;
 }
 .asset-chart .allocate-chart {
   width: 100%;
-  height: inherit;
+  height: 100%;
 }
 .asset-table {
   position: relative;
   left: 50%;
-  top: 25%;
+  top: 10%;
   width: 90%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 }
 .box {
   margin-top: 1px;

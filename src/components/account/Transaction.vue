@@ -1,7 +1,6 @@
 <template>
-  <div class="transaction">
+  <div id="transaction" style="height: 600px">
     <Table
-        class="transaction-table"
         size="small"
         :columns="columns"
         :data="data"
@@ -39,11 +38,9 @@ export default {
           title: '手续费(元)',
           key: 'fee'
         }
-      ]
+      ],
     }
   },
-  mounted() {
-  }
 }
 </script>
 

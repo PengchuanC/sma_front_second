@@ -38,6 +38,8 @@ export default {
   },
   created() {
     this.port_code = this.$route.params.port_code
+    let auth = this.$route.query['signmsg']
+    LocalStorage.setIdentification(auth)
     let local = LocalStorage.getPortCode()
     if (!this.port_code && !local){
       this.$router.push({name: 'user'})
@@ -53,7 +55,4 @@ export default {
 
 <style lang="less">
 @import "../../assets/style/home";
-</style>
-
-<style scoped>
 </style>

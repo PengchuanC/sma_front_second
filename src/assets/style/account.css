@@ -212,7 +212,7 @@
   cursor: pointer;
 }
 .account-content {
-  width: inherit;
+  width: 100%;
   height: calc(100% - 40px);
 }
 .account-chart {
@@ -221,14 +221,14 @@
   transform: translateX(-50%);
   height: 45%;
   width: 95%;
-  border-bottom: lavender 2px dashed;
+  border-bottom: lightgrey 2px dashed;
 }
 .account-table {
   position: relative;
   top: 5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 95%;
 }
 .box {
   margin-top: 1px;
@@ -243,8 +243,11 @@
   height: calc(100% - 40px);
   padding: 20px 10px;
 }
+#holding-table {
+  height: 100%;
+}
 .transaction {
   position: relative;
-  top: 50%;
+  height: 90%;
 }
 /*# sourceMappingURL=account.css.map */

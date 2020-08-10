@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div id="holding-table">
     <Table
-        size="small" stripe border row-key="id"
+        size="small" row-key="id"
+        :max-height="height"
         :columns="columns"
         :data="ratio"
         :load-data="asyncLoadData"
         @on-row-click="selectRow"
     >
     </Table>
+    <AssetTable :data="ratio"/>
     <Modal v-model="showTrans"
            title="交易流水"
            :width="80"
@@ -26,10 +28,11 @@
   import LocalStorage from "@/common/localstorage";
   import Transaction from "@/components/account/Transaction";
   import {getTransaction} from "@/api/account";
+  import AssetTable from "@/components/common/AssetTable";
 
   export default {
     name: "Holding",
-    components: {Transaction},
+    components: {AssetTable, Transaction},
     props: {
       selectedDate: String
     },
@@ -77,7 +80,8 @@
         ],
         ratio: [],
         transaction: [],
-        showTrans: false
+        showTrans: false,
+        height: 600
       }
     },
     methods: {
@@ -98,11 +102,16 @@
           this.port_code = LocalStorage.getPortCode()
           getTransaction(this, item.category)
         }
+      },
+      getHeight() {
+        let div = document.getElementById('holding-table')
+        return div.clientHeight
       }
     },
     mounted() {
       getAllocate(this, false)
-    }
+      this.height = this.getHeight()
+    },
   }
 </script>
 

@@ -21,22 +21,7 @@
       <div class="allocate-chart" id="chart"></div>
     </div>
     <div class="asset-table">
-      <sui-table size="small" striped>
-        <sui-table-header>
-          <sui-table-row>
-            <sui-table-header-cell>资产类别</sui-table-header-cell>
-            <sui-table-header-cell style="text-align: right; padding-right: 40px">投资比例</sui-table-header-cell>
-            <sui-table-header-cell style="text-align: right; padding-right: 25px">投资金额（元）</sui-table-header-cell>
-          </sui-table-row>
-        </sui-table-header>
-        <sui-table-body>
-          <sui-table-row v-for="(row, i) in ratio" :key="i">
-            <sui-table-cell><span class="box" :style="{'background': color[i]}"></span>{{ row.category }}</sui-table-cell>
-            <sui-table-cell style="text-align: right; padding-right: 50px">{{ row.ratio }}%</sui-table-cell>
-            <sui-table-cell style="text-align: right; padding-right: 50px">{{ row.mkt }}</sui-table-cell>
-          </sui-table-row>
-        </sui-table-body>
-      </sui-table>
+      <AssetTable :data="ratio" />
     </div>
   </div>
 </template>
@@ -47,10 +32,11 @@ import {DatePicker} from 'view-design'
 import {getAllocate, getPortName} from "@/api/home"
 import moment from 'moment'
 import LocalStorage from "@/common/localstorage";
+import AssetTable from "@/components/common/AssetTable";
 
 export default {
   name: "Portfolio",
-  components: {DatePicker},
+  components: {AssetTable, DatePicker},
   data(){
     return {
       selectedDate: moment().format('YYYY-MM-DD'),

@@ -39,13 +39,6 @@ export default new Router({
                     name: 'account',
                     path: '/account',
                     component: ()=>import('@/components/account/Account'),
-                    children: [
-                        {
-                            name: 'chart',
-                            path: '/chart',
-                            component: () => import('@/components/account/AccountChart')
-                        }
-                    ]
                 },
                 {
                     name: 'performance',
