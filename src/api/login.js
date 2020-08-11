@@ -14,7 +14,7 @@ function login(self) {
         if (!self.noResign) {
             LocalStorage.setRefreshToken('')
         }
-        self.$router.push({name: 'home'})
+        self.$router.push({name: 'user'})
     }).catch((e)=>{
         console.log(e)
         self.$router.push({name: '404'})

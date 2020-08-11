@@ -194,7 +194,7 @@
   width: 100vw;
   height: 80px;
   justify-content: center;
-  font-family: 'SourceHanSansCN', '思源宋体', 'Noto Serif CJK SC', 'Noto Serif CJK', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, '宋体', serif;
+  font-family: 'Arial', 'SourceHanSansCN', '思源宋体', 'Noto Serif CJK SC', 'Noto Serif CJK', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, '宋体', serif;
 }
 .head-child {
   position: relative;
