@@ -1,5 +1,5 @@
 <template>
-  <div id="transaction" style="height: 600px">
+  <div id="transaction">
     <Table
         size="small"
         :columns="columns"

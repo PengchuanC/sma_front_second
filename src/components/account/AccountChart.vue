@@ -32,7 +32,6 @@ export default {
               splitLine: false,
               axisLine:{
                 lineStyle:{
-                  color:'grey'
                 }
               },
             }
@@ -43,7 +42,6 @@ export default {
               splitLine: false,
               axisLine:{
                 lineStyle:{
-                  color:'grey'
                 }
               },
             }
