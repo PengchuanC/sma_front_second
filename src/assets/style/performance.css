@@ -208,4 +208,63 @@
 .picker {
   width: 100%;
 }
+.performance-table {
+  height: 100%;
+  overflow: auto;
+  padding-top: 10px;
+}
+.performance-table table {
+  width: 98%;
+  margin: auto;
+  border-collapse: collapse;
+  border: 1px lightgrey solid;
+}
+.performance-table tr[class='header'] {
+  border: 2px none white;
+  line-height: 36px;
+  background-color: #C00000;
+  color: white;
+}
+.performance-table tr[class='row'] {
+  background-color: rgba(115, 115, 115, 0.2);
+  font-size: small;
+  border-bottom: rgba(115, 115, 115, 0.3) 1px solid;
+}
+.performance-table tr[class='active'] {
+  background-color: rgba(209, 132, 132, 0.8);
+}
+.performance-table td {
+  text-align: center;
+  line-height: 30px;
+}
+.performance-table td[class='arrow'] {
+  width: 1em;
+}
+.performance-table td[class='arrow']:hover {
+  transform: rotate(90deg);
+  transition: all 0.2s linear;
+}
+.performance-bar {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.performance-bar #performance-bar-chart {
+  height: calc(100% - 80px);
+  width: 100%;
+  border: 1px saddlebrown solid;
+}
+.performance-line {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.performance-line #performance-line-chart {
+  height: calc(80% - 80px);
+  margin-top: 5%;
+  width: 100%;
+}
+.choice {
+  margin: 10px 10px auto;
+}
 /*# sourceMappingURL=performance.css.map */
