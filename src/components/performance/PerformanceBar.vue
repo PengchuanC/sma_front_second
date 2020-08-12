@@ -71,7 +71,7 @@ export default {
           left: 20,
           right: 60,
           bottom: 30,
-          top: 20,
+          top: 50,
           containLabel: true
         },
         color: ['#900000', '#A6A6A6'],

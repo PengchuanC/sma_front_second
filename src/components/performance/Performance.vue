@@ -70,16 +70,20 @@ export default {
     },
     changeDate(value){
       this.selectedDates = value
+      this.getData()
+    },
+    getData(){
+      api.get('/v2/portfolio/performance/table/', {
+        params: {port_code: this.port_code, beginDate: this.selectedDates[0], endDate: this.selectedDates[1]}
+      }).then(r=>{
+        this.data = r.data
+      })
     }
   },
   created() {
     getDate(this)
-    api.get('/v2/portfolio/performance/table/', {
-      params: {port_code: 'FF9009', beginDate: this.selectedDates[0], endDatec: this.selectedDates[1]}
-    }).then(r=>{
-      this.data = r.data
-    })
-  }
+    this.getData()
+  },
 }
 </script>
 
