@@ -250,7 +250,7 @@ img {
   border: none;
 }
 .segment .router-view {
-  height: inherit;
+  height: 100%;
   color: black;
 }
 footer {

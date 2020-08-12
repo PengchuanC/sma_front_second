@@ -28,18 +28,19 @@
         <date-picker
             class="picker"
             :value="selectedDates"
-            format="yyyy/MM/dd"
+            format="yyyy-MM-dd"
             type="daterange"
             placement="bottom-end"
             placeholder="选择区间"
             size="small"
+            @on-change="changeDate"
         >
         </date-picker>
       </div>
     </div>
     <PerformanceTable :data="data" v-show="activeId===1" />
-    <PerformanceBar v-show="activeId===2"/>
-    <PerformanceLine v-show="activeId===3" />
+    <PerformanceBar :date="selectedDates" v-show="activeId===2"/>
+    <PerformanceLine :date="selectedDates" v-show="activeId===3" />
   </div>
 </template>
 
@@ -48,6 +49,9 @@ import {DatePicker} from 'view-design'
 import PerformanceTable from "@/components/performance/PerformanceTable";
 import PerformanceBar from "@/components/performance/PerformanceBar";
 import PerformanceLine from "@/components/performance/PerformanceLine";
+import LocalStorage from "@/common/localstorage";
+import {getDate} from "@/api/performance";
+import {api} from "@/api/base";
 
 export default {
   name: "Performance",
@@ -56,39 +60,25 @@ export default {
     return {
       activeId: 1,
       selectedDates: ['2020-04-13', '2020-07-28'],
-      data: [
-        {'name': '自定义', 'period': ['2020-04-13', '2020-08-04'], 'change': 1477.34, 'profit': 0.0030, child: [
-            {name: '期初资产', value: 5000}, {name: '申购', value: 5000}, {name: '赎回', value: 5000},
-            {name: '期末资产', value: 5000}, {name: '区间收益', value: 2.21}, {name: '分红', value: 5000},
-            {name: '费用', value: 5000}
-          ]},
-        {'name': '本月至今', 'period': ['2020-04-13', '2020-08-04'], 'change': 1477.34, 'profit': 0.0030, child: [
-            {name: '期初资产', value: 5000}, {name: '申购', value: 5000}, {name: '赎回', value: 5000},
-            {name: '期末资产', value: 5000}, {name: '区间收益', value: 2.21}, {name: '分红', value: 5000},
-            {name: '费用', value: 5000}
-          ]},
-        {'name': '自本年至今', 'period': ['2020-04-13', '2020-08-04'], 'change': 1477.34, 'profit': 0.0030, child: [
-            {name: '期初资产', value: 5000}, {name: '申购', value: 5000}, {name: '赎回', value: 5000},
-            {name: '期末资产', value: 5000}, {name: '区间收益', value: 2.21}, {name: '分红', value: 5000},
-            {name: '费用', value: 5000}
-          ]},
-        {'name': '自最近三年', 'period': ['2020-04-13', '2020-08-04'], 'change': 1477.34, 'profit': 0.0030, child: [
-            {name: '期初资产', value: 5000}, {name: '申购', value: 5000}, {name: '赎回', value: 5000},
-            {name: '期末资产', value: 5000}, {name: '区间收益', value: 2.21}, {name: '分红', value: 5000},
-            {name: '费用', value: 5000}
-          ]},
-        {'name': '成立以来', 'period': ['2020-04-13', '2020-08-04'], 'change': 1477.34, 'profit': 0.0030, child: [
-            {name: '期初资产', value: 5000}, {name: '申购', value: 5000}, {name: '赎回', value: 5000},
-            {name: '期末资产', value: 5000}, {name: '区间收益', value: 2.21}, {name: '分红', value: 5000},
-            {name: '费用', value: 5000}
-          ]},
-      ]
+      port_code: LocalStorage.getPortCode(),
+      data: []
     }
   },
   methods:{
     selectIcon(i){
       this.activeId = i;
+    },
+    changeDate(value){
+      this.selectedDates = value
     }
+  },
+  created() {
+    getDate(this)
+    api.get('/v2/portfolio/performance/table/', {
+      params: {port_code: 'FF9009', beginDate: this.selectedDates[0], endDatec: this.selectedDates[1]}
+    }).then(r=>{
+      this.data = r.data
+    })
   }
 }
 </script>

@@ -11,9 +11,11 @@
 
 <script>
 import {api} from "@/api/base";
+import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "PerformanceLine",
+  props: {date: Array},
   data(){
     return {
       buttons: ['自定义', '本月至今', '本年至今', '最近三年', '成立以来'],
@@ -23,7 +25,7 @@ export default {
   methods: {
     selectPeriod(i){
       api.get('/v2/portfolio/performance/line/',{
-        params: {port_code: 'FF9009', beginDate: '', endDate: '', period: i}
+        params: {port_code: LocalStorage.getPortCode(), beginDate: this.date[0], endDate: this.date[1], period: i}
       }).then(resp=>{this.data = resp.data; this.drawChart()})
     },
     drawChart(){
@@ -39,10 +41,10 @@ export default {
           fontSize: 16
         },
         grid: {
-          left : 30,
+          left : 20,
           right : 60,
           bottom : 30,
-          top : 30,
+          top : 20,
           containLabel : true
         },
         color: ['#900000', '#A6A6A6'],
@@ -106,11 +108,16 @@ export default {
       window.addEventListener("resize", () => {
         chart.resize();
       });
-    }
+    },
   },
-  mounted() {
+  created() {
     this.selectPeriod(4)
   },
+  watch: {
+    date: function (){
+      this.selectPeriod(0)
+    }
+  }
 }
 </script>
 

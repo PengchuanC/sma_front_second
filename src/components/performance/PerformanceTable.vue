@@ -29,12 +29,18 @@
 </template>
 
 <script>
+import numeral from 'numeral'
 export default {
   name: "PerformanceTable",
   props: {data: Array},
   data(){
     return {
       activeRow: 1,
+    }
+  },
+  methods: {
+    numeral(value){
+      return numeral(value).format('0,00.00')
     }
   }
 }

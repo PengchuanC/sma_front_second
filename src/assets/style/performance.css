@@ -186,8 +186,8 @@
 }
 .performance {
   position: relative;
-  width: inherit;
-  height: inherit;
+  width: 100%;
+  height: 100%;
 }
 .performance-header {
   position: relative;
@@ -250,9 +250,9 @@
   overflow: auto;
 }
 .performance-bar #performance-bar-chart {
-  height: calc(100% - 80px);
-  width: 100%;
-  border: 1px saddlebrown solid;
+  height: calc(100vh - 80px - 15px - 40px - 160px);
+  margin-top: 5%;
+  width: 90vw;
 }
 .performance-line {
   width: 100%;
@@ -260,11 +260,26 @@
   overflow: auto;
 }
 .performance-line #performance-line-chart {
-  height: calc(80% - 80px);
+  height: calc(100vh - 80px - 15px - 40px - 160px);
   margin-top: 5%;
+  width: 90vw;
+}
+.performance-tools {
+  display: inline-flex;
   width: 100%;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 .choice {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
   margin: 10px 10px auto;
+}
+.frequency {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  margin: 15px 10px auto;
 }
 /*# sourceMappingURL=performance.css.map */
