@@ -1,5 +1,6 @@
 <template>
   <div class="performance">
+    <BasicInfo />
     <div class="performance-header">
       <div class="icon">
         <div class="icon-item" @click="selectIcon(1)">
@@ -46,20 +47,22 @@
 
 <script>
 import {DatePicker} from 'view-design'
-import PerformanceTable from "@/components/performance/PerformanceTable";
-import PerformanceBar from "@/components/performance/PerformanceBar";
-import PerformanceLine from "@/components/performance/PerformanceLine";
-import LocalStorage from "@/common/localstorage";
-import {getDate} from "@/api/performance";
-import {api} from "@/api/base";
+import PerformanceTable from "@/components/performance/PerformanceTable"
+import PerformanceBar from "@/components/performance/PerformanceBar"
+import PerformanceLine from "@/components/performance/PerformanceLine"
+import LocalStorage from "@/common/localstorage"
+import {getDate} from "@/api/performance"
+import {api} from "@/api/base"
+import moment from 'moment'
+import BasicInfo from "@/components/common/BasicInfo";
 
 export default {
   name: "Performance",
-  components: {PerformanceLine, PerformanceBar, PerformanceTable, DatePicker},
+  components: {BasicInfo, PerformanceLine, PerformanceBar, PerformanceTable, DatePicker},
   data(){
     return {
       activeId: 1,
-      selectedDates: ['2020-04-13', '2020-07-28'],
+      selectedDates: ['2020-04-13', moment().format('YYYY-MM-DD')],
       port_code: LocalStorage.getPortCode(),
       data: []
     }

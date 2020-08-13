@@ -1,5 +1,6 @@
 <template>
   <div class="account">
+    <BasicInfo />
     <div class="account-card-header">
       <div class="icon">
         <div class="bar" @click="selectIcon(1)">
@@ -45,10 +46,11 @@
   import {getAllocate} from "@/api/home";
   import Holding from "@/components/account/Holding";
   import AssetTable from "@/components/common/AssetTable";
+  import BasicInfo from "@/components/common/BasicInfo";
 
   export default {
     name: "Account",
-    components: {AssetTable, Holding, AccountChart, DatePicker},
+    components: {BasicInfo, AssetTable, Holding, AccountChart, DatePicker},
     data(){
       return {
         selectedDate: moment().format('YYYY-MM-DD'),

@@ -246,12 +246,11 @@
 }
 .performance-bar {
   width: 100%;
-  height: 100%;
+  height: 100% -65px;
   overflow: auto;
 }
 .performance-bar #performance-bar-chart {
   height: calc(100vh - 80px - 15px - 40px - 160px);
-  margin-top: 5%;
   width: 90vw;
 }
 .performance-line {
@@ -261,7 +260,6 @@
 }
 .performance-line #performance-line-chart {
   height: calc(100vh - 80px - 15px - 40px - 160px);
-  margin-top: 5%;
   width: 90vw;
 }
 .performance-tools {

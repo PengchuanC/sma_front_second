@@ -1,0 +1,75 @@
+// 基础信息卡片宽高
+@basic-width: 350px;
+@basic-height: 50px;
+@margin: 15px;
+
+.basic-info-wrapper {
+  width: @basic-width;
+  height: @basic-height;
+  border: lightgrey 1px dashed;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+.port-info {
+  display: inline-flex;
+  justify-content: start;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: @basic-height*0.7;
+  line-height: @basic-height*0.7;
+  margin: auto;
+
+  .change {
+    margin-right: 5px;
+  }
+
+  p {
+    line-height: @basic-height*0.7;
+    margin-right: 20px;
+  }
+}
+
+.port-change {
+  display: inline-flex;
+  justify-content: space-around;
+  width: 100%;
+  height: @basic-height*0.5;
+  align-items: center;
+}
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid red;
+  margin-right: 5px;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid green;
+  margin-right: 5px;
+}
+
+[color=red] {
+  color: red;
+}
+
+[color=green] {
+  color: green;
+}
+
+
+.date {
+  font-size: 12px;
+  line-height: 100%;
+  color: grey;
+}
