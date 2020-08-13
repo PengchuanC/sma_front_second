@@ -7,7 +7,7 @@
           <th>{{r.category}}</th>
           <th colspan="2">{{ (r.ratio*100).toFixed(2)}}%</th>
           <th colspan="4">RMB {{numeral(r.mkt)}}</th>
-          <th class="arrow"><sui-icon name="angle up" @click="showRows(i1)" v-show="r.category !== '现金'"/></th>
+          <th class="arrow"><sui-icon name="angle up" v-show="r.category !== '现金'"/></th>
         </tr>
         <tr class="header" v-show="r.show">
           <th class="first"></th>

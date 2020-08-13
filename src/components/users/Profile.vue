@@ -18,6 +18,7 @@
 <script>
 import PortInfo from "@/components/users/PortInfo";
 import {api} from "@/api/base";
+import LocalStorage from "@/common/localstorage";
 export default {
   name: "Profile",
   components: {PortInfo},
@@ -48,8 +49,13 @@ export default {
     getPortfolio(){
       api.get('/v2/portfolio/').then(resp=>{
         this.portfolio = resp.data
+        LocalStorage.setPortCode(resp.data[0].port_code)
       }).catch(()=>{
-        alert(1)
+        this.$Notice.error({
+          title: '获取产品信息失败',
+          desc: '即将返回至登陆页面，请尝试重新登陆'
+        })
+        this.$router.push({name: 'login'})
       })
     },
   },
