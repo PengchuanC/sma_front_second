@@ -1,18 +1,23 @@
 <template>
   <div class="basic-info-wrapper">
     <div class="port-info">
+      <p>组合资产净值</p>
+      <p>{{net_asset}} RMB</p>
+    </div>
+    <div class="port-info">
       <div :class="ret>0?'triangle-up':'triangle-down'"></div>
       <p class="change" :color="ret>0?'red':'green'">{{ret*100}}%</p>
+      <p>{{ numeral(profit) }} RMB</p>
       <p>成立以来</p>
-      <p>{{ net_asset }} RMB</p>
     </div>
     <p class="date">2020-08-04</p>
   </div>
 </template>
 
 <script>
-import {getAllocate} from "@/api/home";
-import moment from "moment";
+import {getAllocate} from "@/api/home"
+import moment from "moment"
+import numeral from "numeral"
 
 export default {
   name: "BasicInfo",
@@ -21,6 +26,12 @@ export default {
       selectedDate: moment().format('YYYY-MM-DD'),
       ret: 0,
       net_asset: 0,
+      profit: 0,
+    }
+  },
+  methods: {
+    numeral(value){
+      return numeral(value).format('0,00.00')
     }
   },
   created() {

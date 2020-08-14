@@ -23,6 +23,7 @@ export function getAllocate(self, modifyDate=true) {
         if (data) {
             self.selectedDate = modifyDate? data.date: self.selectedDate
             self.ratio = data.ratio
+            self.profit = data.profit
             self.ratio = data.ratio.map(x=>{
                 if (x.category !== '现金') {
                     return {

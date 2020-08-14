@@ -186,7 +186,7 @@
 }
 .basic-info-wrapper {
   width: 350px;
-  height: 50px;
+  height: 60px;
   border: lightgrey 1px dashed;
   margin-left: 20px;
   margin-bottom: 10px;
@@ -199,22 +199,19 @@
   align-items: center;
   align-content: center;
   width: 100%;
-  height: 35px;
-  line-height: 35px;
   margin: auto;
 }
 .port-info .change {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .port-info p {
-  line-height: 35px;
   margin-right: 20px;
 }
 .port-change {
   display: inline-flex;
   justify-content: space-around;
   width: 100%;
-  height: 25px;
+  height: 30px;
   align-items: center;
 }
 .triangle-up {
@@ -273,7 +270,7 @@
 }
 .account-content {
   width: 100%;
-  height: calc(100% - 40px - 50px);
+  height: calc(100% - 40px - 60px);
 }
 .account-chart {
   position: relative;
