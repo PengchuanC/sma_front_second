@@ -46,6 +46,11 @@ export default new Router({
                     component: ()=>import('@/components/performance/Performance')
                 },
                 {
+                    name: 'records',
+                    path: '/records',
+                    component: ()=>import('@/components/history/Records')
+                },
+                {
                     name: 'user',
                     path: '/user',
                     component: () => import('@/components/users/Profile')

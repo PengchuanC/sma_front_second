@@ -1,0 +1,48 @@
+@import "common";
+@import "basicinfo";
+
+.records {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.records-card-header {
+  .common-card-header;
+  justify-content: flex-end;
+}
+
+.date-picker {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.records-content {
+  width: 100%;
+  height: calc(100% - @common-card-height - @basic-height);
+  overflow: auto;
+}
+
+table {
+  width: 98%;
+  margin: auto;
+  border-collapse: collapse;
+  border: 1px lightgrey solid;
+}
+
+tr{
+  border: 1px none white;
+  border-bottom-style: solid;
+}
+
+tr[class='header'] {
+  border: 2px none white;
+  line-height: 30px;
+  background-color: #C00000;
+  color:white;
+}
+
+td {
+  text-align: center;
+  line-height: 26px;
+}

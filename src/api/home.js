@@ -53,5 +53,9 @@ export function getAllocate(self, modifyDate=true) {
 export function getPortName(self) {
     api.post('/v2/portfolio/', {port_code: self.portCode}).then(resp=>{
         self.portName = resp.data.port_name
+    }).catch(e=>{
+        if ([401, 402, 403].includes(e.response.status)){
+            self.$router.push({name: 'login'})
+        }
     })
 }
