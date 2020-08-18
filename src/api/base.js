@@ -95,7 +95,7 @@ async function saveIdentification(config) {
 loginApi.interceptors.response.use(function (resp) {
     let access = resp.data.access
     let refresh = resp.data.refresh
-    let tomorrow = moment(new Date()).add(1,'days').format('MMMM Do YYYY, h:mm:ss a')
+    let tomorrow = moment(new Date()).add(1,'hours').format('MMMM Do YYYY, h:mm:ss a')
     ls.setToken(access)
     ls.setRefreshToken(refresh)
     ls.setExpireDate(tomorrow)
