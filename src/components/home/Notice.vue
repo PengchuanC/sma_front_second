@@ -5,9 +5,6 @@
     <div class="logo">
       <img src="../../assets/images/notice.svg" alt="" class="image"/>
     </div>
-    <div class="logo">
-      <img src="../../assets/images/add.svg" alt="" class="image"/>
-    </div>
   </div>
 </div>
 </template>

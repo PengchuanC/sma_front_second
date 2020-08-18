@@ -74,6 +74,10 @@
   width: 95%;
   margin: 20px 15px 0;
 }
+.link {
+  font-style: normal;
+  color: #0f0f10;
+}
 .source {
   font-style: normal;
   color: #C00000;

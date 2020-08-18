@@ -10,7 +10,9 @@
     </div>
     <div class="content">
       <div class="news-item" v-for="(news, i) in newsList" :key="i">
-        <p>{{ `${news.infotitle} -- { ` }}<a class="source" :href="news.linkaddress">{{ `${news.media} ` }}</a>}</p>
+        <a :href="news.linkaddress" class="link">
+          <p>{{ `${news.infotitle} -- { ` }}<i class="source">{{ `${news.media} ` }}</i>}</p>
+        </a>
       </div>
     </div>
     <div class="logo">

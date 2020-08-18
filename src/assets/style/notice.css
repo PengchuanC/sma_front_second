@@ -31,6 +31,7 @@
   border-left: none;
 }
 .message {
+  position: relative;
   height: 50%;
   border: rgba(34, 36, 38, 0.1) 1px solid;
   border-left: none;
@@ -51,5 +52,39 @@
 .image {
   width: 60px;
   height: 60px;
+}
+.messages {
+  position: relative;
+  height: calc(100% - 30px - 60px - 20px - 60px);
+  width: 100%;
+  overflow: auto;
+  border: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.messages .content {
+  display: block;
+}
+.messages .item-wrapper {
+  border-bottom: 1px gainsboro solid;
+}
+.messages .item {
+  color: #0f0f10;
+  line-height: 24px;
+}
+.messages .date {
+  color: gray;
+  font-size: 12px;
+  line-height: 16px;
+}
+.input-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 5%;
+  width: 90%;
+}
+.input {
+  width: 100%;
+  border: none;
 }
 /*# sourceMappingURL=notice.css.map */
