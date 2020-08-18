@@ -6,13 +6,15 @@
         <img class="image" src="../../assets/images/reports.svg" alt="" />
       </div>
       <div class="news-item" v-for="(news, i) in reports" :key="i">
-        <p>{{`${news.title} -- { `}}<a class="source">{{`${news.source} `}}</a>}</p>
+        <p>{{`${news.title} -- { `}}<a :href="'http://' + news.url" class="source">{{`${news.category}.${news.date} `}}</a>}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {api} from "@/api/base";
+
 export default {
   name: "Reports",
   data(){
@@ -24,6 +26,11 @@ export default {
         {'title': '乐观情绪下权益持续强势，固收走弱', 'source': '产品周报.2020-05-11', 'url': ''},
       ]
     }
+  },
+  created() {
+    api.get('/v2/reports/').then(r=>{
+      this.reports = r.data
+    })
   }
 }
 </script>

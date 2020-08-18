@@ -38,7 +38,7 @@
            :width="80"
            :scrollable="true"
     >
-      <Transaction :data="transaction" />
+      <Transaction :data="transaction" :row="row" />
     </Modal>
   </div>
 </template>
@@ -59,6 +59,7 @@ export default {
     return {
       showTrans: false,
       transaction: [],
+      row: {},
     }
   },
   methods: {
@@ -80,13 +81,14 @@ export default {
     getTransactions(i1, i2){
       this.showTrans = true
       let fund = this.data[i1].child[i2].category
+      this.row = this.data[i1].child[i2]
       api.post('/v2/portfolio/asset/category/', {
         port_code: LocalStorage.getPortCode(), date: this.date, fund: fund
       }).then(resp=>{
         this.transaction =resp.data
       })
     }
-  },
+  }
 }
 </script>
 
@@ -139,4 +141,5 @@ th[class='arrow']:hover {
   transform: scale(1.5, 1.5);
   transition: all 0.2s linear;
 }
+
 </style>
