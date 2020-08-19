@@ -2,11 +2,13 @@
 <div class="message">
   <p class="card-header">留言</p>
   <div class="content">
-    <div class="logo">
-      <img src="../../assets/images/message.svg" alt="" class="image"/>
-    </div>
-    <div class="logo" @click="showInput=true">
-      <img src="../../assets/images/add.svg" alt="" class="image"/>
+    <div class="logo-wrapper">
+      <div class="logo" @click="showInput=false">
+        <img src="../../assets/images/message.svg" alt="" class="image"/>
+      </div>
+      <div class="logo" @click="showInput=true">
+        <img src="../../assets/images/add.svg" alt="" class="image"/>
+      </div>
     </div>
   </div>
   <div class="messages">
