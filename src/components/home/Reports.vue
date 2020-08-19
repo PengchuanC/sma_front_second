@@ -6,7 +6,9 @@
         <img class="image" src="../../assets/images/reports.svg" alt="" />
       </div>
       <div class="news-item" v-for="(news, i) in reports" :key="i">
-        <p>{{`${news.title} -- { `}}<a :href="'http://' + news.url" class="source">{{`${news.category}.${news.date} `}}</a>}</p>
+        <a @click="openReport(news.url)" class="link">
+          <p>{{`${news.title} -- { `}}<i class="source">{{`${news.category}.${news.date} `}}</i>}</p>
+        </a>
       </div>
     </div>
   </div>
@@ -20,11 +22,13 @@ export default {
   data(){
     return {
       reports: [
-        {'title': '5月债市巨震， 股市成长风格占优', 'source': '产品月报.2020-06-01', 'url': ''},
-        {'title': '国内政策未超预期，A股弱势调整', 'source': '产品周报.2020-05-25', 'url': ''},
-        {'title': '全球市场出现回调 A股显韧性', 'source': '产品周报.2020-05-18', 'url': ''},
-        {'title': '乐观情绪下权益持续强势，固收走弱', 'source': '产品周报.2020-05-11', 'url': ''},
+        {title: '5月债市巨震， 股市成长风格占优', category: '产品月报', date: '2020-06-01', url: ''},
       ]
+    }
+  },
+  methods: {
+    openReport(link){
+      window.open(link)
     }
   },
   created() {

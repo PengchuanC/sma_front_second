@@ -10,7 +10,7 @@
     </div>
     <div class="content">
       <div class="news-item" v-for="(news, i) in newsList" :key="i">
-        <a :href="news.linkaddress" class="link">
+        <a @click="openNews(news.linkaddress)" class="link">
           <p>{{ `${news.infotitle} -- { ` }}<i class="source">{{ `${news.media} ` }}</i>}</p>
         </a>
       </div>
@@ -35,6 +35,9 @@ export default {
   methods: {
     refresh() {
       getNews(this)
+    },
+    openNews(link){
+      window.open(link)
     }
   },
   mounted() {

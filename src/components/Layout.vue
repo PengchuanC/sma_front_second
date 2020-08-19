@@ -57,7 +57,7 @@
             select(name) {
                 this.active = name;
                 if (name === 'about') {
-                  window.location.href = 'https://www.nomuraoi-sec.com/pages/aboutUS/company_profile.jsp'
+                  window.open('https://www.nomuraoi-sec.com/pages/aboutUS/company_profile.jsp')
                 }else{
                   let currentPath = this.$route.name
                   if (currentPath !== name){
