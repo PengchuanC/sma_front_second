@@ -16,7 +16,7 @@
                             style="color: white"
                     />
                 </sui-menu>
-                <sui-menu secondary class="menu-user" borderless>
+                <sui-menu secondary class="menu-user" borderless v-show="showMe">
                     <a
                             is="sui-menu-item"
                             :active="isActive('user')"
@@ -41,13 +41,16 @@
 </template>
 
 <script>
+    import LocalStorage from "@/common/localstorage";
+
     export default {
         name: "Layout",
         data() {
             return {
               active: '首页',
               items: ['首页', '账户信息', '业绩表现', '投资记录', '关于我们'],
-              routeMap: {'layout': '首页', 'account': '账户信息', 'performance': '业绩表现', 'records': '投资记录', 'about': '关于我们'}
+              routeMap: {'layout': '首页', 'account': '账户信息', 'performance': '业绩表现', 'records': '投资记录', 'about': '关于我们'},
+              showMe: false
             };
         },
         methods: {
@@ -67,6 +70,11 @@
 
             },
         },
+      mounted() {
+          if (LocalStorage.getPortNums() <=1) {
+            this.showMe = false
+          }
+      }
     }
 </script>
 

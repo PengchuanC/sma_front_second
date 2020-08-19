@@ -63,6 +63,15 @@ class LocalStorage {
         return localStorage.getItem('portCode')
     }
 
+    // 组合数量
+    static setPortNums(num){
+        sessionStorage.setItem('portNum', num)
+    }
+
+    static getPortNums(){
+        return sessionStorage.getItem('portNum')
+    }
+
 }
 
 export default LocalStorage
