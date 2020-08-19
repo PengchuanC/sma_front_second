@@ -6,6 +6,7 @@
       </sui-button-group>
     </div>
     <div id="performance-line-chart"></div>
+    <p class="desc">注：{{desc}}</p>
   </div>
 </template>
 
@@ -20,13 +21,14 @@ export default {
     return {
       buttons: ['自定义', '本月至今', '本年至今', '最近三年', '成立以来'],
       data: [],
+      desc: ''
     }
   },
   methods: {
     selectPeriod(i){
       api.get('/v2/portfolio/performance/line/',{
         params: {port_code: LocalStorage.getPortCode(), beginDate: this.date[0], endDate: this.date[1], period: i}
-      }).then(resp=>{this.data = resp.data; this.drawChart()})
+      }).then(resp=>{this.data = resp.data; this.desc = resp.data.desc; this.drawChart()})
     },
     drawChart(){
       let chart = this.$chart.init(document.getElementById('performance-line-chart'))

@@ -262,6 +262,13 @@
   height: calc(100vh - 80px - 15px - 40px - 160px);
   width: 90vw;
 }
+.performance-line .desc {
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  font-size: small;
+  color: grey;
+}
 .performance-tools {
   display: inline-flex;
   width: 100%;
