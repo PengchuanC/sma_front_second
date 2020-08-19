@@ -2,6 +2,8 @@
 * 利用local storage存储信息
 * */
 
+let localStorage = sessionStorage
+
 class LocalStorage {
 
     // 保存jwt

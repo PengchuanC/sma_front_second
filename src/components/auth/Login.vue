@@ -22,9 +22,6 @@
                                 <input v-model="password" placeholder="请输入密码" type="password" required/>
                             </label>
                         </sui-form-field>
-                        <sui-form-field style="color: white">
-                            <sui-checkbox label="7日免登陆" v-model="noResign" />
-                        </sui-form-field>
                         <div is="sui-button-group" class="submit">
                             <sui-button color="red" @click.prevent="login">登陆系统</sui-button>
                             <sui-button-or />
@@ -46,7 +43,6 @@
             return {
                 username: '',
                 password: '',
-                noResign: false
             }
         },
         methods:{

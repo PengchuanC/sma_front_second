@@ -17,7 +17,7 @@
         <td>{{row.secuname}}</td>
         <td>{{numeral(row.shares)}}</td>
         <td>{{numeral(row.cost)}}</td>
-        <td>{{row.net_value.toFixed(4)}}</td>
+        <td>{{row.net_value}}</td>
         <td>{{numeral(row.profit)}}</td>
         <td>{{numeral(row.ratio)}}%</td>
       </tr>

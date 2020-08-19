@@ -1,5 +1,4 @@
 import {loginApi} from "./base"
-import LocalStorage from "../common/localstorage";
 
 
 /*
@@ -11,9 +10,6 @@ function login(self) {
         username: self.username,
         password: self.password
     }).then(()=>{
-        if (!self.noResign) {
-            LocalStorage.setRefreshToken('')
-        }
         self.$router.push({name: 'user'})
     }).catch(()=>{
         self.$Notice.error({

@@ -7,9 +7,9 @@
     </div>
     <div class="auth">
       <div is="sui-button-group">
-        <sui-button color="red" @click="logout(1)">退出登陆</sui-button>
+        <sui-button color="red" @click="logout(1)">安全退出</sui-button>
         <sui-button-or />
-        <sui-button positive @click="logout(2)">修改密码</sui-button>
+        <sui-button @click="logout(2)">修改密码</sui-button>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
   methods: {
     logout(type){
       if (type===1){
-        localStorage.clear()
+        sessionStorage.clear()
         this.$router.push({name: 'login'})
       }else{
         this.$router.push({name: '404'})
@@ -52,8 +52,8 @@ export default {
         LocalStorage.setPortCode(resp.data[0].port_code)
       }).catch(()=>{
         this.$Notice.error({
-          title: '获取产品信息失败',
-          desc: '即将返回至登陆页面，请尝试重新登陆'
+          title: '您尚未登陆',
+          desc: '即将返回至登陆页面，请先进行登陆'
         })
         this.$router.push({name: 'login'})
       })
