@@ -66,6 +66,10 @@ export default new Router({
             name: 'login',
             path: '/login',
             component: () => import('@/components/auth/Login')
+        },
+        {
+            path: '*',
+            component: ()=>import('@/components/errors/NotFind')
         }
     ]
 })
