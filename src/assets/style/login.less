@@ -50,8 +50,10 @@ img {
 .input {
   width: 360px;
   transition: font-size 0.25s linear, width 0.25s linear;
+  border: 1px rgba(255, 255, 255, 0) solid;
   &:hover{
-    width: 400px;
+    border: rgba(30,144,255,0.8) 1px solid;
+    border-radius: 5px;
   }
 }
 
@@ -66,4 +68,15 @@ img {
   &:hover {
     width: 360px;
   }
+}
+
+.success {
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.success-button {
+  width: 100%;
+  margin-top: 30px;
 }

@@ -68,6 +68,11 @@ export default new Router({
             component: () => import('@/components/auth/Login')
         },
         {
+            name: 'reset',
+            path: '/reset',
+            component: ()=>import('@/components/auth/Reset')
+        },
+        {
             path: '*',
             component: ()=>import('@/components/errors/NotFind')
         }

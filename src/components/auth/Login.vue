@@ -8,7 +8,7 @@
                 <div class="">
                     <sui-form class="form">
                         <div class="welcome focus-in-contract-bck">
-                            <h1>SMA</h1>
+                            <h1>S M A</h1>
                         </div>
                         <sui-form-field>
                             <label><p class="label">用户</p></label>
