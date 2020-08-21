@@ -45,6 +45,8 @@
 
 <script>
 
+import {resetPassword} from "@/api/login";
+
 export default {
   name: "Reset",
   data(){
@@ -57,7 +59,7 @@ export default {
   },
   methods:{
     submit(){
-      this.success = true
+      resetPassword(this)
     },
     toLogin(){
       this.$router.push({name: 'login'})

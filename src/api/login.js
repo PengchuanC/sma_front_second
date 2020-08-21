@@ -45,4 +45,18 @@ function getPortfolio(self){
     })
 }
 
+
+export function resetPassword(self){
+    loginApi.put('/manage/reset/', {
+        username: self.username, password: self.password, password1: self.newPassword
+    }).then(()=>{
+        self.success = true
+    }).catch(()=>{
+        self.$Notice.warning({
+            title: '密码修改失败',
+            desc: "请检查用户名和原密码"
+        })
+    })
+}
+
 export {login}
