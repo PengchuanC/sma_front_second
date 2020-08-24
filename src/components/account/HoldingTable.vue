@@ -1,7 +1,7 @@
 <template>
   <div class="holding-table-child">
-    <sui-button @click="openAll" content="Open All" size="mini" icon="plus" class="button"/>
-    <sui-button @click="closeAll" content="Close All" size="mini" icon="minus" class="button"/>
+    <sui-button @click="全部展开" content="Open All" size="mini" icon="plus" class="button"/>
+    <sui-button @click="全部折叠" content="Close All" size="mini" icon="minus" class="button"/>
     <table>
       <tbody v-for="(r, i1) in data" :key="'ht'+i1" ref="ht">
         <tr class="category" @click="showRows(i1)">
