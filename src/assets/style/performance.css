@@ -277,6 +277,15 @@
   transform: rotate(90deg);
   transition: all 0.2s linear;
 }
+.performance-table th[wide] {
+  width: 25%;
+}
+.performance-table th[normal] {
+  width: 20%;
+}
+.performance-table th[narrow] {
+  width: 5%;
+}
 .performance-bar {
   width: 100%;
   height: 100% -65px;

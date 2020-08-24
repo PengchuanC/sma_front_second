@@ -2,11 +2,11 @@
   <div class="performance-table">
     <table>
       <tr class="header">
-        <th>区间</th>
-        <th>具体时间</th>
-        <th>资产变动（元）</th>
-        <th>业绩表现</th>
-        <th></th>
+        <th wide>区间</th>
+        <th wide>具体时间</th>
+        <th wide>资产变动（元）</th>
+        <th normal>业绩表现</th>
+        <th narrow></th>
       </tr>
       <tbody v-for="(t, i) in data" :key="'pt'+i">
       <tr :class="activeRow===i?'active': ''" @click="i !==activeRow?activeRow=i:activeRow=null">
