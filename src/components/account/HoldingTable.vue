@@ -1,5 +1,7 @@
 <template>
   <div class="holding-table-child">
+    <sui-button @click="openAll" content="Open All" size="mini" icon="plus" class="button"/>
+    <sui-button @click="closeAll" content="Close All" size="mini" icon="minus" class="button"/>
     <table>
       <tbody v-for="(r, i1) in data" :key="'ht'+i1" ref="ht">
         <tr class="category" @click="showRows(i1)">
@@ -87,6 +89,22 @@ export default {
       }).then(resp=>{
         this.transaction =resp.data
       })
+    },
+    closeAll(){
+      this.$refs.ht.forEach(x=>{
+        x.childNodes[0].lastChild.lastChild.className='angle up icon'
+      })
+      this.data.forEach(x=>{
+        x.show = false
+      })
+    },
+    openAll(){
+      this.data.forEach(x=>{
+        x.show = true
+      })
+      this.$refs.ht.forEach(x=>{
+        x.childNodes[0].lastChild.lastChild.className='angle down icon'
+      })
     }
   }
 }
@@ -96,6 +114,10 @@ export default {
 .holding-table-child {
   height: 100%;
   overflow: auto;
+}
+
+.button {
+  margin-bottom: 5px;
 }
 
 table {
