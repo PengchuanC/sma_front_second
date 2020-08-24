@@ -65,9 +65,7 @@ export default {
     put(message, date){
       api.put('/v2/message/', {
         port_code: this.port_code, message: message, date: date
-      }).then(resp=>{
-        console.log(resp)
-      })
+      }).then()
     }
   },
   created() {

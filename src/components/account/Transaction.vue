@@ -64,9 +64,6 @@ export default {
       return numeral(value).format('0,00.00')
     }
   },
-  created() {
-    console.log(this.data)
-  }
 }
 </script>
 
