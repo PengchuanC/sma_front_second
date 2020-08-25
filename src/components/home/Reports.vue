@@ -1,6 +1,6 @@
 <template>
   <div class="reports">
-    <p class="card-header">报告</p>
+    <p class="card-header">专栏</p>
     <div class="content">
       <div class="logo">
         <img class="image" src="../../assets/images/reports.svg" alt="" />

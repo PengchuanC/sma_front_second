@@ -2,12 +2,12 @@
   <div class="basic-info-wrapper">
     <div class="port-info">
       <p>组合资产净值</p>
-      <p>{{net_asset}} RMB</p>
+      <p>{{net_asset}} 元</p>
     </div>
     <div class="port-info">
       <div :class="ret>0?'triangle-up':'triangle-down'"></div>
       <p class="change" :color="ret>0?'red':'green'">{{ret*100}}%</p>
-      <p>{{ numeral(profit) }} RMB</p>
+      <p>{{ numeral(profit) }} 元</p>
       <p>成立以来</p>
     </div>
     <p class="date">2020-08-04</p>

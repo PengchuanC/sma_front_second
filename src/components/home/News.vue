@@ -1,7 +1,7 @@
 <template>
   <div class="news">
     <div class="card-header">
-      <p class="header-title">视点</p>
+      <p class="header-title">资讯</p>
       <a class="icon-item header-icon" @click="refresh">
         <svg class="font-icon" aria-hidden="true">
           <use xlink:href="#iconRefresh"></use>
