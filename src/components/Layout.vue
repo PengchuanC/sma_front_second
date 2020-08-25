@@ -16,7 +16,7 @@
                             style="color: white"
                     />
                 </sui-menu>
-                <sui-menu secondary class="menu-user" borderless v-show="showMe">
+                <sui-menu secondary class="menu-user" borderless v-if="showMe">
                     <a
                             is="sui-menu-item"
                             :active="isActive('user')"
@@ -26,6 +26,16 @@
                       <sui-icon name="user" color="red" inverted circular fitted />
                     </a>
                 </sui-menu>
+              <sui-menu secondary class="menu-user" borderless v-else>
+                <a
+                    is="sui-menu-item"
+                    :active="isActive('user')"
+                    @click="logout"
+                    style="color: white"
+                >
+                  <sui-icon name="logout" color="red" inverted circular fitted />
+                </a>
+              </sui-menu>
             </div>
         </div>
 
@@ -69,6 +79,10 @@
                 }
 
             },
+          logout(){
+              sessionStorage.clear()
+            this.$router.push({name: 'login'})
+          }
         },
       mounted() {
           if (LocalStorage.getPortNums() <=1) {
