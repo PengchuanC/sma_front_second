@@ -11,8 +11,12 @@
     <div class="content">
       <div class="news-item" v-for="(news, i) in newsList" :key="i">
         <a @click="openNews(news.linkaddress)" class="link">
-          <p>{{ `${news.infotitle} -- { ` }}<i class="source">{{ `${news.media} ` }}</i>}</p>
+          <p>{{news.infotitle}}</p>
         </a>
+        <div class="source-info">
+          <p class="media">{{news.media}}</p>
+          <p @click="showDate(i)">{{news.infopubldate}}</p>
+        </div>
       </div>
     </div>
     <div class="logo">
@@ -23,7 +27,9 @@
 
 <script>
 
-import {getNews} from "@/api/home";
+import {getNews} from "@/api/home"
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 
 export default {
   name: "News",
@@ -38,6 +44,12 @@ export default {
     },
     openNews(link){
       window.open(link)
+    },
+    moment(date){
+      return moment(date)
+    },
+    showDate(i){
+      this.newsList[i].infopubldate = moment(this.newsList[i].realdate).format('LL')
     }
   },
   mounted() {

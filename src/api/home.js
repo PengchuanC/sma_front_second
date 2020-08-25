@@ -1,11 +1,16 @@
 import {api} from "./base"
-import moment from "moment";
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 import numeral from 'numeral'
-import LocalStorage from "@/common/localstorage";
+import LocalStorage from "@/common/localstorage"
 
 export function getNews(self) {
     api.get('/v2/news/').then(resp=>{
-        self.newsList = resp.data
+        self.newsList = resp.data.map(x=>{
+            x.realdate = x.infopubldate
+            x.infopubldate = moment(x.infopubldate).fromNow()
+            return x
+        })
     })
 }
 
