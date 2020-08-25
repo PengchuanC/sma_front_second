@@ -276,10 +276,6 @@
 .performance-table td[class='arrow'] {
   width: 1em;
 }
-.performance-table td[class='arrow']:hover {
-  transform: rotate(90deg);
-  transition: all 0.2s linear;
-}
 .performance-table th[wide] {
   width: 25%;
 }
