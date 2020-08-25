@@ -84,6 +84,8 @@
   color: gray;
   font-size: 12px;
   line-height: 16px;
+  margin-right: 10px;
+  font-style: normal;
 }
 .input-wrapper {
   position: absolute;

@@ -7,7 +7,7 @@
     </div>
     <div class="notice-item-wrapper" v-for="(n, i) in data" :key="i">
       <a @click="openNotice(n.url)" class="link">
-        <p><i class="date">{{n.date}}</i>《{{n.title}}》</p>
+        <p><i class="date">{{moment(n.date)}}</i>{{n.title}}</p>
       </a>
     </div>
   </div>
@@ -15,7 +15,9 @@
 </template>
 
 <script>
-import {api} from "@/api/base";
+import {api} from "@/api/base"
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 
 export default {
   name: "notice",
@@ -27,7 +29,10 @@ export default {
   methods: {
     openNotice(link){
       window.open(link)
-    }
+    },
+    moment(date){
+      return moment(date).format('LL')
+    },
   },
   created() {
     api.get('/v2/notifies/').then(r=>{
