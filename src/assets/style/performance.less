@@ -25,6 +25,10 @@
   overflow: auto;
   padding-top: 10px;
 
+  .left-align{
+    text-align: left;
+  }
+
   table {
     width: 98%;
     margin: auto;
@@ -126,4 +130,40 @@
   align-content: center;
   align-items: center;
   margin: 15px 10px auto;
+}
+
+.profit-wrapper{
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+}
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid red;
+  margin-right: 5px;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid green;
+  margin-right: 5px;
+}
+
+p[class='red']{
+  line-height: 31px;
+  font-weight: bold;
+  color: red;
+}
+
+p[class='green']{
+  line-height: 31px;
+  font-weight: bold;
+  color: green;
 }
