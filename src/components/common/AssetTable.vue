@@ -4,7 +4,7 @@
       <tr>
         <th>资产类别</th>
         <th>投资比例（%）</th>
-        <th>投资金额（元）</th>
+        <th>资产净值（元）</th>
       </tr>
       <tr v-for="(row, i) in data" :key="'at'+i">
         <td>

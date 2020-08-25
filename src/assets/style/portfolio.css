@@ -25,6 +25,16 @@
   border-left: none;
   border-top: none;
 }
+footer[class='disclaimer'] {
+  position: fixed;
+  width: calc(3.75vw*9 - 30px);
+  left: 15px;
+  bottom: 5px;
+}
+footer[class='disclaimer'] p {
+  font-size: 12px;
+  line-height: 16px;
+}
 .portfolio {
   position: relative;
   height: 100%;

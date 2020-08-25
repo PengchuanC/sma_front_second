@@ -3,6 +3,11 @@
     <div class="row-9">
       <div class="column">
         <Portfolio />
+        <footer class="disclaimer">
+          <p>注：产品成立日期为{{ launchDate }}，固收、权益、另类和货币指代对应类别基金、资产管理计划或银行理财等类型产品，投资明细请见账户信息页。
+          现金纳入了资产管理计划的应收及应付项，可能与资产管理计划实际可用现金不一致。
+          </p>
+        </footer>
       </div>
     </div>
     <div class="row-9">
@@ -27,6 +32,7 @@ import Reports from "./Reports";
 import Notice from "./Notice";
 import Messages from "./Messages";
 import LocalStorage from "@/common/localstorage";
+import {getPortName} from "@/api/home";
 
 export default {
   name: "Home",
@@ -34,7 +40,10 @@ export default {
   data(){
     return {
       port_code: null,
+      launchDate: ''
     }
+  },
+  mounted() {
   },
   created() {
     this.port_code = this.$route.params.port_code
@@ -49,6 +58,8 @@ export default {
     }else{
       this.port_code = local
     }
+    this.portCode = this.port_code
+    getPortName(this)
   }
 }
 </script>
