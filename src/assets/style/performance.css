@@ -267,7 +267,8 @@
   border-bottom: rgba(115, 115, 115, 0.3) 1px solid;
 }
 .performance-table tr[class='active'] {
-  background-color: rgba(209, 132, 132, 0.8);
+  font-weight: bold;
+  background-color: rgba(209, 132, 132, 0.3);
 }
 .performance-table td {
   text-align: center;

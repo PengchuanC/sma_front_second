@@ -7,8 +7,8 @@ import LocalStorage from "@/common/localstorage"
 export function getNews(self) {
     api.get('/v2/news/').then(resp=>{
         self.newsList = resp.data.map(x=>{
-            x.realdate = x.infopubldate
-            x.infopubldate = moment(x.infopubldate).fromNow()
+            x.realdate = x.update
+            x.update = moment(x.update).fromNow()
             return x
         })
     })

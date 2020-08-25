@@ -15,13 +15,13 @@
         </a>
         <div class="source-info">
           <p class="media">{{news.media}}</p>
-          <p @click="showDate(i)">{{news.infopubldate}}</p>
+          <p @click="showDate(i)">{{news.update}}</p>
         </div>
       </div>
     </div>
-    <div class="logo">
-      <img class="image" src="../../assets/images/news.svg" alt=""/>
-    </div>
+<!--    <div class="logo">-->
+<!--      <img class="image" src="../../assets/images/news.svg" alt=""/>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -49,7 +49,7 @@ export default {
       return moment(date)
     },
     showDate(i){
-      this.newsList[i].infopubldate = moment(this.newsList[i].realdate).format('LL')
+      this.newsList[i].update = moment(this.newsList[i].realdate).format('lll')
     }
   },
   mounted() {
