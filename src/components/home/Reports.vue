@@ -7,7 +7,11 @@
       </div>
       <div class="news-item" v-for="(news, i) in reports" :key="i">
         <a @click="openReport(news.url)" class="link">
-          <p>{{`${news.title} -- { `}}<i class="source">{{`${news.category}.${news.date} `}}</i>}</p>
+          <p>{{news.title}}</p>
+          <div class="source-info">
+            <p class="media">{{news.category}}</p>
+            <p>{{moment(news.date)}}</p>
+          </div>
         </a>
       </div>
     </div>
@@ -15,7 +19,9 @@
 </template>
 
 <script>
-import {api} from "@/api/base";
+import {api} from "@/api/base"
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 
 export default {
   name: "Reports",
@@ -29,7 +35,10 @@ export default {
   methods: {
     openReport(link){
       window.open(link)
-    }
+    },
+    moment(date){
+      return moment(date).format('LL')
+    },
   },
   created() {
     api.get('/v2/reports/').then(r=>{
