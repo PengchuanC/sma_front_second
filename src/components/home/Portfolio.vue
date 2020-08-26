@@ -72,18 +72,20 @@ export default {
               a: {
                 color: '#C00000',
                 padding: [5, 10],
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: 'bold',
               },
               b: {
                 fontSize: 14,
                 fontWeight: 'bold',
+                fontFamily: ['Arial', 'Times New Roman', '思源宋体', '宋体']
               },
               c: {
                 color: this.ret >= 0 ?'#C00000': 'green',
                 padding: [0, 10],
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: 'bold',
+                fontFamily: ['Arial', 'Times New Roman', '思源宋体', '宋体']
               },
             }
           }
