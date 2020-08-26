@@ -6,12 +6,11 @@
 <!--        <img class="image" src="../../assets/images/reports.svg" alt="" />-->
 <!--      </div>-->
       <div class="news-item" v-for="(news, i) in reports" :key="i">
-        <div class="news-wrapper" v-if="news.image">
+        <div class="news-wrapper" v-if="!!news.image">
           <div class="report-cover">
-            <img :src="news.image"
-                 alt="" class="cover">
+            <img :src="news.image" alt="" class="cover">
           </div>
-          <a @click="openReport(news.url)" class="link">
+          <a @click="openReport(news.url)" class="report-link">
             <p class="title">{{news.title}}</p>
             <div class="source-info">
               <p class="media">{{news.category}}</p>
@@ -20,7 +19,7 @@
           </a>
         </div>
         <div v-else>
-          <a @click="openReport(news.url)" class="link">
+          <a @click="openReport(news.url)" class="link-no-img">
             <p class="title">{{news.title}}</p>
             <div class="source-info">
               <p class="media">{{news.category}}</p>
