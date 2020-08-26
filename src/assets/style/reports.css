@@ -52,14 +52,13 @@ footer[class='disclaimer'] p {
 }
 .content {
   display: block;
-  height: calc(100% - 100px);
+  height: calc(100% - 40px);
   overflow: hidden;
-  margin-top: 50px;
 }
 .news-item {
   display: inline-flex;
   width: 95%;
-  margin: 20px 15px 0;
+  margin: 5px 10px 0;
 }
 .source {
   font-style: normal;
@@ -78,8 +77,31 @@ p[class='media'] {
   width: 50px;
   height: 50px;
 }
+.news-wrapper {
+  display: inline-flex;
+  width: 100%;
+  height: 60px;
+  justify-content: start;
+}
+.report-cover {
+  width: 100px;
+  height: 60px;
+}
+.report-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .link {
+  display: flex;
   color: black;
+  margin-left: 10px;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.title {
+  width: 100%;
 }
 .title:hover {
   text-decoration: underline;

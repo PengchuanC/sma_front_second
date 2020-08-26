@@ -20,15 +20,14 @@
 
 .content {
   display: block;
-  height: calc(100% - 100px);
+  height: calc(100% - 40px);
   overflow: hidden;
-  margin-top: 50px;
 }
 
 .news-item {
   display: inline-flex;
   width: 100% - 5px;
-  margin: 20px 15px 0;
+  margin: 5px 10px 0;
 }
 
 .source {
@@ -52,11 +51,35 @@ p[class='media'] {
   height: 50px;
 }
 
+// 研报需要加入图片
+.news-wrapper {
+  display: inline-flex;
+  width: 100%;
+  height: 60px;
+  justify-content: start;
+}
+
+.report-cover {
+  width: 100px;
+  height: 60px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+  }
+}
+
 .link {
+  display: flex;
   color: black;
+  margin-left: 10px;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 
 .title{
+  width: 100%;
   &:hover{
     text-decoration: underline;
     color: red;

@@ -2,17 +2,32 @@
   <div class="reports">
     <p class="card-header">专栏</p>
     <div class="content">
-      <div class="logo">
-        <img class="image" src="../../assets/images/reports.svg" alt="" />
-      </div>
+<!--      <div class="logo">-->
+<!--        <img class="image" src="../../assets/images/reports.svg" alt="" />-->
+<!--      </div>-->
       <div class="news-item" v-for="(news, i) in reports" :key="i">
-        <a @click="openReport(news.url)" class="link">
-          <p class="title">{{news.title}}</p>
-          <div class="source-info">
-            <p class="media">{{news.category}}</p>
-            <p>{{moment(news.date)}}</p>
+        <div class="news-wrapper" v-if="news.image">
+          <div class="report-cover">
+            <img :src="news.image"
+                 alt="" class="cover">
           </div>
-        </a>
+          <a @click="openReport(news.url)" class="link">
+            <p class="title">{{news.title}}</p>
+            <div class="source-info">
+              <p class="media">{{news.category}}</p>
+              <p>{{moment(news.date)}}</p>
+            </div>
+          </a>
+        </div>
+        <div v-else>
+          <a @click="openReport(news.url)" class="link">
+            <p class="title">{{news.title}}</p>
+            <div class="source-info">
+              <p class="media">{{news.category}}</p>
+              <p>{{moment(news.date)}}</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
