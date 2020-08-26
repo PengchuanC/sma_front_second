@@ -7,5 +7,6 @@ module.exports = {
             .use("babel")
             .loader("babel-loader")
             .end();
-    }
+    },
+    productionSourceMap: false
 }
