@@ -7,7 +7,7 @@
       </div>
       <div class="news-item" v-for="(news, i) in reports" :key="i">
         <a @click="openReport(news.url)" class="link">
-          <p>{{news.title}}</p>
+          <p class="title">{{news.title}}</p>
           <div class="source-info">
             <p class="media">{{news.category}}</p>
             <p>{{moment(news.date)}}</p>

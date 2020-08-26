@@ -87,6 +87,10 @@ footer[class='disclaimer'] p {
   font-style: normal;
   color: #0f0f10;
 }
+.link :hover {
+  text-decoration: underline;
+  color: red;
+}
 .source {
   font-style: normal;
   color: #C00000;
