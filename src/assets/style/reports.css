@@ -68,7 +68,7 @@ footer[class='disclaimer'] p {
 .source-info {
   display: inline-flex;
   color: grey;
-  font-size: xx-small;
+  font-size: smaller;
   cursor: pointer;
 }
 p[class='media'] {
