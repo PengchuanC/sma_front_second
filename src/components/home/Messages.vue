@@ -16,6 +16,7 @@
       <ul v-for="(m, i) in messages" :key="'msg'+i">
         <li class="content item-wrapper">
           <p class="item">{{m.message}}</p>
+          <p class="reply" v-show="m.reply">答复：{{m.reply}}</p>
           <p class="date">{{m.date}}</p>
         </li>
       </ul>
@@ -76,8 +77,12 @@ export default {
   created() {
     api.get('/v2/message/', { params: {'port_code': this.port_code}}).then(r=>{
       this.messages = r.data.map(x=>{
-        return {date: moment(x.date).format('YYYY-MM-DD HH:MM'), message: x.message}
+        return {
+          date: moment(x.date).format('YYYY-MM-DD HH:MM'),
+          message: x.message, user: x.user, reply: x.reply, replyAt: x.replyAt
+        }
       })
+      console.log(this.messages)
     })
   }
 }
