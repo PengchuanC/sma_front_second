@@ -32,6 +32,7 @@
           @keyup.enter="submit"
       />
     </label>
+    <sui-button class="submit-button" size="mini" color='red' content="发送" @click="submit" />
   </div>
 </div>
 </template>
@@ -53,14 +54,18 @@ export default {
   },
   methods: {
     submit(){
-      let date = moment().format('YYYY-MM-DD HH:MM')
-      this.messages.unshift({date: date, message: this.message})
-      let len = this.messages.length
-      if (len > 3){
-        this.messages = this.messages.slice(0, 3)
+      if (this.message.length > 5){
+        let date = moment().format('YYYY-MM-DD HH:MM')
+        this.messages.unshift({date: date, message: this.message})
+        let len = this.messages.length
+        if (len > 3){
+          this.messages = this.messages.slice(0, 3)
+        }
+        this.put(this.message, date)
+        this.message = ''
+      }else{
+        this.$Notice.warning({title: '请输入完整的问题'})
       }
-      this.put(this.message, date)
-      this.message = ''
     },
     put(message, date){
       api.put('/v2/message/', {

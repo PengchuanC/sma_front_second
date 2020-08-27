@@ -104,7 +104,10 @@ footer[class='disclaimer'] p {
   width: 90%;
 }
 .input {
-  width: 100%;
+  width: calc(100% - 65px);
   border: none;
+}
+.submit-button {
+  margin-left: 5px;
 }
 /*# sourceMappingURL=notice.css.map */
