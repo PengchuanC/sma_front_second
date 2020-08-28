@@ -1,0 +1,54 @@
+@import "common";
+@import "basicinfo";
+
+@port-info-height: 30px;
+
+.message-child {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.message-child-card-header {
+  .common-card-header;
+}
+
+.close-icon {
+  color: black;
+}
+
+.message-child-content {
+  width: 100%;
+  height: calc(100% - 40px);
+  padding: 5px 10px 10px;
+  overflow: auto;
+}
+
+.content-wrapper {
+  margin-bottom: 20px;
+}
+
+.comment-wrapper {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.info-wrapper {
+  display: inline-flex;
+  color: grey;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.info-item {
+  margin-right: 10px;
+}
+
+p[date] {
+  cursor: pointer;
+}
+
+.reply-wrapper {
+  width: 100%;
+  padding-left: 30px;
+}

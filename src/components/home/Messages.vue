@@ -17,7 +17,10 @@
         <li class="content item-wrapper">
           <p class="item">{{m.message}}</p>
           <p class="reply" v-show="m.reply">答复：{{m.reply}}</p>
-          <p class="date">{{m.date}}</p>
+          <div class="action-wrapper" style="display: inline-flex; justify-content: space-between;width: 100%">
+            <p class="date">{{m.date}}</p>
+            <p class="action" @click="showMessage(i)">查看详细</p>
+          </div>
         </li>
       </ul>
     </sui-list>
@@ -72,6 +75,9 @@ export default {
       api.put('/v2/message/', {
         port_code: this.port_code, message: message, date: date
       }).then()
+    },
+    showMessage(){
+      this.$router.push({name: 'message'})
     }
   },
   created() {
@@ -82,7 +88,6 @@ export default {
           message: x.message, user: x.user, reply: x.reply, replyAt: x.replyAt
         }
       })
-      console.log(this.messages)
     })
   }
 }

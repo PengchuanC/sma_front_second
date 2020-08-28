@@ -33,7 +33,12 @@ export default new Router({
                     meta: {
                         title: '首页',
                         keepAlive: true
-                    }
+                    },
+                },
+                {
+                    name: 'message',
+                    path: '/message',
+                    component: ()=>import('@/components/home/MessageChild')
                 },
                 {
                     name: 'account',
