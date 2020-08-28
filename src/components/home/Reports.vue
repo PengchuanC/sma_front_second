@@ -9,9 +9,6 @@
       </a>
     </div>
     <div class="content">
-<!--      <div class="logo">-->
-<!--        <img class="image" src="../../assets/images/reports.svg" alt="" />-->
-<!--      </div>-->
       <div class="news-item" v-for="(news, i) in reports" :key="i">
         <div class="news-wrapper" v-if="!!news.image">
           <div class="report-cover">
@@ -60,7 +57,9 @@ export default {
     moment(date){
       return moment(date).format('LL')
     },
-    showMore(){}
+    showMore(){
+      this.$router.push({name: 'reports'})
+    }
   },
   created() {
     api.get('/v2/reports/').then(r=>{

@@ -41,6 +41,11 @@ export default new Router({
                     component: ()=>import('@/components/home/MessageChild')
                 },
                 {
+                    name: 'reports',
+                    path: '/reports',
+                    component: ()=>import('@/components/home/ReportsChild')
+                },
+                {
                     name: 'account',
                     path: '/account',
                     component: ()=>import('@/components/account/Account'),
