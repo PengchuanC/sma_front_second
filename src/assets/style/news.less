@@ -28,13 +28,27 @@
 }
 
 .header-icon {
+  display: flex;
   color: darkgrey;
   cursor: pointer;
-  &:hover{
-    height: inherit;
-    color: red;
-    -webkit-animation: spin 1s linear 1s 5 alternate;
-    animation: spin 1s linear infinite;
+  height: @header-height;
+  width: @header-height;
+  justify-content: center;
+  align-items: center;
+
+  .more {
+    line-height: @header-height;
+    width: 20px;
+    height: 20px;
+    transition: font-size 0.25s linear, width 0.25s linear;
+
+    &:hover{
+      height: 25px;
+      width: 25px;
+      color: red;
+      -webkit-animation: spin 1s linear 1s 5 alternate;
+      animation: spin 1s linear infinite;
+    }
   }
 }
 

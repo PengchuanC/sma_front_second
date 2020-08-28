@@ -1,6 +1,13 @@
 <template>
   <div class="reports">
-    <p class="card-header">专栏</p>
+    <div class="card-header">
+      <p class="header-title">专栏</p>
+      <a class="icon-item header-icon" @click="showMore">
+        <svg class="font-icon more" aria-hidden="true">
+          <use xlink:href="#iconmore2"></use>
+        </svg>
+      </a>
+    </div>
     <div class="content">
 <!--      <div class="logo">-->
 <!--        <img class="image" src="../../assets/images/reports.svg" alt="" />-->
@@ -53,6 +60,7 @@ export default {
     moment(date){
       return moment(date).format('LL')
     },
+    showMore(){}
   },
   created() {
     api.get('/v2/reports/').then(r=>{

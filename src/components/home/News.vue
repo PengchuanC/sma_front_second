@@ -3,7 +3,7 @@
     <div class="card-header">
       <p class="header-title">资讯</p>
       <a class="icon-item header-icon" @click="refresh">
-        <svg class="font-icon" aria-hidden="true">
+        <svg class="font-icon more" aria-hidden="true">
           <use xlink:href="#iconRefresh"></use>
         </svg>
       </a>
