@@ -92,7 +92,7 @@ export default {
         this.loading = false
       })
     },
-    openReport(){},
+    openReport(link){window.open(link)},
     moment(date){
       return moment(date).format('LL')
     },
