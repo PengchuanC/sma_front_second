@@ -8,7 +8,7 @@
         </svg>
       </a>
     </div>
-    <div class="content">
+    <div class="news-content">
       <div class="news-item" v-for="(news, i) in newsList" :key="i">
         <a @click="openNews(news.linkaddress)" class="link">
           <p>{{news.infotitle}}</p>

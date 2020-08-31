@@ -1,7 +1,12 @@
 @import "common";
 @import "basicinfo";
+@import "reports";
 
 @port-info-height: 30px;
+
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
 
 .reports-child {
   position: relative;
@@ -28,13 +33,13 @@
   color: black;
 }
 
-a,a:link{
+a[tab],a[tab]:link{
   color:#000;
   text-decoration:none;
   position:relative;
   padding-bottom: 2px;
 }
-a:after{
+a[tab]:after{
   content: "";
   width: 0;
   height: 2px;
@@ -44,7 +49,7 @@ a:after{
   left: 50%;
   transition: all .2s;
 }
-a:hover:after,a.tab-active:after{
+a[tab]:hover:after,a.tab-active:after{
   left: 0;
   width: 100%;
 }
@@ -58,5 +63,13 @@ a:hover:after,a.tab-active:after{
   width: 100%;
   height: calc(100% - 40px);
   padding: 5px 10px 10px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+}
+
+.pdf {
+  width: 40px;
+  height: 40px;
 }

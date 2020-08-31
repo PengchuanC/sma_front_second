@@ -85,9 +85,10 @@ footer[class='disclaimer'] p {
   bottom: 0;
   right: 10px;
 }
-.content {
+.news-content {
   display: block;
   position: relative;
+  height: calc(100% - 35px);
   overflow: auto;
 }
 .news-item {
