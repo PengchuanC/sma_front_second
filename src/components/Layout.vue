@@ -47,7 +47,7 @@
         <footer>
             <div class="footer">
               <p>COPYRIGHT © 2020 Nomura Orient International Securities Co.,Ltd. ALL RIGHTS RESERVED.</p>
-              <p class="legal" @click="$router.push({name: 'disclaimer'})">免责声明</p>
+              <p class="legal" @click="toDisclaimer">免责声明</p>
             </div>
         </footer>
     </div>
@@ -85,6 +85,13 @@
           logout(){
               sessionStorage.clear()
             this.$router.push({name: 'login'})
+          },
+          toDisclaimer(){
+              if(this.$route.name !== 'disclaimer'){
+                this.$router.push({name: 'disclaimer'})
+              }else{
+                this.$router.push({name: 'home'})
+              }
           }
         },
       mounted() {
