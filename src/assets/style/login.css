@@ -232,14 +232,17 @@ img {
   background-size: cover;
 }
 .login {
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: start;
   width: 540px;
   height: 360px;
-  top: 25%;
-  left: 30%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   transform: translate(-50%, -60%);
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.3);
