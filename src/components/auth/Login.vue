@@ -8,7 +8,7 @@
         <div class="">
           <sui-form class="form">
             <div class="welcome focus-in-contract-bck">
-              <h2>欢迎回到野村东方SMA服务平台</h2>
+              <h2>欢迎访问野村东方SMA服务平台</h2>
             </div>
             <sui-form-field>
               <label><p class="label">用户</p></label>
