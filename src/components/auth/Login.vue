@@ -34,7 +34,7 @@
                     </sui-form>
                 </div>
               <div class="forget">
-                <p class="item">忘记用户名或登陆密码？</p>
+                <p class="item" @click="contactUs">忘记用户名或登陆密码</p>
                 <div class="info">
                   <a class="info-icon wechat">
                     <svg class="font-icon info-icon" aria-hidden="true">
@@ -81,6 +81,9 @@
             },
           toLegal(){
               window.open("https://www.nomuraoi-sec.com/pages/function/company_announcement.jsp?newsid=1702")
+          },
+          contactUs(){
+              window.open('https://www.nomuraoi-sec.com/pages/aboutUS/contect_us.jsp')
           }
         },
       mounted() {

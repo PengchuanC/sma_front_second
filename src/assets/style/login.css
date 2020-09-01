@@ -316,6 +316,9 @@ img {
   text-decoration: underline white;
   transition: all 0.2s;
 }
+.forget .item:after {
+  content: "?";
+}
 .forget .info {
   display: inline-flex;
 }
