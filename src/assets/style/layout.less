@@ -82,6 +82,26 @@ img {
 footer{
   position: fixed;
   align-content: center;
+  align-items: center;
   bottom: @footer-height;
   font-family: Arial, 'Times New Roman', serif;
+  width: @segment-width;
+  min-width: @segment-min-width;
+}
+
+.footer {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  color: black;
+}
+
+.legal{
+  cursor: pointer;
+
+  &:hover{
+    text-decoration: underline;
+    text-underline: black;
+  }
 }

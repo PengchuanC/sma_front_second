@@ -45,7 +45,10 @@
           </keep-alive>
         </sui-segment>
         <footer>
-            COPYRIGHT © 2020 Nomura Orient International Securities Co.,Ltd. ALL RIGHTS RESERVED.
+            <div class="footer">
+              <p>COPYRIGHT © 2020 Nomura Orient International Securities Co.,Ltd. ALL RIGHTS RESERVED.</p>
+              <p class="legal" @click="$router.push({name: 'disclaimer'})">免责声明</p>
+            </div>
         </footer>
     </div>
 </template>

@@ -65,6 +65,11 @@ export default new Router({
                     path: '/user',
                     component: () => import('@/components/users/Profile')
                 },
+                {
+                    name: 'disclaimer',
+                    path: 'disclaimer',
+                    component: ()=>import('@/components/auth/Disclaimer')
+                },
             ]
         },
         {
