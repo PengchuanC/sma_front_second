@@ -4,17 +4,21 @@
             <img src="../../assets/images/logoNew.png" alt="">
         </div>
         <div class="login-wrapper">
-            <div class="login slide-in-elliptic-top-fwd">
+          <div class="login slide-in-elliptic-top-fwd">
                 <div class="">
                     <sui-form class="form">
                         <div class="welcome focus-in-contract-bck">
-                            <h1>S M A</h1>
+                            <h3>欢迎回到野村东方SMA业务平台</h3>
                         </div>
                         <sui-form-field>
                             <label><p class="label">用户</p></label>
                             <label class="input">
                                 <input v-model="username" placeholder="请输入用户名" type="text" required/>
                             </label>
+                          <div class="remember-me">
+                            <sui-checkbox v-model="remember" label="" style="color: white"/>
+                            <p @click="remember=!remember">记住我的用户名</p>
+                          </div>
                         </sui-form-field>
                         <sui-form-field>
                             <label><p class="label">密码</p></label>
@@ -29,6 +33,23 @@
                         </div>
                     </sui-form>
                 </div>
+              <div class="forget">
+                <p class="item">忘记用户名或登陆密码？</p>
+                <div class="info">
+                  <a class="info-icon wechat">
+                    <svg class="font-icon info-icon" aria-hidden="true">
+                      <use xlink:href="#icongongzhonghaoguanli"></use>
+                    </svg>
+                  </a>
+                  <div class="info-item">
+                    <a class="info-icon legal" @click="toLegal">
+                      <svg class="font-icon info-icon" aria-hidden="true">
+                        <use xlink:href="#iconfalvshengmingfalv"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>
@@ -41,18 +62,30 @@
         name: "Login",
         data(){
             return {
-                username: '',
-                password: '',
+              username: '',
+              password: '',
+              remember: false,
             }
         },
         methods:{
             login(){
-                login(this)
+              if(this.remember){
+                localStorage.setItem('username', this.username)
+              }else{
+                localStorage.setItem('username', '')
+              }
+              login(this)
             },
             reset(){
                 this.$router.push({name: 'reset'})
-            }
-        }
+            },
+          toLegal(){
+              window.open("https://www.nomuraoi-sec.com/pages/function/company_announcement.jsp?newsid=1702")
+          }
+        },
+      mounted() {
+          this.username = localStorage.getItem('username')
+      }
     }
 </script>
 

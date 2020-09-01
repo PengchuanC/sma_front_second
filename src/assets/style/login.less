@@ -18,14 +18,14 @@ img {
 }
 
 .login {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   width: 540px;
   height: 360px;
   top: 25%;
-  left: 35%;
+  left: 30%;
   transform: translate(-50%, -60%);
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.3);
@@ -37,6 +37,7 @@ img {
   margin-bottom: 10px;
   width: 100%;
   color: ghostwhite;
+  margin-top: 40px;
 }
 
 .label {
@@ -54,6 +55,18 @@ img {
   &:hover{
     border: rgba(30,144,255,0.8) 1px solid;
     border-radius: 5px;
+  }
+}
+
+.remember-me{
+  display: inline-flex;
+  height: 15px;
+  color: white;
+  align-items: center;
+
+  p{
+    cursor: pointer;
+    margin-left: 5px;
   }
 }
 
@@ -79,4 +92,56 @@ img {
 .success-button {
   width: 100%;
   margin-top: 30px;
+}
+
+.forget {
+  position: absolute;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-around;
+  bottom: 20px;
+  color: white;
+  line-height: 20px;
+
+  .item{
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline white;
+      transition: all .2s;
+    }
+  }
+
+  .info {
+    display: inline-flex;
+
+    .info-item {
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .info-icon {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    .wechat{}
+
+    .wechat:hover:after{
+      position: absolute;
+      content: "";
+      width: 200px;
+      height: 200px;
+      background: url("../images/qcode.jpg");
+      background-size: cover;
+      transform: translate(-50%, -100%);
+    }
+
+    .legal:hover:after{
+      position: absolute;
+      content: "免责声明";
+
+    }
+  }
 }
