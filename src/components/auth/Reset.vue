@@ -5,7 +5,7 @@
     </div>
     <div class="login-wrapper">
       <div class="login slide-in-elliptic-top-fwd">
-        <div class="" v-if="!success">
+        <div class="reset" v-if="!success">
           <sui-form class="form">
             <sui-form-field>
               <label><p class="label">用户</p></label>
