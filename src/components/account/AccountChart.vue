@@ -77,11 +77,6 @@ export default {
     mounted() {
       this.drawChart()
     },
-    // watch: {
-    //   ratio: function (){
-    //     this.drawChart()
-    //   }
-    // }
   }
 </script>
 

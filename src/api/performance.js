@@ -7,5 +7,9 @@ export function getDate(self){
     }).then(r => {
         let data = r.data
         self.selectedDates = [data.launch, data.latest]
+    }).catch(()=>{
+        if (self.$route.name !== 'login'){
+            self.$router.push({name: 'login'})
+        }
     })
 }

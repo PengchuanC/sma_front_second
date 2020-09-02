@@ -50,6 +50,10 @@ export function getAllocate(self, modifyDate=true) {
             self.net_asset = null
         }
         self.fetched = true
+    }).catch(()=>{
+        if (self.$route.name !== 'login'){
+            self.$router.push({name: 'login'})
+        }
     })
 }
 

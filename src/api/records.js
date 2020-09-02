@@ -13,5 +13,9 @@ export function getRecords(self) {
         let end = data[data.length-1].date
         self.selectedDates = [start, end]
         self.data = data
+    }).catch(()=>{
+        if (self.$route.name !== 'login'){
+            self.$router.push({name: 'login'})
+        }
     })
 }
