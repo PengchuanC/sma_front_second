@@ -477,6 +477,7 @@ a[tab]:link {
   text-decoration: none;
   position: relative;
   padding-bottom: 2px;
+  font-size: 16px;
 }
 a[tab]:after {
   content: "";
@@ -584,7 +585,7 @@ a.tab-active:after {
   bottom: 0;
   right: 10px;
 }
-.news-content-wrapper {
+.content-wrapper {
   display: block;
   position: relative;
   height: calc(100% - 35px);
@@ -662,14 +663,14 @@ p[class='media'] {
 }
 .news-info {
   display: inline-flex;
-  font-size: 12px;
+  font-size: 13px;
   color: dimgrey;
 }
 .news-media {
   margin-right: 10px;
 }
 .news-content {
-  font-size: 13px;
+  font-size: 14px;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
