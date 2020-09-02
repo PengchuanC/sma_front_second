@@ -54,11 +54,15 @@ export default {
     getNews(){
       this.loading = true
       let category = this.tabs[this.activeId]
+      let page = this.pages[this.activeId]
       let i = this.activeId
-      api.get('/v2/news/advance/', {params:{category: category}}).then(r=>{
+      api.get('/v2/news/advance/', {params:{category: category, page: page}}).then(r=>{
         let data = r.data
         this.news[i] = this.news[i].concat(data)
         this.renderData = this.news[i]
+        this.loading = false
+      }).catch(()=>
+      {
         this.loading = false
       })
     },
@@ -71,7 +75,7 @@ export default {
     scroll(e){
       let bottom = e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight
       if (bottom <= 40 && !this.loading){
-        this.page ++
+        this.pages[this.activeId] = this.pages[this.activeId] + 1
         this.getNews()
       }
     },
