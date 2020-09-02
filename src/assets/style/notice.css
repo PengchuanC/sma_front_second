@@ -49,6 +49,32 @@ footer[class='disclaimer'] p {
 }
 .card-header {
   padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.header-title {
+  line-height: inherit;
+}
+.header-icon {
+  display: flex;
+  color: darkgrey;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.header-icon .more {
+  line-height: 30px;
+  width: 20px;
+  height: 20px;
+  transition: font-size 0.25s linear, width 0.25s linear;
+}
+.header-icon .more:hover {
+  height: 25px;
+  width: 25px;
+  color: red;
 }
 .logo {
   position: relative;

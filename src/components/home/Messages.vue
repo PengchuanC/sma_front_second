@@ -1,6 +1,13 @@
 <template>
 <div class="message">
-  <p class="card-header">留言</p>
+  <div class="card-header">
+    <p class="header-title">留言</p>
+    <a class="icon-item header-icon" @click="showMore">
+      <svg class="font-icon more" aria-hidden="true">
+        <use xlink:href="#iconmore2"></use>
+      </svg>
+    </a>
+  </div>
   <div class="content">
     <div class="logo-wrapper">
       <div class="logo" @click="showInput=false">
@@ -19,7 +26,6 @@
           <p class="reply" v-show="m.reply">答复：{{m.reply}}</p>
           <div class="action-wrapper" style="display: inline-flex; justify-content: space-between;width: 100%">
             <p class="date">{{m.date}}</p>
-            <p class="action" @click="showMessage(i)">查看详细</p>
           </div>
         </li>
       </ul>
@@ -76,7 +82,7 @@ export default {
         port_code: this.port_code, message: message, date: date
       }).then()
     },
-    showMessage(){
+    showMore(){
       this.$router.push({name: 'message'})
     }
   },

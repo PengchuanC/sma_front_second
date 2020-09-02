@@ -16,6 +16,36 @@
 
 .card-header {
   padding-left: @header-padding;
+  padding-right: @header-padding;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-title {
+  line-height: inherit;
+}
+
+.header-icon {
+  display: flex;
+  color: darkgrey;
+  cursor: pointer;
+  height: @header-height;
+  width: @header-height;
+  justify-content: center;
+  align-items: center;
+
+  .more {
+    line-height: @header-height;
+    width: 20px;
+    height: 20px;
+    transition: font-size 0.25s linear, width 0.25s linear;
+
+    &:hover{
+      height: 25px;
+      width: 25px;
+      color: red;
+    }
+  }
 }
 
 .logo {
