@@ -15,8 +15,8 @@
         </a>
       </div>
     </div>
-    <div class="news-content">
-      <div class="news-item" v-for="(news, i) in newsList" :key="i">
+    <div class="news-content-wrapper">
+      <div class="news-item-wrapper" v-for="(news, i) in newsList" :key="i">
         <div class="news-title">
           <a @click="openNews(news.linkaddress)" class="link">
             <p>{{news.infotitle}}</p>
