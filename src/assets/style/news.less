@@ -1,4 +1,5 @@
 @import "home";
+@import "reports-child";
 
 .news{
   position: relative;
@@ -16,6 +17,10 @@
 
 .header-title {
   line-height: inherit;
+}
+
+.actions {
+  display: inline-flex;
 }
 
 @keyframes spin {
@@ -36,7 +41,7 @@
   justify-content: center;
   align-items: center;
 
-  .more {
+  .refresh {
     line-height: @header-height;
     width: 20px;
     height: 20px;
@@ -48,6 +53,18 @@
       color: red;
       -webkit-animation: spin 1s linear 1s 5 alternate;
       animation: spin 1s linear infinite;
+    }
+  }
+
+  .more {
+    .refresh;
+    transition: all 0.2s;
+    &:hover{
+      height: 25px;
+      width: 25px;
+      color: red;
+      -webkit-animation: none;
+      animation: none;
     }
   }
 }
@@ -66,9 +83,14 @@
 }
 
 .news-item {
+  display: block;
   bottom: 0;
   width: 100% - 5px;
   margin: 10px 15px 0;
+}
+
+.news-title{
+  width: auto;
 }
 
 .link {
@@ -86,7 +108,7 @@
   color: #C00000;
 }
 
-.source-info{
+.news-source-info{
   display: inline-flex;
   color: grey;
   font-size: smaller;
@@ -100,4 +122,52 @@ p[class='media'] {
 .image {
   width: 50px;
   height: 50px;
+}
+
+.news-child {
+  .reports-child;
+}
+
+.news-child-card-header {
+  .common-card-header;
+}
+
+.news-tab {
+  .reports-tab;
+}
+
+.news-content-wrapper {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed darkgrey;
+}
+
+.news-title {
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.news-info{
+  display: inline-flex;
+  font-size: 12px;
+  color: dimgrey;
+}
+
+.news-media {
+  margin-right: 10px;
+}
+
+.news-content {
+  font-size: 13px;
+
+  //最多只显示两行
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
