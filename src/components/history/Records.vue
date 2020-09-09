@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="records-content">
-      <table>
+      <table v-if="data.length > 0">
         <tr class="header">
           <th>序号</th>
           <th>发生日期</th>
@@ -37,6 +37,9 @@
           <td>{{r.operation!=='买入'? numeral(r.amount): '-'}}</td>
         </tr>
       </table>
+      <div class="no-data">
+          暂无交易记录
+      </div>
     </div>
   </div>
 </template>
