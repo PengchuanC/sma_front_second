@@ -2,11 +2,11 @@
   <div class="basic-info-wrapper">
     <div class="port-info">
       <p>组合资产净值</p>
-      <p>{{net_asset}} 元</p>
+      <p>{{ net_asset }} 元</p>
     </div>
     <div class="port-info">
-      <div :class="ret>0?'triangle-up':'triangle-down'"></div>
-      <p class="change" :color="ret>0?'red':'green'">{{ret*100}}%</p>
+      <div :class="ret>=0?'triangle-up':'triangle-down'"></div>
+      <p class="change" :color="ret>=0?'red':'green'">{{ ret * 100 }}%</p>
       <p>{{ numeral(profit) }} 元</p>
       <p>成立以来</p>
     </div>
@@ -21,7 +21,7 @@ import numeral from "numeral"
 
 export default {
   name: "BasicInfo",
-  data(){
+  data() {
     return {
       selectedDate: moment().format('YYYY-MM-DD'),
       ret: 0,
@@ -30,7 +30,7 @@ export default {
     }
   },
   methods: {
-    numeral(value){
+    numeral(value) {
       return numeral(value).format('0,00.00')
     }
   },

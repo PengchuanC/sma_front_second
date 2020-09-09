@@ -25,8 +25,8 @@
         <td></td>
         <td v-if="r.name==='区间收益'">
           <div class="profit-wrapper">
-            <div :class="r.value.replace('%', '')/100 > 0?'triangle-up': 'triangle-down'"></div>
-            <p :class="r.value.replace('%', '')/100 > 0?'red': 'green'">{{r.value}}</p>
+            <div :class="r.value.replace('%', '')/100 >= 0?'triangle-up': 'triangle-down'"></div>
+            <p :class="r.value.replace('%', '')/100 >= 0?'red': 'green'">{{r.value}}</p>
           </div>
         </td>
         <td v-else>{{r.value}}</td>
