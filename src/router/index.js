@@ -38,7 +38,7 @@ export default new Router({
                 {
                     name: 'news',
                     path: '/news',
-                    component: ()=>import('@/components/home/NewsChild')
+                    component: ()=>import('@/components/home/NewsChild'),
                 },
                 {
                     name: 'message',

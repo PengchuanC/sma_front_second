@@ -39,10 +39,14 @@
       </div>
     </div>
 
-    <sui-segment class="segment slide-in-fwd-center">
+    <sui-segment class="segment slide-in-fwd-center" v-if="!showMe">
       <keep-alive>
         <router-view class="router-view"/>
       </keep-alive>
+    </sui-segment>
+
+    <sui-segment class="segment slide-in-fwd-center" v-else>
+      <router-view class="router-view"/>
     </sui-segment>
     <footer>
       <div class="footer">
@@ -95,11 +99,7 @@ export default {
     }
   },
   mounted() {
-    if (LocalStorage.getPortNums() <= 1) {
-      this.showMe = false
-    }else{
-      this.showMe = true
-    }
+    this.showMe = LocalStorage.getPortNums() > 1;
   }
 }
 </script>

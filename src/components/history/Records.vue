@@ -37,7 +37,7 @@
           <td>{{r.operation!=='买入'? numeral(r.amount): '-'}}</td>
         </tr>
       </table>
-      <div class="no-data">
+      <div class="no-data" v-else>
           暂无交易记录
       </div>
     </div>
