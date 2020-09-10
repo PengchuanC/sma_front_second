@@ -29,27 +29,51 @@
             <p :class="r.value.replace('%', '')/100 >= 0?'red': 'green'">{{r.value}}</p>
           </div>
         </td>
+        <td v-else-if="r.name === '费用'" @click="showDetailFee(i)" style="cursor: pointer">{{r.value}}</td>
         <td v-else>{{r.value}}</td>
         <td></td>
       </tr>
       </tbody>
     </table>
+    <Modal v-model="showFee"
+           title="费用明细"
+           :width="80"
+           :scrollable="true">
+      <DetailFee :data="feeData" />
+    </Modal>
   </div>
 </template>
 
 <script>
 import numeral from 'numeral'
+import {api} from "@/api/base"
+import LocalStorage from "@/common/localstorage";
+import DetailFee from "@/components/performance/DetailFee";
+
 export default {
   name: "PerformanceTable",
+  components: {DetailFee},
   props: {data: Array},
   data(){
     return {
       activeRow: 1,
+      showFee: false,
+      feeData: {}
     }
   },
   methods: {
     numeral(value){
       return numeral(value).format('0,00.00')
+    },
+    showDetailFee(index){
+      // 获取费用明细
+      let row = this.data[index]
+      let start = row.period[0]
+      let end = row.period[1]
+      api.post('/v2/portfolio/asset/', {start: start, end: end, port_code: LocalStorage.getPortCode()}).then((resp)=>{
+        this.feeData = resp.data
+        this.showFee = true
+      })
     }
   }
 }
