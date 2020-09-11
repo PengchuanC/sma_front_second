@@ -64,7 +64,7 @@ export default {
           formatter: '{a} <br/>{b}: {d}%'
         },
         title: {
-          text: '{a|' + this.net_asset + '}{b|元}\n{c|' + this.ret*100+ '%}{b|成立以来}',
+          text: '{a|' + this.net_asset + '}{b|元}\n{c|' + (this.ret*100).toFixed(2)+ '%}{b|成立以来}',
           top:'center',
           left: 'center',
           textStyle: {

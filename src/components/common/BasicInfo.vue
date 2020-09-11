@@ -6,7 +6,7 @@
     </div>
     <div class="port-info">
       <div :class="ret>=0?'triangle-up':'triangle-down'"></div>
-      <p class="change" :color="ret>=0?'red':'green'">{{ ret * 100 }}%</p>
+      <p class="change" :color="ret>=0?'red':'green'">{{ (ret * 100).toFixed(2) }}%</p>
       <p>{{ numeral(profit) }} 元</p>
       <p>成立以来</p>
     </div>
