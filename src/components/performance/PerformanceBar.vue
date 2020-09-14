@@ -151,7 +151,7 @@ export default {
             name: '涨跌幅(右)',
             type: 'bar',
             barWidth: '25%',
-            data: this.data.map(x=>{return x.pct.toFixed(4)*100}),
+            data: this.data.map(x=>{return (x.pct*100).toFixed(2)}),
             axisLine:{
               lineStyle:{
                 color:'#A6A6A6'

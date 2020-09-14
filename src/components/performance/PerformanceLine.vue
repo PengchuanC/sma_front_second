@@ -79,7 +79,7 @@ export default {
           },
           axisLabel: {
             formatter: (value)=>{
-              return value.toFixed(2)
+              return value.toFixed(4)
             }
           },
           axisLine:{
