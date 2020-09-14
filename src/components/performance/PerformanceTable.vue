@@ -29,7 +29,11 @@
             <p :class="r.value.replace('%', '')/100 >= 0?'red': 'green'">{{r.value}}</p>
           </div>
         </td>
-        <td v-else-if="r.name === '费用'" @click="showDetailFee(i)" style="cursor: pointer">{{r.value}}</td>
+        <td v-else-if="r.name === '费用'" @click="showDetailFee(i)" fee>
+          <div class="fee-value">
+            {{r.value}}
+          </div>
+        </td>
         <td v-else>{{r.value}}</td>
         <td></td>
       </tr>
@@ -56,7 +60,7 @@ export default {
   props: {data: Array},
   data(){
     return {
-      activeRow: 1,
+      activeRow: 0,
       showFee: false,
       feeData: {}
     }

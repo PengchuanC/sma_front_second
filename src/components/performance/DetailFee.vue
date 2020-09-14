@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>单位：元</p>
     <table>
       <tr class="header">
         <th>序号</th>
@@ -45,11 +46,19 @@ export default {
 </script>
 
 <style scoped>
+p {
+  text-align: right;
+  width: 98%;
+  font-size: small;
+  font-family: 'Arial', 'SourceHanSansCN', '思源宋体', 'Noto Serif CJK SC', 'Noto Serif CJK', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, '宋体', serif;
+}
+
 table {
   width: 98%;
   margin: auto;
   border-collapse: collapse;
   border: 1px lightgrey solid;
+  font-family: 'Arial', 'SourceHanSansCN', '思源宋体', 'Noto Serif CJK SC', 'Noto Serif CJK', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, '宋体', serif;
 }
 
 tr[class='header'] {
@@ -64,7 +73,8 @@ tr[class='row']{
 }
 
 tr[class='active']{
-  font-size: small;
+  line-height: 24px;
+  font-size: 15px;
   background-color: rgba(115, 115, 115, 0.2);
 }
 
