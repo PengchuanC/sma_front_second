@@ -4,6 +4,9 @@ import 'moment/locale/zh-cn'
 import numeral from 'numeral'
 import LocalStorage from "@/common/localstorage"
 
+numeral.zeroFormat('0.00')
+numeral.nullFormat('0.00')
+
 export function getNews(self) {
     api.get('/v2/news/').then(resp=>{
         self.newsList = resp.data.map(x=>{
