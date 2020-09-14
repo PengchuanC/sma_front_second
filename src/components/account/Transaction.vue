@@ -72,6 +72,7 @@ export default {
 table {
   width: 100%;
   border-collapse: collapse;
+  font-family: 'Arial', 'SourceHanSansCN', '思源宋体', 'Noto Serif CJK SC', 'Noto Serif CJK', 'Source Han Serif SC', 'Source Han Serif', source-han-serif-sc, '宋体', serif;
 }
 
 tr[class='category'] {
