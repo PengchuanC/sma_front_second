@@ -40,7 +40,7 @@ export function getAllocate(self, modifyDate=true) {
                     }
                 }
                 return {
-                    category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
+                    category: x.category, mkt: x.mkt?numeral(x.mkt).format('0,0.00'): '0.00',
                     ratio: (x.ratio * 100).toFixed(2)
                 }
             })

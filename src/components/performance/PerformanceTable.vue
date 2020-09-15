@@ -15,7 +15,11 @@
         <td class="left-align">{{t.name}}</td>
         <td>{{t.period[0]}}-{{t.period[1]}}</td>
         <td>{{t.change}}</td>
-        <td>{{t.profit}}</td>
+        <td>
+          <p :class="activeRow===i?t.profit.replace('%', '')/100>=0?'red':'green':''" style="line-height: 30px">
+            {{t.profit}}
+          </p>
+          </td>
         <td class="arrow"><sui-icon style="color: grey" :name="activeRow===i?'angle down':'angle up'"/></td>
       </tr>
       <tr v-show="activeRow===i" class="row" v-for="(r, i2) in data[i].child" :key="'ptc'+i2">
