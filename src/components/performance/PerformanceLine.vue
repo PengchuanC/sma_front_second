@@ -97,16 +97,16 @@ export default {
             type: 'line',
             data: this.data.portfolio.map(x=>{return x.nav}),
           },
-          {
-            name: '基准',
-            type: 'line',
-            data: this.data.benchmark.map(x=>{return x.nav}),
-            axisLine:{
-              lineStyle:{
-                color:'#A6A6A6'
-              }
-            },
-          }
+          // {
+          //   name: '基准',
+          //   type: 'line',
+          //   data: this.data.benchmark.map(x=>{return x.nav}),
+          //   axisLine:{
+          //     lineStyle:{
+          //       color:'#A6A6A6'
+          //     }
+          //   },
+          // }
         ]
       }
       chart.setOption(options)

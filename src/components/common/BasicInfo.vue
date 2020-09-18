@@ -10,7 +10,7 @@
       <p>{{ numeral(profit) }} 元</p>
       <p>成立以来</p>
     </div>
-    <p class="date">2020-08-04</p>
+    <p class="date">{{ selectedDate }}</p>
   </div>
 </template>
 

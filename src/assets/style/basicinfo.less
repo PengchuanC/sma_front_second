@@ -1,10 +1,12 @@
 // 基础信息卡片宽高
-@basic-width: 350px;
 @basic-height: 60px;
 @margin: 15px;
 
 .basic-info-wrapper {
-  width: @basic-width;
+  //width: @basic-width;
+  display: block;
+  flex-wrap: wrap;
+  width: fit-content;
   height: @basic-height;
   border: lightgrey 1px solid;
   margin-left: 20px;
@@ -14,14 +16,14 @@
 }
 
 .port-info {
-  display: inline-flex;
+  display: flex;
   justify-content: start;
   align-items: center;
   align-content: center;
   width: 100%;
-  //height: @basic-height*0.7;
-  //line-height: @basic-height*0.7;
+  flex-wrap: nowrap;
   margin: auto;
+  height: @basic-height / 3;
 
   .change {
     margin-right: 10px;
@@ -70,6 +72,7 @@
 
 .date {
   font-size: 12px;
-  line-height: 100%;
+  height: @basic-height / 3;
+  line-height: @basic-height / 3;
   color: grey;
 }

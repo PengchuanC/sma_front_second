@@ -255,7 +255,9 @@ footer[class='disclaimer'] p {
   }
 }
 .basic-info-wrapper {
-  width: 350px;
+  display: block;
+  flex-wrap: wrap;
+  width: fit-content;
   height: 60px;
   border: lightgrey 1px solid;
   margin-left: 20px;
@@ -264,12 +266,14 @@ footer[class='disclaimer'] p {
   padding-left: 20px;
 }
 .port-info {
-  display: inline-flex;
+  display: flex;
   justify-content: start;
   align-items: center;
   align-content: center;
   width: 100%;
+  flex-wrap: nowrap;
   margin: auto;
+  height: 20px;
 }
 .port-info .change {
   margin-right: 10px;
@@ -308,7 +312,8 @@ footer[class='disclaimer'] p {
 }
 .date {
   font-size: 12px;
-  line-height: 100%;
+  height: 20px;
+  line-height: 20px;
   color: grey;
 }
 .reports {
