@@ -30,13 +30,15 @@
             class="picker"
             :value="selectedDates"
             format="yyyy-MM-dd"
-            confirm="true"
+            :confirm="true"
             type="daterange"
             placement="bottom-end"
+            :clearable="false"
             placeholder="选择区间"
             size="small"
             @on-change="changeDate"
             @on-ok="open=false"
+            v-on:click="changeDate"
         >
         </date-picker>
       </div>
@@ -67,7 +69,7 @@ export default {
       selectedDates: [moment().format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')],
       port_code: LocalStorage.getPortCode(),
       data: [],
-      open: true
+      open: false
     }
   },
   methods:{
