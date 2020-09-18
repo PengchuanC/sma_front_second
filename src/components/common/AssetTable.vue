@@ -14,7 +14,7 @@
           </div>
         </td>
         <td>{{row.ratio}}</td>
-        <td>{{row.mkt}}</td>
+        <td>{{row.mkt?row.mkt:'0.00'}}</td>
       </tr>
     </table>
   </div>

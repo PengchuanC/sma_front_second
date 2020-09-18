@@ -4,9 +4,6 @@ import 'moment/locale/zh-cn'
 import numeral from 'numeral'
 import LocalStorage from "@/common/localstorage"
 
-numeral.zeroFormat('0.00')
-numeral.nullFormat('0.00')
-
 export function getNews(self) {
     api.get('/v2/news/').then(resp=>{
         self.newsList = resp.data.map(x=>{
@@ -19,6 +16,8 @@ export function getNews(self) {
 
 // 获取收益资产配置数据
 export function getAllocate(self, modifyDate=true) {
+    numeral.zeroFormat('0.00')
+    numeral.nullFormat('0.00')
     self.fetched = false
     let date;
     if (self.selectedDate) {
@@ -40,7 +39,7 @@ export function getAllocate(self, modifyDate=true) {
                     }
                 }
                 return {
-                    category: x.category, mkt: x.mkt?numeral(x.mkt).format('0,0.00'): '0.00',
+                    category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
                     ratio: (x.ratio * 100).toFixed(2)
                 }
             })

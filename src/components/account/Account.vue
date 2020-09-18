@@ -36,6 +36,10 @@
     <div class="account-holding" v-if="activeId === 2">
       <Holding :selectedDate="selectedDate" v-if="fetched"></Holding>
     </div>
+    <footer class="disclaimer2">
+      <p>注： 现金纳入了资产管理计划的应收及应付项，可能与资产管理计划实际可用现金不一致。
+      </p>
+    </footer>
   </div>
 </template>
 
@@ -75,5 +79,6 @@
 </script>
 
 <style scoped lang="less">
-@import "../../assets/style/account.less";
+@import "../../assets/style/account";
+@import "../../assets/style/disclaimer";
 </style>

@@ -52,8 +52,11 @@
 <script>
 import numeral from 'numeral'
 import Transaction from "@/components/account/Transaction"
-import {api} from "@/api/base";
-import LocalStorage from "@/common/localstorage";
+import {api} from "@/api/base"
+import LocalStorage from "@/common/localstorage"
+
+numeral.zeroFormat('0.00')
+numeral.nullFormat('0.00')
 
 export default {
   name: "HoldingTable",
