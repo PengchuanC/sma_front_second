@@ -6,7 +6,6 @@
       </sui-button-group>
     </div>
     <div id="performance-line-chart"></div>
-    <p class="desc">注：{{desc}}</p>
   </div>
 </template>
 
@@ -111,7 +110,7 @@ export default {
         ]
       }
       chart.setOption(options)
-      window.addEventListener("resize", () => {
+      window.addEventListener("resize", function() {
         chart.resize();
       });
     },

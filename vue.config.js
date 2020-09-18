@@ -1,3 +1,7 @@
+
+// 引入compression-webpack-plugin
+const CompressionWebpackPlugin =require('compression-webpack-plugin')
+
 module.exports = {
     chainWebpack: config => {
         //解决iview 按需引入babel转换问题
@@ -8,5 +12,16 @@ module.exports = {
             .loader("babel-loader")
             .end();
     },
-    productionSourceMap: false
+    productionSourceMap: false,
+    configureWebpack: (config) => {
+        config.plugins = [
+            ...config.plugins,
+            new  CompressionWebpackPlugin({
+                test: /\.js$|\.html$|\.css/,
+                threshold: 10240,
+                deleteOriginalAssets: false,
+                algorithm: 'gzip'
+            })
+        ]
+    }
 }
