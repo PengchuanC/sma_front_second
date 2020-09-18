@@ -30,11 +30,13 @@
             class="picker"
             :value="selectedDates"
             format="yyyy-MM-dd"
+            confirm="true"
             type="daterange"
             placement="bottom-end"
             placeholder="选择区间"
             size="small"
             @on-change="changeDate"
+            @on-ok="open=false"
         >
         </date-picker>
       </div>
@@ -62,9 +64,10 @@ export default {
   data(){
     return {
       activeId: 1,
-      selectedDates: ['2020-04-13', moment().format('YYYY-MM-DD')],
+      selectedDates: [moment().format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')],
       port_code: LocalStorage.getPortCode(),
-      data: []
+      data: [],
+      open: true
     }
   },
   methods:{

@@ -31,14 +31,13 @@
 <script>
 import numeral from "numeral"
 
-numeral.zeroFormat('')
-numeral.nullFormat('')
-
 export default {
   name: "DetailFee",
   props: {data: Object},
   methods: {
     numeral(value){
+      numeral.zeroFormat('')
+      numeral.nullFormat('')
       return numeral(value).format('0,00.00')
     }
   }
