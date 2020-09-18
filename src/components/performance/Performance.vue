@@ -37,6 +37,7 @@
             placeholder="选择区间"
             size="small"
             @on-change="changeDate"
+            @on-ok="onOK"
         >
         </date-picker>
       </div>
@@ -83,9 +84,11 @@ export default {
         params: {port_code: this.port_code, beginDate: this.selectedDates[0], endDate: this.selectedDates[1]}
       }).then(r=>{
         this.data = r.data
-        // this.selectedDates = r.data[0].period
       })
     },
+    onOK(){
+      this.selectedDates = this.data[0].period
+    }
   },
   created() {
     getDate(this)
