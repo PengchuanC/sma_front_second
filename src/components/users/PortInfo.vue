@@ -4,7 +4,7 @@
       <h5>{{data.port_name}}</h5>
     </div>
     <div class="performance">
-      <p class="nav" :class="color">{{data.nav}}</p>
+      <p class="nav" :class="color">{{data.nav.toFixed(4)}}</p>
       <div class="change">
         <p class="item" :class="color">{{data.change}}</p>
         <p class="item" :class="color">{{data.pct.toFixed(2)}}%</p>
