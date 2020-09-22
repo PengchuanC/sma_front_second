@@ -2,15 +2,37 @@
 @import "variables";
 
 .disclaimer {
-  width: 800px;
+  width: 1000px;
+  min-width: 800px;
   height: 100%;
   margin: auto;
   overflow-y: auto;
+  color: #767678;
+
+  scrollbar-width: none; // firefox下滚动条不显示
+  -ms-overflow-style:none; // IE下滚动条不显示
+  //设置侧边栏滚动条不显示 chrome
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 p {
-  text-indent: 25px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  line-height: 20px;
+  color: #767678;
+  margin-bottom: 20px;
+}
+
+p[title]{
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+  margin-bottom: 5px;
+}
+
+strong {
+  color: black;
 }
 
 .disclaimer2 {
@@ -18,6 +40,7 @@ p {
   width: 100%;
   bottom: 0;
   overflow-y: auto;
+  color: #767678;
 
   p {
     text-indent: 25px;
