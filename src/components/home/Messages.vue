@@ -10,39 +10,58 @@
   </div>
   <div class="content">
     <div class="logo-wrapper">
-      <div class="logo" @click="showInput=false">
-        <img src="../../assets/images/message.svg" alt="" class="image"/>
-      </div>
-      <div class="logo" @click="showInput=true">
-        <img src="../../assets/images/add.svg" alt="" class="image"/>
-      </div>
+      <a class="icon-item content-icon" @click="showContent(1)">
+        <svg class="font-icon" aria-hidden="true">
+          <use xlink:href="#iconxiaoxi"></use>
+        </svg>
+      </a>
+      <a class="icon-item content-icon" @click="showContent(2)">
+        <svg class="font-icon" aria-hidden="true">
+          <use xlink:href="#iconadd"></use>
+        </svg>
+      </a>
+      <a class="icon-item content-icon" @click="showContent(3)">
+        <svg class="font-icon" aria-hidden="true">
+          <use xlink:href="#iconphone05"></use>
+        </svg>
+      </a>
     </div>
   </div>
-  <div class="messages">
-    <sui-list divided relaxed>
-      <ul v-for="(m, i) in messages" :key="'msg'+i">
-        <li class="content item-wrapper">
-          <p class="item">{{m.message}}</p>
-          <p class="reply" v-show="m.reply">答复：{{m.reply}}</p>
-          <div class="action-wrapper" style="display: inline-flex; justify-content: space-between;width: 100%">
-            <p class="date">{{m.date}}</p>
-          </div>
-        </li>
-      </ul>
-    </sui-list>
+  <div v-show="showMessage">
+    <div class="messages">
+      <sui-list divided relaxed>
+        <ul v-for="(m, i) in messages" :key="'msg'+i">
+          <li class="content item-wrapper">
+            <p class="item">{{m.message}}</p>
+            <p class="reply" v-show="m.reply">答复：{{m.reply}}</p>
+            <div class="action-wrapper" style="display: inline-flex; justify-content: space-between;width: 100%">
+              <p class="date">{{m.date}}</p>
+            </div>
+          </li>
+        </ul>
+      </sui-list>
+    </div>
+    <div class="input-wrapper" v-show="showInput">
+      <label>
+        <sui-input
+            class="input"
+            size="mini"
+            placeholder="请留言"
+            icon="keyboard outline"
+            v-model="message"
+            @keyup.enter="submit"
+        />
+      </label>
+      <sui-button class="submit-button" size="mini" color='red' content="发送" @click="submit" />
+    </div>
   </div>
-  <div class="input-wrapper" v-show="showInput">
-    <label>
-      <sui-input
-          class="input"
-          size="mini"
-          placeholder="请留言"
-          icon="keyboard outline"
-          v-model="message"
-          @keyup.enter="submit"
-      />
-    </label>
-    <sui-button class="submit-button" size="mini" color='red' content="发送" @click="submit" />
+  <div v-show="showPhone" class="phone-mail-wrapper">
+    <p class="phone-mail">{{sales.name}}</p>
+    <p>野村东方国际证券有限公司</p>
+    <p class="phone-mail">手机：{{sales.phone}}</p>
+    <p class="phone-mail">电话：{{sales.call}}</p>
+    <p class="phone-mail">邮箱：{{sales.mail}}</p>
+    <p class="phone-mail">地址：上海市淮海中路381号中环广场15层</p>
   </div>
 </div>
 </template>
@@ -56,10 +75,13 @@ export default {
   name: "Messages",
   data(){
     return {
-      showInput: false,
       messages: [],
       message: '',
-      port_code: LocalStorage.getPortCode()
+      port_code: LocalStorage.getPortCode(),
+      showMessage: true,
+      showInput: false,
+      showPhone: false,
+      sales: {}
     }
   },
   methods: {
@@ -84,16 +106,40 @@ export default {
     },
     showMore(){
       this.$router.push({name: 'message'})
+    },
+    showContent(i){
+      switch (i){
+        case 1:
+          this.showMessage = true;
+          this.showInput = false;
+          this.showPhone = false;
+          break
+        case 2:
+          this.showMessage = true;
+          this.showInput = true;
+          this.showPhone = false;
+          break
+        case 3:
+          this.showMessage = false;
+          this.showInput = false;
+          this.showPhone = true;
+          break
+        default:
+          this.showMessage = true;
+          this.showInput = false;
+          this.showPhone = false;
+      }
     }
   },
   created() {
     api.get('/v2/message/', { params: {'port_code': this.port_code}}).then(r=>{
-      this.messages = r.data.map(x=>{
+      this.messages = r.data.msg.map(x=>{
         return {
           date: moment(x.date).format('YYYY-MM-DD HH:MM'),
           message: x.message, user: x.user, reply: x.reply, replyAt: x.replyAt
         }
       })
+      this.sales = r.data.sales
     })
   }
 }

@@ -2,9 +2,11 @@
 <div class="notice">
   <p class="card-header">公告</p>
   <div class="content">
-    <div class="logo">
-      <img src="../../assets/images/notice.svg" alt="" class="image"/>
-    </div>
+    <a class="icon-item content-icon">
+      <svg class="font-icon" aria-hidden="true">
+        <use xlink:href="#icongonggao"></use>
+      </svg>
+    </a>
     <div class="notice-item-wrapper" v-for="(n, i) in data" :key="i">
       <a @click="openNotice(n.url)" class="link">
         <p><i class="date">{{moment(n.date)}}</i>{{n.title}}</p>
