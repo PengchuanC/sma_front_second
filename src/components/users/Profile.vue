@@ -41,7 +41,7 @@ export default {
     logout(type){
       if (type===1){
         sessionStorage.clear()
-        this.$router.push({name: 'login'})
+        this.$router.push({name: 'auth'})
       }else{
         this.$router.push({name: '404'})
       }
