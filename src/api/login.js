@@ -26,7 +26,7 @@ function login(self) {
 }
 
 
-function getPortfolio(self){
+export function getPortfolio(self){
     api.get('/v2/portfolio/').then(resp=>{
         self.portfolio = resp.data
         LocalStorage.setPortCode(resp.data[0].port_code)

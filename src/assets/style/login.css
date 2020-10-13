@@ -267,6 +267,8 @@ img {
 }
 .label {
   color: ghostwhite;
+  font-weight: bold;
+  font-size: 16px;
 }
 .form {
   width: 360px;
@@ -354,5 +356,35 @@ img {
 .forget .info .legal:hover:after {
   position: absolute;
   content: "免责声明";
+}
+.auth-wrapper {
+  margin-top: 50px;
+  width: 380px;
+}
+.auth-sms {
+  display: inline-flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  width: 100%;
+}
+.auth-get-code-button {
+  width: 130px;
+}
+.auth-notify {
+  padding: 0 2px;
+  margin-top: 5px;
+  width: 100%;
+}
+.auth-notify-wrapper {
+  border: 1px solid #A3C293;
+  border-radius: 5px;
+  height: 30px;
+  background-color: #FCFFF5;
+  color: #2C662D;
+}
+.auth-notify-content {
+  border-radius: 5px;
+  line-height: 30px;
+  margin-left: 20px;
 }
 /*# sourceMappingURL=login.css.map */
