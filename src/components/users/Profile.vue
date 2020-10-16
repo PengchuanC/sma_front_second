@@ -8,8 +8,6 @@
     <div class="auth">
       <div is="sui-button-group">
         <sui-button color="red" @click="logout(1)">安全退出</sui-button>
-        <sui-button-or />
-        <sui-button @click="logout(2)">修改密码</sui-button>
       </div>
     </div>
   </div>

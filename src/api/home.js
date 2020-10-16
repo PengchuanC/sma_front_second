@@ -53,8 +53,8 @@ export function getAllocate(self, modifyDate=true) {
         }
         self.fetched = true
     }).catch(()=>{
-        if (self.$route.name !== 'login'){
-            self.$router.push({name: 'login'})
+        if (self.$route.name !== 'auth'){
+            self.$router.push({name: 'auth'})
         }
     })
 }
@@ -67,7 +67,7 @@ export function getPortName(self) {
         self.launchDate = moment(resp.data.launch_date).format('LL')
     }).catch(e=>{
         if ([401, 402, 403].includes(e.response.status)){
-            self.$router.push({name: 'login'})
+            self.$router.push({name: 'auth'})
         }
     })
 }

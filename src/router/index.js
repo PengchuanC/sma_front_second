@@ -84,7 +84,7 @@ export default new Router({
         },
         {
             name: 'login',
-            path: '/admin-site',
+            path: '/site-admin',
             component: () => import('@/components/auth/Login')
         },
         {
