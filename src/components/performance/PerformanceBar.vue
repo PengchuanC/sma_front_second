@@ -22,7 +22,9 @@
         </sui-form>
       </div>
     </div>
-    <div id="performance-bar-chart"></div>
+    <div v-if="finished">
+      <div id="performance-bar-chart"></div>
+    </div>
   </div>
 </template>
 
@@ -39,7 +41,8 @@ export default {
       buttons: ['自定义', '本月至今', '本年至今', '最近三年', '成立以来'],
       freq: '1',
       period: 4,
-      data: []
+      data: [],
+      finished: false
     }
   },
   methods: {
@@ -52,6 +55,7 @@ export default {
         }
       }).then(resp => {
         this.data = resp.data;
+        this.finished = true;
         this.drawChart()
       })
     },
@@ -174,7 +178,10 @@ export default {
     },
   },
   created() {
-    this.selectPeriod(4)
+    this.selectPeriod(1)
+    setTimeout(()=>{
+      this.selectPeriod(4)
+    }, 1000)
   },
   watch:{
     freq: function (){

@@ -306,7 +306,7 @@
   overflow: auto;
 }
 .performance-bar #performance-bar-chart {
-  height: calc(100vh - 80px - 15px - 40px - 160px);
+  height: calc(100vh - 80px - 15px - 40px - 170px);
   width: 90vw;
 }
 .performance-line {
