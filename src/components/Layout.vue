@@ -88,7 +88,7 @@ export default {
     },
     logout() {
       sessionStorage.clear()
-      this.$router.push({name: 'login'})
+      this.$router.push({name: 'auth'})
     },
     toDisclaimer() {
       if (this.$route.name !== 'disclaimer') {
