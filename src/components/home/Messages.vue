@@ -17,51 +17,46 @@
       </a>
       <a class="icon-item content-icon" @click="showContent(2)">
         <svg class="font-icon" aria-hidden="true">
-          <use xlink:href="#iconadd"></use>
-        </svg>
-      </a>
-      <a class="icon-item content-icon" @click="showContent(3)">
-        <svg class="font-icon" aria-hidden="true">
           <use xlink:href="#iconphone05"></use>
         </svg>
       </a>
     </div>
-  </div>
-  <div v-show="showMessage">
-    <div class="messages">
-      <sui-list divided relaxed>
-        <ul v-for="(m, i) in messages" :key="'msg'+i">
-          <li class="content item-wrapper">
-            <p class="item">{{m.message}}</p>
-            <p class="reply" v-show="m.reply">答复：{{m.reply}}</p>
-            <div class="action-wrapper" style="display: inline-flex; justify-content: space-between;width: 100%">
-              <p class="date">{{m.date}}</p>
-            </div>
-          </li>
-        </ul>
-      </sui-list>
+    <div v-show="showMessage">
+      <div class="messages">
+        <sui-list divided relaxed>
+          <ul v-for="(m, i) in messages" :key="'msg'+i">
+            <li class="content item-wrapper">
+              <p class="item">{{m.message}}</p>
+              <p class="reply" v-show="m.reply">答复：{{m.reply}}</p>
+              <div class="action-wrapper" style="display: inline-flex; justify-content: space-between;width: 100%">
+                <p class="date">{{m.date}}</p>
+              </div>
+            </li>
+          </ul>
+        </sui-list>
+      </div>
+      <div class="input-wrapper" v-show="showInput">
+        <label>
+          <sui-input
+              class="input"
+              size="mini"
+              placeholder="请留言"
+              icon="keyboard outline"
+              v-model="message"
+              @keyup.enter="submit"
+          />
+        </label>
+        <sui-button class="submit-button" size="mini" color='red' content="发送" @click="submit" />
+      </div>
     </div>
-    <div class="input-wrapper" v-show="showInput">
-      <label>
-        <sui-input
-            class="input"
-            size="mini"
-            placeholder="请留言"
-            icon="keyboard outline"
-            v-model="message"
-            @keyup.enter="submit"
-        />
-      </label>
-      <sui-button class="submit-button" size="mini" color='red' content="发送" @click="submit" />
+    <div v-show="showPhone" class="phone-mail-wrapper">
+      <p class="phone-mail">{{sales.name}}</p>
+      <p>野村东方国际证券有限公司</p>
+      <p class="phone-mail">手机：{{sales.phone}}</p>
+      <p class="phone-mail">电话：{{sales.call}}</p>
+      <p class="phone-mail">邮箱：{{sales.mail}}</p>
+      <p class="phone-mail">地址：上海市淮海中路381号中环广场15层</p>
     </div>
-  </div>
-  <div v-show="showPhone" class="phone-mail-wrapper">
-    <p class="phone-mail">{{sales.name}}</p>
-    <p>野村东方国际证券有限公司</p>
-    <p class="phone-mail">手机：{{sales.phone}}</p>
-    <p class="phone-mail">电话：{{sales.call}}</p>
-    <p class="phone-mail">邮箱：{{sales.mail}}</p>
-    <p class="phone-mail">地址：上海市淮海中路381号中环广场15层</p>
   </div>
 </div>
 </template>
@@ -79,7 +74,7 @@ export default {
       message: '',
       port_code: LocalStorage.getPortCode(),
       showMessage: true,
-      showInput: false,
+      showInput: true,
       showPhone: false,
       sales: {}
     }
@@ -111,22 +106,17 @@ export default {
       switch (i){
         case 1:
           this.showMessage = true;
-          this.showInput = false;
-          this.showPhone = false;
-          break
-        case 2:
-          this.showMessage = true;
           this.showInput = true;
           this.showPhone = false;
           break
-        case 3:
+        case 2:
           this.showMessage = false;
           this.showInput = false;
           this.showPhone = true;
           break
         default:
           this.showMessage = true;
-          this.showInput = false;
+          this.showInput = true;
           this.showPhone = false;
       }
     }

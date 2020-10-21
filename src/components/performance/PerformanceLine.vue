@@ -49,7 +49,7 @@ export default {
           top : 20,
           containLabel : true
         },
-        color: ['#900000', '#A6A6A6'],
+        color: ['#CB2220', '#A6A6A6'],
         tooltip: {
           trigger: 'item',
           backgroundColor: '#CB2220',

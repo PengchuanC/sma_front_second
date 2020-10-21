@@ -18,7 +18,7 @@ export function getRecords(self) {
         self.data = data
     }).catch(()=>{
         if (self.$route.name !== 'login'){
-            self.$router.push({name: 'login'})
+            self.$router.push({name: 'auth'})
         }
     })
 }

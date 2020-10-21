@@ -7,10 +7,15 @@
         <use xlink:href="#icongonggao"></use>
       </svg>
     </a>
-    <div class="notice-item-wrapper" v-for="(n, i) in data" :key="i">
-      <a @click="openNotice(n.url)" class="link">
-        <p><i class="date">{{moment(n.date)}}</i>{{n.title}}</p>
-      </a>
+    <div class="content-wrapper">
+      <div class="link-no-img" v-for="(n, i) in data" :key="i">
+        <a @click="openNotice(n.url)" class="link-no-img">
+          <p class="title">{{n.title}}</p>
+          <div class="source-info">
+            <p class="media">{{moment(n.date)}}</p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -20,6 +25,7 @@
 import {api} from "@/api/base"
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "notice",
@@ -37,7 +43,11 @@ export default {
     },
   },
   created() {
-    api.get('/v2/notifies/').then(r=>{
+    api.get('/v2/notifies/', {
+      params: {
+        port_code: LocalStorage.getPortCode()
+      }
+    }).then(r=>{
       this.data = r.data
     })
   }
