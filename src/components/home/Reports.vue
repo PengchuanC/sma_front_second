@@ -40,11 +40,13 @@
 import {api} from "@/api/base"
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "Reports",
   data(){
     return {
+      port_code: LocalStorage.getPortCode(),
       reports: [
         {title: '5月债市巨震， 股市成长风格占优', category: '产品月报', date: '2020-06-01', url: ''},
       ]
@@ -62,7 +64,7 @@ export default {
     }
   },
   created() {
-    api.get('/v2/reports/').then(r=>{
+    api.get('/v2/reports/', {params: {port_code: this.port_code}}).then(r=>{
       this.reports = r.data
     })
   }

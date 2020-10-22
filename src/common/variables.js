@@ -8,7 +8,7 @@ const MODE = Object.freeze({
     test: Symbol(3)
 })
 
-const mode = MODE.production
+const mode = MODE.test
 
 // 后端网址
 let baseUrl;
@@ -20,7 +20,7 @@ switch (mode) {
         baseUrl = "http://10.170.129.129/api/sma/"
         break
     case MODE.test:
-        baseUrl = "http://0.0.0.0:8000/api/sma/"
+        baseUrl = "http://localhost:8000/api/sma/"
         break
     default:
         baseUrl = "http://10.170.129.129/api/sma/"

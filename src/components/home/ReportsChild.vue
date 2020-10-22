@@ -53,6 +53,7 @@
 import {api} from "@/api/base"
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "ReportsChild",
@@ -65,6 +66,7 @@ export default {
       tabs: ['产品周报', '产品月报'],
       reports: {},
       renderData: [],
+      port_code: LocalStorage.getPortCode()
     }
   },
   methods: {
@@ -77,7 +79,7 @@ export default {
       this.getReportsByType(name)
     },
     getReports(){
-      api.get('/v2/reports/advance/').then(r=>{
+      api.get('/v2/reports/advance/', {params: {port_code: this.port_code}}).then(r=>{
         let data = r.data
         this.tabs = data.category
         this.reports = data.reports
@@ -87,7 +89,7 @@ export default {
     },
     getReportsByType(type){
       this.loading = true
-      api.post('/v2/reports/advance/', {category: type, page: this.page}).then(r=>{
+      api.post('/v2/reports/advance/', {category: type, page: this.page, port_code: this.port_code}).then(r=>{
         this.renderData = r.data
         this.loading = false
       })
