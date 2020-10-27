@@ -64,6 +64,7 @@ export function getAllocate(self, modifyDate=true) {
 export function getPortName(self) {
     api.post('/v2/portfolio/', {port_code: self.portCode}).then(resp=>{
         self.portName = resp.data.port_name
+        self.name = resp.data.name
         self.launchDate = moment(resp.data.launch_date).format('LL')
     }).catch(e=>{
         if ([401, 402, 403].includes(e.response.status)){

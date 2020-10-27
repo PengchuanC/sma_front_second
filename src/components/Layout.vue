@@ -13,7 +13,7 @@
               :key="key"
               :content="value"
               @click="select(key)"
-              style="color: white"
+              style="color: white;font-size: 18px"
           />
         </sui-menu>
         <sui-menu secondary class="menu-user" borderless v-if="showMe">

@@ -49,6 +49,7 @@ th {
   border: 2px none lightgrey;
   border-bottom-style: solid;
   line-height: 36px;
+  font-size: 16px;
 }
 
 td {
@@ -56,6 +57,7 @@ td {
   border-bottom-style: solid;
   text-align: center;
   line-height: 28px;
+  font-size: 16px;
 }
 
 p {

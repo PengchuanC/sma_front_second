@@ -4,6 +4,7 @@
       <img src="../../assets/images/logoNew.png" alt="">
     </div>
     <div class="login-wrapper">
+      <div class="wrapper-mask"></div>
       <div class="login slide-in-elliptic-top-fwd">
         <div class="">
           <sui-form class="form">
