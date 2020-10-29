@@ -130,7 +130,7 @@ export default {
         }
       })
       this.sales = r.data.sales
-    })
+    }).catch()
   }
 }
 </script>

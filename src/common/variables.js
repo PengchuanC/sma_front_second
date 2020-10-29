@@ -8,7 +8,7 @@ const MODE = Object.freeze({
     test: Symbol(3)
 })
 
-const mode = MODE.production
+const mode = MODE.development
 
 // 后端网址
 let baseUrl;

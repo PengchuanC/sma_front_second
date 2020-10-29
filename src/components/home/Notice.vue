@@ -49,7 +49,7 @@ export default {
       }
     }).then(r=>{
       this.data = r.data
-    })
+    }).catch()
   }
 }
 </script>

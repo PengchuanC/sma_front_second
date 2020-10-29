@@ -11,7 +11,7 @@ export function getNews(self) {
             x.update = moment(x.update).fromNow()
             return x
         })
-    })
+    }).catch()
 }
 
 // 获取收益资产配置数据
@@ -53,9 +53,6 @@ export function getAllocate(self, modifyDate=true) {
         }
         self.fetched = true
     }).catch(()=>{
-        if (self.$route.name !== 'auth'){
-            self.$router.push({name: 'auth'})
-        }
     })
 }
 

@@ -66,7 +66,7 @@ export default {
   created() {
     api.get('/v2/reports/', {params: {port_code: this.port_code}}).then(r=>{
       this.reports = r.data
-    })
+    }).catch()
   }
 }
 </script>
