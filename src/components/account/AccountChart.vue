@@ -34,6 +34,11 @@ export default {
                 lineStyle:{
                 }
               },
+              axisLabel: {
+                textStyle: {
+                  fontSize: 14
+                }
+              }
             }
           ],
           yAxis: [
@@ -44,6 +49,14 @@ export default {
                 lineStyle:{
                 }
               },
+              axisLabel: {
+                formatter: (value)=>{
+                  return value+'%'
+                },
+                textStyle: {
+                  fontSize: 14
+                }
+              }
             }
           ],
           series: [
@@ -63,7 +76,8 @@ export default {
                 show: true,
                 position: 'top',
                 formatter: '{c}%',
-                color: 'black'
+                color: 'black',
+                fontSize: 14
               },
             }
           ]

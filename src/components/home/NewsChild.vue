@@ -37,7 +37,7 @@ export default {
       activeId: 0,
       page: 1,
       loading: true,
-      tabs: ['宏观', '国际', '证券市场', '基金', '私募'],
+      tabs: ['宏观', '国际', '证券', '基金', '私募'],
       pages: {},
       news: {},
       renderData: [],
@@ -54,6 +54,7 @@ export default {
     getNews(){
       this.loading = true
       let category = this.tabs[this.activeId]
+      category = category === '证券'? '证券市场': category
       let page = this.pages[this.activeId]
       let i = this.activeId
       api.get('/v2/news/advance/', {params:{category: category, page: page}}).then(r=>{

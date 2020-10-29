@@ -10,6 +10,9 @@
         <sui-form>
           <sui-form-fields inline>
             <sui-form-field>
+              <sui-checkbox label="周" radio value="0" v-model="freq"/>
+            </sui-form-field>
+            <sui-form-field>
               <sui-checkbox label="月" radio value="1" v-model="freq"/>
             </sui-form-field>
             <sui-form-field>
@@ -90,7 +93,8 @@ export default {
         xAxis: {
           type: 'category',
           data: this.data.map(x => {
-            return moment(x.date).format('YYYY-MM')
+            console.log(this.freq)
+            return this.freq !=='0' ?moment(x.date).format('YYYY-MM'):moment(x.date).format('YYYY-MM-DD')
           }),
           splitLine: {
             show: false
@@ -101,6 +105,11 @@ export default {
               color: 'grey'
             }
           },
+          axisLabel: {
+            textStyle: {
+              fontSize: 14
+            }
+          }
         },
         yAxis: [
           {
@@ -112,6 +121,9 @@ export default {
             axisLabel: {
               formatter: (value) => {
                 return value.toFixed(4)
+              },
+              textStyle: {
+                fontSize: 14
               }
             },
             axisLine: {
@@ -128,6 +140,9 @@ export default {
             axisLabel: {
               formatter: (value) => {
                 return value.toFixed(2) + '%'
+              },
+              textStyle: {
+                fontSize: 14
               }
             },
             axisLine: {
@@ -164,9 +179,10 @@ export default {
             yAxisIndex: 1,
             label: {
               show: true,
-              position: 'top',
+              // position: 'top',
               formatter: '{c}%',
-              color: 'grey'
+              color: 'white',
+              padding: [30, 0, 0, 0]
             },
           }
         ]

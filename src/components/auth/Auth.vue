@@ -4,10 +4,11 @@
       <img src="../../assets/images/logoNew.png" alt="">
     </div>
     <div class="login-wrapper">
+      <div class="wrapper-mask"></div>
       <div class="login slide-in-elliptic-top-fwd">
-        <div class="">
+        <div>
           <div class="welcome focus-in-contract-bck">
-            <h2>欢迎访问野村东方SMA服务平台</h2>
+            <h2>欢迎访问野村东方国际证券SMA服务平台</h2>
           </div>
           <div style="height: 230px;display: block">
             <div v-if="!registered">
@@ -63,7 +64,7 @@
           </div>
         </div>
         <div class="forget">
-          <p class="item" @click="contactUs">忘记用户名或登陆密码</p>
+          <p class="item" @click="contactUs">忘记开户时登记的手机号码</p>
           <div class="info">
             <a class="info-icon wechat">
               <svg class="font-icon info-icon" aria-hidden="true">

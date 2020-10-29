@@ -19,7 +19,7 @@
 
 .records-content {
   width: 100%;
-  height: calc(100% - @common-card-height - @basic-height);
+  height: calc(100% - @basic-height);
   overflow: auto;
 }
 
@@ -43,14 +43,21 @@ tr{
   border-bottom-style: solid;
 }
 
+tr:last-child {
+  border: 1px none white;
+  border-bottom: 1px lightgrey solid;
+}
+
 tr[class='header'] {
   border: 2px none white;
   line-height: 30px;
   background-color: #C00000;
   color:white;
+  font-size: 16px;
 }
 
 td {
   text-align: center;
   line-height: 26px;
+  font-size: 16px;
 }

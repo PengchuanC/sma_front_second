@@ -70,6 +70,11 @@ export default {
               color:'grey'
             }
           },
+          axisLabel: {
+            textStyle: {
+              fontSize: 14
+            }
+          }
         },
         yAxis: {
           type: 'value',
@@ -80,6 +85,9 @@ export default {
           axisLabel: {
             formatter: (value)=>{
               return value.toFixed(4)
+            },
+            textStyle: {
+              fontSize: 14
             }
           },
           axisLine:{

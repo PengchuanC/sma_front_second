@@ -65,6 +65,7 @@ tr[class='header'] {
   line-height: 36px;
   background-color: #C00000;
   color:white;
+  font-size: 16px;
 }
 
 tr[class='row']{
@@ -80,5 +81,6 @@ tr[class='active']{
 td {
   text-align: center;
   line-height: 25px;
+  font-size: 16px;
 }
 </style>

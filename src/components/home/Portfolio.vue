@@ -14,8 +14,8 @@
       </div>
     </div>
     <div class="port-info">
-      <h4>{{portCode}}</h4>
-      <h4>{{portName}}</h4>
+      <h3>{{name}}</h3>
+      <h3>{{portName}}</h3>
     </div>
     <div class="asset-chart">
       <div class="allocate-chart" id="chart"></div>
@@ -42,6 +42,7 @@ export default {
       selectedDate: moment().format('YYYY-MM-DD'),
       portCode: LocalStorage.getPortCode(),
       portName: '野村东方平衡型策略1号',
+      name: '',
       ratio: [],
       ret: 0,
       net_asset: 0,

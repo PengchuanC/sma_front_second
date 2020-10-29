@@ -123,6 +123,10 @@ export default {
   overflow: auto;
 }
 
+.holding-table-child::-webkit-scrollbar {
+  width: 5px;
+}
+
 .button {
   margin-bottom: 5px;
 }
