@@ -22,7 +22,7 @@
           <th>序号</th>
           <th>发生日期</th>
           <th>基金代码</th>
-          <th>基金名称</th>
+          <th class="left">基金名称</th>
           <th>交易类型</th>
           <th>买入金额(元)</th>
           <th>卖出份额(份)</th>
@@ -31,7 +31,7 @@
           <td>{{r.id}}</td>
           <td>{{r.date}}</td>
           <td>{{r.secucode}}</td>
-          <td>{{r.secuname}}</td>
+          <td class="left">{{r.secuname}}</td>
           <td>{{r.operation}}</td>
           <td>{{r.operation==='买入'? numeral(r.amount): '-'}}</td>
           <td>{{r.operation!=='买入'? numeral(r.amount): '-'}}</td>

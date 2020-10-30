@@ -18,10 +18,6 @@ function login(self) {
             title: '登陆失败',
             desc: '即将前往产品中心，请尝试从产品中心登陆'
         });
-        // setTimeout(()=>{
-        //     window.location.href = 'https://www.nomuraoi-sec.com/pages/account/account_login.jsp?toURL=/pages/product/product_catalog.jsp&toParams='
-        // }, 3000
-        // )
     })
 }
 
@@ -41,7 +37,7 @@ export function getPortfolio(self){
             title: '您尚未登陆',
             desc: '即将返回至登陆页面，请先进行登陆'
         })
-        this.$router.push({name: 'auth'})
+        this.$router.push({name: 'auth'}).then(() => {})
     })
 }
 

@@ -53,7 +53,7 @@ export default {
           title: '您尚未登陆',
           desc: '即将返回至登陆页面，请先进行登陆'
         })
-        this.$router.push({name: 'login'})
+        this.$router.push({name: 'auth'})
       })
     },
   },

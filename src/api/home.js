@@ -53,6 +53,7 @@ export function getAllocate(self, modifyDate=true) {
         }
         self.fetched = true
     }).catch(()=>{
+        // self.$router.push({name: 'auth'})
     })
 }
 
@@ -63,9 +64,7 @@ export function getPortName(self) {
         self.portName = resp.data.port_name
         self.name = resp.data.name
         self.launchDate = moment(resp.data.launch_date).format('LL')
-    }).catch(e=>{
-        if ([401, 402, 403].includes(e.response.status)){
-            self.$router.push({name: 'auth'})
-        }
+    }).catch(()=>{
+        self.$router.push({name: 'auth'})
     })
 }

@@ -11,7 +11,7 @@
           <th colspan="4">{{numeral(r.mkt)}}元</th>
           <th class="arrow">
             <sui-icon
-                name="angle up"
+                name="angle down"
                 v-show="r.category !== '现金' && r.child.length !== 0"/>
           </th>
         </tr>
@@ -78,9 +78,9 @@ export default {
         return
       }
       if (this.$refs.ht[e].childNodes[1].style.display=== 'none') {
-        this.$refs.ht[e].childNodes[0].lastChild.lastChild.className='angle down icon'
-      } else {
         this.$refs.ht[e].childNodes[0].lastChild.lastChild.className='angle up icon'
+      } else {
+        this.$refs.ht[e].childNodes[0].lastChild.lastChild.className='angle down icon'
       }
       this.data[e].show = !this.data[e].show
     },
@@ -99,7 +99,7 @@ export default {
     },
     closeAll(){
       this.$refs.ht.forEach(x=>{
-        x.childNodes[0].lastChild.lastChild.className='angle up icon'
+        x.childNodes[0].lastChild.lastChild.className='angle down icon'
       })
       this.data.forEach(x=>{
         x.show = false
@@ -110,7 +110,7 @@ export default {
         x.show = true
       })
       this.$refs.ht.forEach(x=>{
-        x.childNodes[0].lastChild.lastChild.className='angle down icon'
+        x.childNodes[0].lastChild.lastChild.className='angle up icon'
       })
     }
   },
