@@ -24,8 +24,8 @@
           <th>基金代码</th>
           <th class="left">基金名称</th>
           <th>交易类型</th>
-          <th>买入金额(元)</th>
-          <th>卖出份额(份)</th>
+          <th>金额(元)</th>
+          <th>份额(份)</th>
         </tr>
         <tr v-for="(r, i) in data" :key="'records'+i">
           <td>{{r.id}}</td>
@@ -33,8 +33,8 @@
           <td>{{r.secucode}}</td>
           <td class="left">{{r.secuname}}</td>
           <td>{{r.operation}}</td>
-          <td>{{r.operation==='买入'? numeral(r.amount): '-'}}</td>
-          <td>{{r.operation!=='买入'? numeral(r.amount): '-'}}</td>
+          <td>{{r.flag===1? numeral(r.amount): '-'}}</td>
+          <td>{{r.flag!==1? numeral(r.amount): '-'}}</td>
         </tr>
       </table>
       <div class="no-data" v-else>
