@@ -11,7 +11,7 @@
         <th>赎回费</th>
         <th>管理费</th>
         <th>托管费</th>
-        <th>审计费</th>
+        <th>审计及其他费</th>
       </tr>
       <tr :class="!r.id?'active':'row'" v-for="(r, i) in data.ret" :key="'cate' + i">
         <td>{{r.id}}</td>
