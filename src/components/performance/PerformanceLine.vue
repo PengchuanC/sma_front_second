@@ -39,7 +39,7 @@ export default {
           top: 0
         },
         textStyle: {
-          fontFamily: ['Arial', '思源宋体', 'kaiti SC', 'Kaiti'],
+          fontFamily: ['Arial', '宋体', 'kaiti SC', 'Kaiti'],
           fontSize: 16
         },
         grid: {

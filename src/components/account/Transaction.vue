@@ -36,7 +36,7 @@
         <td>{{row.category}}</td>
         <td>{{row.secuname}}</td>
         <td>{{r.operation}}</td>
-        <td>{{numeral(r.amount)}}{{r.operation==='申购'?'元':'份'}}</td>
+        <td>{{numeral(r.amount)}}{{['转入', '转出', '赎回'].includes(r.operation)?'份':'元'}}</td>
         <td>{{r.date}}</td>
         <td>{{r.price.toFixed(4)}}</td>
         <td>{{numeral(r.fee)}}</td>

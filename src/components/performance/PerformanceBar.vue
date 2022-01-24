@@ -71,7 +71,7 @@ export default {
           top: 0
         },
         textStyle: {
-          fontFamily: ['Arial', '思源宋体', 'kaiti SC', 'Kaiti'],
+          fontFamily: ['Arial', '宋体', 'kaiti SC', 'Kaiti'],
           fontSize: 16
         },
         grid: {
@@ -81,7 +81,7 @@ export default {
           top: 50,
           containLabel: true
         },
-        color: ['#900000', '#A6A6A6'],
+        color: ['#CB2220', '#A6A6A6'],
         tooltip: {
           trigger: 'item',
           backgroundColor: '#CB2220',
@@ -160,7 +160,7 @@ export default {
               return x.nav
             }),
             label: {
-              show: true,
+              show: false,
               position: 'right',
               formatter: '{c}',
               color: 'grey'
@@ -178,7 +178,7 @@ export default {
             },
             yAxisIndex: 1,
             label: {
-              show: true,
+              show: false,
               // position: 'top',
               formatter: '{c}%',
               color: 'white',

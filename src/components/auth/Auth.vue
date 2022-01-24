@@ -3,7 +3,7 @@
     <div class="logo">
       <img src="../../assets/images/logoNew.png" alt="">
     </div>
-    <div class="login-wrapper">
+    <div class="login-wrapper" :season="season">
       <div class="wrapper-mask"></div>
       <div class="login slide-in-elliptic-top-fwd">
         <div>
@@ -64,7 +64,20 @@
           </div>
         </div>
         <div class="forget">
-          <p class="item" @click="contactUs">忘记开户时登记的手机号码</p>
+          <div class="item">
+            登陆时遇到问题
+            <div class="tooltip">
+              <p>SMA专员</p>
+              <div class="tel">
+                <p>姓名</p>
+                <p>邓希</p>
+              </div>
+              <div class="tel">
+                <p>电话</p>
+                <p>021-66199064</p>
+              </div>
+            </div>
+          </div>
           <div class="info">
             <a class="info-icon wechat">
               <svg class="font-icon info-icon" aria-hidden="true">
@@ -88,6 +101,7 @@
 <script>
 import {loginApi} from "@/api/base";
 import {getPortfolio} from "@/api/login";
+import lunar from "@/common/lunar"
 
 export default {
   name: "Auth",
@@ -103,14 +117,15 @@ export default {
       loading: false,
       loadingMsg: false,
       codeMsg: '',
-      timer: 89
+      timer: 89,
+      season: 'spring',
     }
   },
   methods: {
     verify() {
       this.idCheck = true
       localStorage.setItem('identify', this.identify)
-      if (this.identify.length !== 18) {
+      if (this.identify.length !== 18 && this.identify.length !== 9) {
         this.idCheck = false
         return
       }
@@ -159,6 +174,23 @@ export default {
     },
     contactUs() {
       window.open('https://www.nomuraoi-sec.com/pages/aboutUS/contect_us.jsp')
+    },
+    getSeason() {
+      let today = new Date()
+      console.log(today.getFullYear(), today.getMonth(), today.getDay())
+      return lunar.getSeason(today.getFullYear(), today.getMonth(), today.getDay())
+    },
+    getSeason2() {
+      let today = new Date()
+      let month = today.getMonth()
+      if([0, 1, 2].includes(month)) {
+        return 'spring'
+      } else if ([3, 4, 5].includes(month)) {
+        return 'summer'
+      } else if ([6, 7, 8].includes(month)) {
+        return 'autumn'
+      }
+      return 'winter'
     }
   },
   mounted() {
@@ -166,6 +198,7 @@ export default {
     if (this.username) {
       this.remember = true
     }
+    this.season = this.getSeason()
   }
 }
 </script>

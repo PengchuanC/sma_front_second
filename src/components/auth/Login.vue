@@ -3,7 +3,7 @@
     <div class="logo">
       <img src="../../assets/images/logoNew.png" alt="">
     </div>
-    <div class="login-wrapper">
+    <div class="login-wrapper" :season="season">
       <div class="wrapper-mask">
         <div class="login slide-in-elliptic-top-fwd">
           <div class="">
@@ -59,6 +59,7 @@
 
 <script>
 import {login} from "@/api/login"
+import lunar from "@/common/lunar"
 
 export default {
   name: "Login",
@@ -67,6 +68,7 @@ export default {
       username: '',
       password: '',
       remember: false,
+      season: 'spring',
     }
   },
   methods: {
@@ -86,6 +88,11 @@ export default {
     },
     contactUs() {
       window.open('https://www.nomuraoi-sec.com/pages/aboutUS/contect_us.jsp')
+    },
+    getSeason() {
+      let today = new Date()
+      console.log(today.getFullYear(), today.getMonth(), today.getDay())
+      return lunar.getSeason(today.getFullYear(), today.getMonth(), today.getDay())
     }
   },
   mounted() {
@@ -93,6 +100,9 @@ export default {
     if (this.username) {
       this.remember = true
     }
+  },
+  created() {
+    this.season = this.getSeason()
   }
 }
 </script>
