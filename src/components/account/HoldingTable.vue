@@ -2,13 +2,28 @@
   <div class="holding-table-child">
     <sui-button @click="openAll" content="全部展开" size="mini" icon="plus" class="button"/>
     <sui-button @click="closeAll" content="全部折叠" size="mini" icon="minus" class="button"/>
-    <table>
+    <table style="table-layout:fixed">
+      <tbody>
+      <tr class="category">
+        <th class="first"></th>
+        <th>资产类型</th>
+        <th colspan="2" style="text-align: right">投资比例</th>
+        <th colspan="4" style="text-align: right; padding-right: 200px">资产市值</th>
+        <th class="arrow">
+          <sui-icon
+              name="angle down"
+              v-show="false"/>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <table style="table-layout:fixed">
       <tbody v-for="(r, i1) in data" :key="'ht'+i1" ref="ht">
         <tr class="category" @click="showRows(i1)">
           <th class="first"></th>
           <th>{{r.category}}</th>
-          <th colspan="2">{{ (r.ratio*100).toFixed(2)}}%</th>
-          <th colspan="4">{{numeral(r.mkt)}}元</th>
+          <th colspan="2" style="text-align: right">{{ (r.ratio*100).toFixed(2)}}%</th>
+          <th colspan="4" style="text-align: right; padding-right: 200px">{{numeral(r.mkt)}}元</th>
           <th class="arrow">
             <sui-icon
                 name="angle down"
@@ -18,23 +33,23 @@
         <tr class="header" v-show="r.show" v-if="r.child.length !== 0">
           <th class="first"></th>
           <th>基金代码</th>
-          <th>基金名称</th>
-          <th>持有份额</th>
-          <th>持有成本（元）</th>
-          <th>当前净值</th>
-          <th>持仓收益（元）</th>
-          <th>资金占比</th>
+          <th style="text-align: left; padding-left: 50px">基金名称</th>
+          <th style="text-align: right; padding-right: 100px">持有份额(份)</th>
+          <th style="text-align: right; padding-right: 100px">持有成本（元）</th>
+          <th style="text-align: right; padding-right: 100px">当前净值</th>
+          <th style="text-align: right; padding-right: 100px">持仓收益（元）</th>
+          <th style="text-align: right; padding-right: 100px">资金占比</th>
           <th></th>
         </tr>
         <tr class="funds" v-show="r.show" v-for="(r2, i2) in r.child" :key="'htc'+i2" @click="getTransactions(i1, i2)">
           <td class="first"></td>
           <td>{{r2.category}}</td>
-          <td>{{r2.secuname}}</td>
-          <td>{{numeral(r2.shares)}}</td>
-          <td>{{numeral(r2.cost)}}</td>
-          <td>{{r2.net_value.toFixed(4)}}</td>
-          <td>{{numeral(r2.profit)}}</td>
-          <td>{{numeral(r2.ratio)}}%</td>
+          <td style="text-align: left; padding-left: 50px">{{r2.secuname}}</td>
+          <td style="text-align: right; padding-right: 100px">{{numeral(r2.shares)}}</td>
+          <td style="text-align: right; padding-right: 100px">{{numeral(r2.cost)}}</td>
+          <td style="text-align: right; padding-right: 100px">{{r2.net_value.toFixed(4)}}</td>
+          <td style="text-align: right; padding-right: 100px">{{numeral(r2.profit)}}</td>
+          <td style="text-align: right; padding-right: 100px">{{numeral(r2.ratio)}}%</td>
           <td></td>
         </tr>
       </tbody>

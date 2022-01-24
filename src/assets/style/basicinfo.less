@@ -1,9 +1,12 @@
+@import "variables";
+
 // 基础信息卡片宽高
 @basic-height: 60px;
 @margin: 15px;
 
 .basic-info-wrapper {
   //width: @basic-width;
+  font-family: @font-family;
   display: block;
   flex-wrap: wrap;
   width: fit-content;
@@ -16,15 +19,15 @@
 }
 
 .port-info {
+  font-family: @font-family;
   display: flex;
   justify-content: start;
   align-items: center;
   align-content: center;
   width: 100%;
   flex-wrap: nowrap;
-  margin: auto;
   height: @basic-height / 3;
-  margin-top: 5px;
+  margin: 5px auto auto;
 
   .change {
     margin-right: 10px;

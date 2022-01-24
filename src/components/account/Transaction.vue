@@ -1,6 +1,6 @@
 <template>
   <div id="transaction">
-    <table>
+    <table style="table-layout:fixed">
       <tr class="category">
         <th class="first"></th>
         <th>基金代码</th>
