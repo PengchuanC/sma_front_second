@@ -15,8 +15,9 @@
 
 <script>
 import PortInfo from "@/components/users/PortInfo";
-import {api} from "@/api/base";
 import LocalStorage from "@/common/localstorage";
+import {portfolioOutlook} from "@/api/requests";
+
 export default {
   name: "Profile",
   components: {PortInfo},
@@ -45,15 +46,10 @@ export default {
       }
     },
     getPortfolio(){
-      api.get('/v2/portfolio/').then(resp=>{
-        this.portfolio = resp.data
-        LocalStorage.setPortCode(resp.data[0].port_code)
-      }).catch(()=>{
-        this.$Notice.error({
-          title: '您尚未登陆',
-          desc: '即将返回至登陆页面，请先进行登陆'
-        })
-        this.$router.push({name: 'auth'})
+      let resp = portfolioOutlook()
+      resp.then(r=>{
+        this.portfolio = r
+        LocalStorage.setPortCode(r[0].port_code)
       })
     },
   },

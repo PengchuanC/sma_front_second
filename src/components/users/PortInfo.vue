@@ -4,10 +4,10 @@
       <h5>{{data.port_name}}</h5>
     </div>
     <div class="performance">
-      <p class="nav" :class="color">{{data.nav.toFixed(4)}}</p>
+      <p class="nav" :class="color">{{percent(data.nav, 4)}}</p>
       <div class="change">
-        <p class="item" :class="color">{{data.change}}</p>
-        <p class="item" :class="color">{{data.pct.toFixed(2)}}%</p>
+        <p class="item" :class="color">{{percent(data.change, 4)}}</p>
+        <p class="item" :class="color">{{percent(data.pct, 2)}}%</p>
       </div>
     </div>
     <hr>
@@ -45,6 +45,9 @@ export default {
     },
     numeral(value){
       return numeral(value).format('00,0.00')
+    },
+    percent(value, digit){
+      return numeral(value).format('0.'+Array(digit+1).join('0'))
     }
   },
   created() {

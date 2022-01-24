@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import {login} from "@/api/login"
 import lunar from "@/common/lunar"
+import { upLogin } from "@/api/requests"
 
 export default {
   name: "Login",
@@ -78,7 +78,16 @@ export default {
       } else {
         localStorage.setItem('username', '')
       }
-      login(this)
+      let next = upLogin(this.username, this.password)
+      next.then(()=>{
+        this.$router.push('/user')
+      }).catch(()=>{
+        this.$Notice.error({
+          title: '登陆失败',
+          desc: '请检查用户名或密码是否正确',
+          duration: 3
+        })
+      })
     },
     reset() {
       this.$router.push({name: 'reset'})

@@ -101,7 +101,8 @@
 <script>
 import {loginApi} from "@/api/base";
 import {getPortfolio} from "@/api/login";
-import lunar from "@/common/lunar"
+import lunar from "@/common/lunar";
+import * as api from '@/api/requests';
 
 export default {
   name: "Auth",
@@ -129,11 +130,11 @@ export default {
         this.idCheck = false
         return
       }
-      loginApi.post('/sms/idcheck/', {identify: this.identify}).then(r=>{
-        let data = r.data
-        if (data.code === 0){
+      let next = api.checkIdentify(this.identify)
+      next.then(r=>{
+        if (r.code === 0 ){
           this.registered = true
-          this.username = data.username
+          this.username = r.username
         } else {
           this.idCheck = false
           this.checkErr = "验证错误，请输入您在开户时登记的身份证号码."
@@ -142,9 +143,9 @@ export default {
     },
     getCode(){
       this.code = ''
-      loginApi.get('/sms/code/', {params: {username: this.username, 'mobile': this.mobile}}).then(r=>{
-        let data = r.data
-        this.codeMsg = data.msg
+      let next = api.fetchSmsCode(this.username, this.mobile)
+      next.then(r=>{
+        this.codeMsg = r.msg
       })
       this.loading = true
       this.loadingMsg = true
@@ -159,14 +160,13 @@ export default {
       }, 1000)
     },
     login(){
-      loginApi.post('/sms/code/', {username: this.username, code: this.code}).then(r=>{
-        let data = r.data
-        if (data.code !== 0) {
+      const next = api.verifySmsCode(this.username, this.code)
+      next.then(r=>{
+        if (r.code === 0) {
           this.loadingMsg = true
-          this.codeMsg = data.msg
-          return
+          this.codeMsg = r.msg
+          this.$router.push('/user')
         }
-        getPortfolio(this)
       })
     },
     toLegal() {
@@ -177,7 +177,6 @@ export default {
     },
     getSeason() {
       let today = new Date()
-      console.log(today.getFullYear(), today.getMonth(), today.getDay())
       return lunar.getSeason(today.getFullYear(), today.getMonth(), today.getDay())
     },
     getSeason2() {

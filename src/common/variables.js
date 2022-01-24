@@ -8,7 +8,7 @@ const MODE = Object.freeze({
     test: Symbol(3)
 })
 
-const mode = MODE.production
+const mode = MODE.test
 
 // 后端网址
 let baseUrl;
@@ -26,7 +26,23 @@ switch (mode) {
         baseUrl = "http://10.170.129.129/api/sma/"
 }
 
+// host
+let Host
+switch (mode) {
+    case MODE.production:
+        Host = "https://sma.nomuraoi-sec.com/"
+        break
+    case MODE.development:
+        Host = "http://10.170.129.129/"
+        break
+    case MODE.test:
+        Host = "http://localhost:8000/"
+        break
+    default:
+        Host = "http://10.170.129.129/"
+}
+
 const chartColor = ['#900000','#C00000', '#D18484', '#E0B5B5', '#A6A6A6']
 
 
-export {baseUrl, chartColor}
+export {baseUrl, Host, chartColor}

@@ -2,8 +2,8 @@ echo "打包程序"
 
 yarn build
 
-rm -f dist.zip
+rm -f dist.tar.gz
 
-zip -r dist.zip ./dist
+tar -cvf dist.tar.gz ./dist/*
 
-scp dist.zip root@10.170.129.129:/home/sma/deploy/frontend/
+scp dist.tar.gz root@10.170.129.129:/home/sma/deploy/frontend/
