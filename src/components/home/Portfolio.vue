@@ -75,18 +75,19 @@ export default {
                 padding: [5, 10],
                 fontSize: 16,
                 fontWeight: 'bold',
+                fontFamily: ['Arial', '思源宋体', '宋体', 'Times New Roman']
               },
               b: {
                 fontSize: 14,
                 fontWeight: 'bold',
-                fontFamily: ['Arial', 'Times New Roman', '思源宋体', '宋体']
+                fontFamily: ['Arial', '思源宋体', '宋体', 'Times New Roman']
               },
               c: {
                 color: this.ret >= 0 ?'#C00000': 'green',
                 padding: [0, 10],
                 fontSize: 16,
                 fontWeight: 'bold',
-                fontFamily: ['Arial', 'Times New Roman', '思源宋体', '宋体']
+                fontFamily: ['Arial', '思源宋体', '宋体', 'Times New Roman']
               },
             }
           }

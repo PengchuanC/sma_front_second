@@ -1,9 +1,9 @@
 <template>
   <div class="performance-table">
-    <table>
+    <table  style="table-layout:fixed">
       <tr class="header">
         <th narrow></th>
-        <th normal class="left-align">区间</th>
+        <th normal style="text-align: left">区间</th>
         <th normal>具体时间</th>
         <th normal>资产变动（元）</th>
         <th normal>业绩表现</th>
@@ -20,7 +20,7 @@
             {{t.profit}}
           </p>
           </td>
-        <td class="arrow"><sui-icon style="color: grey" :name="activeRow===i?'angle up':'angle down'"/></td>
+        <td class="arrow"><sui-icon style="color: grey; width: 100%;" :name="activeRow===i?'angle up':'angle down'"/></td>
       </tr>
       <tr v-show="activeRow===i" class="row" v-for="(r, i2) in data[i].child" :key="'ptc'+i2">
         <td></td>

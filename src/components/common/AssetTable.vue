@@ -3,8 +3,8 @@
     <table border="0">
       <tr>
         <th>资产类别</th>
-        <th>投资比例（%）</th>
-        <th>资产净值（元）</th>
+        <th style="text-align: right">投资比例（%）</th>
+        <th style="text-align: right">资产净值（元）</th>
       </tr>
       <tr v-for="(row, i) in data" :key="'at'+i">
         <td>
@@ -13,8 +13,8 @@
             <p>{{row.category}}</p>
           </div>
         </td>
-        <td>{{row.ratio}}</td>
-        <td>{{row.mkt?row.mkt:'0.00'}}</td>
+        <td style="text-align: right; padding-right: 20px">{{row.ratio}}</td>
+        <td style="text-align: right; padding-right: 20px">{{row.mkt?row.mkt:'0.00'}}</td>
       </tr>
     </table>
   </div>
