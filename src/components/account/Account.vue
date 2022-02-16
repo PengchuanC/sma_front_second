@@ -47,10 +47,12 @@
   import {DatePicker} from 'view-design'
   import moment from 'moment'
   import AccountChart from "@/components/account/AccountChart";
-  import {getAllocate} from "@/api/home";
   import Holding from "@/components/account/Holding";
   import AssetTable from "@/components/common/AssetTable";
   import BasicInfo from "@/components/common/BasicInfo";
+  import {assetAllocate} from "@/api/requests";
+  import numeral from "numeral";
+  import LocalStorage from "@/common/localstorage";
 
   export default {
     name: "Account",
@@ -69,7 +71,42 @@
       },
       changeDate(e){
         this.selectedDate = this.selectedDate? e: this.selectedDate
-        getAllocate(this)
+        numeral.zeroFormat('0.00')
+        numeral.nullFormat('0.00')
+        this.fetched = false
+        let date;
+        if (this.selectedDate) {
+          date = moment(this.selectedDate).format('YYYY-MM-DD')
+        }
+        assetAllocate(LocalStorage.getPortCode(), date).then(resp=>{
+          let data = resp
+          if (data) {
+            this.ratio = data.ratio
+            this.profit = data.profit
+            this.ratio = data.ratio.map(x=>{
+              if (x.category !== '现金') {
+                return {
+                  category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
+                  ratio: (x.ratio * 100).toFixed(2), children: [], _loading: false, id :x.id
+                }
+              }
+              return {
+                category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
+                ratio: (x.ratio * 100).toFixed(2)
+              }
+            })
+            this.ret = data.ret
+            this.net_asset = numeral(data.net_asset).format('0,0')
+          } else {
+            this.selectedDate = this.fetched? data.date: this.selectedDate
+            this.ratio = []
+            this.ret = null
+            this.net_asset = null
+          }
+          this.fetched = true
+        }).catch(()=>{
+          this.$Notice.error({title: "数据获取出错", desc: "认证信息已过期，请重新登陆"})
+        })
       },
     },
     mounted() {

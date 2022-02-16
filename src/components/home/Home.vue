@@ -32,7 +32,6 @@ import Reports from "./Reports";
 import Notice from "./Notice";
 import Messages from "./Messages";
 import LocalStorage from "@/common/localstorage";
-import {getPortName} from "@/api/home";
 
 export default {
   name: "Home",
@@ -59,7 +58,6 @@ export default {
       this.port_code = local
     }
     this.portCode = this.port_code
-    getPortName(this)
   }
 }
 </script>

@@ -29,10 +29,11 @@
 <script>
 
 import {DatePicker} from 'view-design'
-import {getAllocate, getPortName} from "@/api/home"
 import moment from 'moment'
 import LocalStorage from "@/common/localstorage";
 import AssetTable from "@/components/common/AssetTable";
+import {assetAllocate, portfolioInfo} from "@/api/requests";
+import numeral from "numeral";
 
 export default {
   name: "Portfolio",
@@ -52,7 +53,7 @@ export default {
   },
   methods: {
     changeDate(){
-      getAllocate(this)
+      this.getAllocate(true)
     },
     drawChart(){
       if (!this.ratio){
@@ -123,11 +124,56 @@ export default {
       window.addEventListener("resize", () => {
         myChart.resize();
       });
+    },
+    getAllocate(modifyDate=true) {
+      numeral.zeroFormat('0.00')
+      numeral.nullFormat('0.00')
+      this.fetched = false
+      let date;
+      if (this.selectedDate) {
+        date = moment(this.selectedDate).format('YYYY-MM-DD')
+      }
+      assetAllocate(LocalStorage.getPortCode(), date).then(resp=>{
+        let data = resp
+        if (data) {
+          this.selectedDate = modifyDate? data.date: this.selectedDate
+          this.ratio = data.ratio
+          this.profit = data.profit
+          this.ratio = data.ratio.map(x=>{
+            if (x.category !== '现金') {
+              return {
+                category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
+                ratio: (x.ratio * 100).toFixed(2), children: [], _loading: false, id :x.id
+              }
+            }
+            return {
+              category: x.category, mkt: numeral(x.mkt).format('0,0.00'),
+              ratio: (x.ratio * 100).toFixed(2)
+            }
+          })
+          this.ret = data.ret
+          this.net_asset = numeral(data.net_asset).format('0,0')
+        } else {
+          this.selectedDate = modifyDate? data.date: this.selectedDate
+          this.ratio = []
+          this.ret = null
+          this.net_asset = null
+        }
+        this.fetched = true
+      })
+    },
+    getPortName() {
+      let req = portfolioInfo(this.portCode)
+      req.then(resp=>{
+        this.portName = resp.port_name
+        this.name = resp.name
+        this.launchDate = moment(resp.launch_date).format('LL')
+      })
     }
   },
   mounted() {
-    getPortName(this)
-    getAllocate(this)
+    this.getPortName()
+    this.getAllocate()
   },
   watch: {
     ratio: function (){

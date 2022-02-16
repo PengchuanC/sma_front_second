@@ -58,8 +58,6 @@
 </template>
 
 <script>
-import LocalStorage from "@/common/localstorage";
-
 export default {
   name: "Layout",
   data() {
@@ -67,7 +65,7 @@ export default {
       active: '首页',
       items: ['首页', '账户信息', '业绩表现', '投资记录', '关于我们'],
       routeMap: {'layout': '首页', 'account': '账户信息', 'performance': '业绩表现', 'records': '投资记录', 'about': '关于我们'},
-      showMe: false
+      showMe: true
     };
   },
   methods: {
@@ -99,7 +97,7 @@ export default {
     }
   },
   mounted() {
-    this.showMe = LocalStorage.getPortNums() > 1;
+    // this.showMe = LocalStorage.getPortNums() > 1;
   }
 }
 </script>

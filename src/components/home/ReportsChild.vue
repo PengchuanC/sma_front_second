@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import {api} from "@/api/base"
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import LocalStorage from "@/common/localstorage";
+import {reportsAdvance, reportsAdvanceDetail} from "@/api/requests";
 
 export default {
   name: "ReportsChild",
@@ -79,8 +79,9 @@ export default {
       this.getReportsByType(name)
     },
     getReports(){
-      api.get('/v2/reports/advance/', {params: {port_code: this.port_code}}).then(r=>{
-        let data = r.data
+      let req = reportsAdvance(this.port_code)
+      req.then(r=>{
+        let data = r
         this.tabs = data.category
         this.reports = data.reports
         this.showTab = true
@@ -89,7 +90,8 @@ export default {
     },
     getReportsByType(type){
       this.loading = true
-      api.post('/v2/reports/advance/', {category: type, page: this.page, port_code: this.port_code}).then(r=>{
+      let req = reportsAdvanceDetail(this.port_code, type, this.page)
+      req.then(r=>{
         this.renderData = r.data
         this.loading = false
       })
@@ -103,7 +105,8 @@ export default {
       if (bottom <= 40 && !this.loading){
         let type = this.tabs[this.activeId]
         this.page ++
-        api.post('/v2/reports/advance/', {category: type, page: this.page}).then(r=>{
+        let req = reportsAdvanceDetail(this.port_code, type, this.page)
+        req.then(r=>{
           if (r.data){
             this.renderData = r.data
           }
@@ -115,7 +118,6 @@ export default {
       let type = this.tabs[this.activeId]
       this.page ++
       this.getReportsByType(type)
-      console.log(this.page)
     }
   },
   created() {

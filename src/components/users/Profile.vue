@@ -50,6 +50,11 @@ export default {
       resp.then(r=>{
         this.portfolio = r
         LocalStorage.setPortCode(r[0].port_code)
+      }).catch(err=>{
+        this.$Notice.error({title: '错误', desc: `${err.data.msg}，即将跳转至认证页面`, duration: 3})
+        setTimeout(()=>{
+          this.$router.push({name: 'auth'})
+        }, 3000)
       })
     },
   },

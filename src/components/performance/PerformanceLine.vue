@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import {api} from "@/api/base";
 import LocalStorage from "@/common/localstorage";
+import {performanceLine} from "@/api/requests";
 
 export default {
   name: "PerformanceLine",
@@ -26,12 +26,20 @@ export default {
   },
   methods: {
     selectPeriod(i){
-      api.get('/v2/portfolio/performance/line/',{
-        params: {port_code: LocalStorage.getPortCode(), beginDate: this.date[0], endDate: this.date[1], period: i}
-      }).then(resp=>{this.data = resp.data; this.desc = resp.data.desc; this.ticker=resp.data.ticker; this.drawChart()})
+      let req = performanceLine(LocalStorage.getPortCode(), this.date[0], this.date[1], i)
+      req.then(resp=>{
+        this.data = resp;
+        this.desc = resp.desc;
+        this.ticker=resp.ticker;
+        this.drawChart()
+      })
     },
     drawChart(){
-      let chart = this.$chart.init(document.getElementById('performance-line-chart'))
+      let doc = document.getElementById('performance-line-chart')
+      if (!doc) {
+        return
+      }
+      let chart = this.$chart.init(doc)
       let options = {
         legend : {
           show : true,

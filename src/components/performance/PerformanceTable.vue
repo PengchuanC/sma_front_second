@@ -54,9 +54,9 @@
 
 <script>
 import numeral from 'numeral'
-import {api} from "@/api/base"
-import LocalStorage from "@/common/localstorage";
-import DetailFee from "@/components/performance/DetailFee";
+import LocalStorage from "@/common/localstorage"
+import DetailFee from "@/components/performance/DetailFee"
+import {assetFee} from "@/api/requests"
 
 export default {
   name: "PerformanceTable",
@@ -78,8 +78,9 @@ export default {
       let row = this.data[index]
       let start = row.period[0]
       let end = row.period[1]
-      api.post('/v2/portfolio/asset/', {start: start, end: end, port_code: LocalStorage.getPortCode()}).then((resp)=>{
-        this.feeData = resp.data
+      let req = assetFee(LocalStorage.getPortCode(), start, end)
+      req.then((resp)=>{
+        this.feeData = resp
         this.showFee = true
       })
     }

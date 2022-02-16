@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import {api} from "@/api/base"
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import LocalStorage from "@/common/localstorage";
+import {reports} from "@/api/requests";
 
 export default {
   name: "Reports",
@@ -61,12 +61,16 @@ export default {
     },
     showMore(){
       this.$router.push({name: 'reports'})
+    },
+    getReports(){
+      let req = reports(this.port_code)
+      req.then(resp=>{
+        this.reports = resp.data
+      })
     }
   },
-  created() {
-    api.get('/v2/reports/', {params: {port_code: this.port_code}}).then(r=>{
-      this.reports = r.data
-    }).catch()
+  mounted() {
+    this.getReports()
   }
 }
 </script>

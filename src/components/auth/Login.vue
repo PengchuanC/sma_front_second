@@ -100,7 +100,6 @@ export default {
     },
     getSeason() {
       let today = new Date()
-      console.log(today.getFullYear(), today.getMonth(), today.getDay())
       return lunar.getSeason(today.getFullYear(), today.getMonth(), today.getDay())
     }
   },

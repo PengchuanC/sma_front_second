@@ -33,9 +33,9 @@
 
 <script>
 
-import {getNews} from "@/api/home"
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import {hotNews} from "@/api/requests";
 
 export default {
   name: "News",
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     refresh() {
-      getNews(this)
+      // getNews(this)
     },
     openNews(link){
       window.open(link)
@@ -59,10 +59,20 @@ export default {
     },
     showMore(){
       this.$router.push({name: 'news'})
+    },
+    getNews(){
+      let req = hotNews()
+      req.then(resp=>{
+        this.newsList = resp.data.map(x=>{
+          x.realdate = x.update
+          x.update = moment(x.update).fromNow()
+          return x
+        })
+      })
     }
   },
   mounted() {
-    getNews(this)
+    this.getNews()
   }
 }
 </script>

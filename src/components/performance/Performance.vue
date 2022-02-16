@@ -54,10 +54,9 @@ import PerformanceTable from "@/components/performance/PerformanceTable"
 import PerformanceBar from "@/components/performance/PerformanceBar"
 import PerformanceLine from "@/components/performance/PerformanceLine"
 import LocalStorage from "@/common/localstorage"
-import {getDate} from "@/api/performance"
-import {api} from "@/api/base"
 import moment from 'moment'
-import BasicInfo from "@/components/common/BasicInfo";
+import BasicInfo from "@/components/common/BasicInfo"
+import {operatingPeriod, performanceTable} from "@/api/requests"
 
 export default {
   name: "Performance",
@@ -65,7 +64,7 @@ export default {
   data(){
     return {
       activeId: 1,
-      selectedDates: [moment().format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')],
+      selectedDates: [moment().subtract(3, 'months').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')],
       port_code: LocalStorage.getPortCode(),
       data: [],
       open: false
@@ -80,18 +79,24 @@ export default {
       this.getData()
     },
     getData(){
-      api.get('/v2/portfolio/performance/table/', {
-        params: {port_code: this.port_code, beginDate: this.selectedDates[0], endDate: this.selectedDates[1]}
-      }).then(r=>{
+      let req = performanceTable(this.port_code, this.selectedDates[0], this.selectedDates[1])
+      req.then(r=>{
         this.data = r.data
       })
     },
     onOK(){
       this.selectedDates = this.data[0].period
+    },
+    getDate(){
+      let req = operatingPeriod(this.port_code)
+      req.then(r => {
+        let data = r
+        self.selectedDates = [data.launch, data.latest]
+      })
     }
   },
   created() {
-    getDate(this)
+    this.getDate()
     this.getData()
   },
 }

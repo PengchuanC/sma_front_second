@@ -58,3 +58,107 @@ export function verifySmsCode(username, code) {
 export function portfolioOutlook() {
     return api.get('portfolio/')
 }
+
+export function operatingPeriod(port_code){
+    return api.get('portfolio/date/', {params: {port_code}})
+}
+
+/*
+* records页面
+* */
+
+export function transHistory(port_code, start, end) {
+    return api.get('portfolio/records/', {params:{port_code, start, end}})
+}
+
+/*
+* account页面
+* */
+
+// 资产配置情况
+export function assetAllocate(port_code, date) {
+    return api.get('portfolio/asset/',{params: {port_code, date}})
+}
+
+// 分类资产配置详情
+export function assetCategory(port_code, date) {
+    return api.get('portfolio/asset/category/',{params: {port_code, date}})
+}
+
+// 单只基金交易详情
+export function assetTrade(port_code, date, fund) {
+    return api.post('portfolio/asset/category/',{data: {port_code, date, fund}})
+}
+
+/*
+* home页面
+**/
+
+// 新闻
+export function hotNews(){
+    return api.get('news/')
+}
+
+export function categoryNews(category, page){
+    return api.get('news/advance/', {params: {category, page}})
+}
+
+// 专栏
+export function reports(port_code){
+    return api.get('reports/', {params:{port_code}})
+}
+
+export function reportsAdvance(port_code){
+    return api.get('reports/advance/', {params:{port_code}})
+}
+
+export function reportsAdvanceDetail(port_code, category, page){
+    return api.post('reports/advance/', {data: {port_code, category, page}})
+}
+
+// 产品通知
+export function notifies(port_code){
+    return api.get('notifies/', {params:{port_code}})
+}
+
+// 聊天
+export function chatHistory(port_code) {
+    return api.get('message/', {params: {port_code}})
+}
+
+export function sendMessage(port_code, message, date){
+    return api.put('message/', {data: {port_code, message, date}})
+}
+
+export function chatComments(port_code){
+    return api.post('message/', {data: {port_code}})
+}
+
+/*
+* performance页面
+* */
+
+// 表格数据
+export function performanceTable(port_code, beginDate, endDate){
+    return api.get('portfolio/performance/table/', {params: {port_code, beginDate, endDate}})
+}
+
+// 组合概要
+export function portfolioInfo(port_code) {
+    return api.post('portfolio/', {data: {port_code}})
+}
+
+// 费用一览
+export function assetFee(port_code, start, end) {
+    return api.get('portfolio/asset/fee/',{params: {port_code, start, end}})
+}
+
+// 柱状图数据
+export function performanceBar(port_code, beginDate, endDate, freq, period) {
+    return api.get('portfolio/performance/bar/', {params: {port_code, beginDate, endDate, freq, period}})
+}
+
+// 折线图数据
+export function performanceLine(port_code, beginDate, endDate, period) {
+    return api.get('portfolio/performance/line/', {params: {port_code, beginDate, endDate, period}})
+}

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import {api} from "@/api/base";
+import {categoryNews} from "@/api/requests";
 
 export default {
   name: "NewsChild",
@@ -57,7 +57,8 @@ export default {
       category = category === '证券'? '证券市场': category
       let page = this.pages[this.activeId]
       let i = this.activeId
-      api.get('/v2/news/advance/', {params:{category: category, page: page}}).then(r=>{
+      let req = categoryNews(category, page)
+      req.then(r=>{
         let data = r.data
         this.news[i] = this.news[i].concat(data)
         this.renderData = this.news[i]

@@ -34,8 +34,8 @@
           <th class="first"></th>
           <th>基金代码</th>
           <th style="text-align: left; padding-left: 50px">基金名称</th>
-          <th style="text-align: right; padding-right: 100px">持有份额(份)</th>
-          <th style="text-align: right; padding-right: 100px">持有成本（元）</th>
+          <th style="text-align: right; padding-right: 100px">持有份额（份）</th>
+          <th style="text-align: right; padding-right: 100px">持仓市值（元）</th>
           <th style="text-align: right; padding-right: 100px">当前净值</th>
           <th style="text-align: right; padding-right: 100px">持仓收益（元）</th>
           <th style="text-align: right; padding-right: 100px">资金占比</th>
@@ -46,10 +46,10 @@
           <td>{{r2.category}}</td>
           <td style="text-align: left; padding-left: 50px">{{r2.secuname}}</td>
           <td style="text-align: right; padding-right: 100px">{{numeral(r2.shares)}}</td>
-          <td style="text-align: right; padding-right: 100px">{{numeral(r2.cost)}}</td>
+          <td style="text-align: right; padding-right: 100px">{{numeral(r2.mkt)}}</td>
           <td style="text-align: right; padding-right: 100px">{{r2.net_value.toFixed(4)}}</td>
           <td style="text-align: right; padding-right: 100px">{{numeral(r2.profit)}}</td>
-          <td style="text-align: right; padding-right: 100px">{{numeral(r2.ratio)}}%</td>
+          <td style="text-align: right; padding-right: 100px">{{numeral(r2.ratio*100)}}%</td>
           <td></td>
         </tr>
       </tbody>
@@ -67,8 +67,8 @@
 <script>
 import numeral from 'numeral'
 import Transaction from "@/components/account/Transaction"
-import {api} from "@/api/base"
 import LocalStorage from "@/common/localstorage"
+import {assetTrade} from "@/api/requests";
 
 numeral.zeroFormat('0.00')
 numeral.nullFormat('0.00')
@@ -106,10 +106,9 @@ export default {
       this.showTrans = true
       let fund = this.data[i1].child[i2].category
       this.row = this.data[i1].child[i2]
-      api.post('/v2/portfolio/asset/category/', {
-        port_code: LocalStorage.getPortCode(), date: this.date, fund: fund
-      }).then(resp=>{
-        this.transaction =resp.data
+      let req = assetTrade(LocalStorage.getPortCode(), this.date | "", fund)
+      req.then(resp=>{
+        this.transaction =resp
       })
     },
     closeAll(){

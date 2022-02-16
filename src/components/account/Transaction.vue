@@ -17,9 +17,9 @@
         <td>{{row.secuname}}</td>
         <td>{{numeral(row.shares)}}</td>
         <td>{{numeral(row.cost)}}</td>
-        <td>{{row.net_value}}</td>
+        <td>{{row.net_value?row.net_value.toFixed(4): null}}</td>
         <td>{{numeral(row.profit)}}</td>
-        <td>{{numeral(row.ratio)}}%</td>
+        <td>{{numeral(row.ratio*100)}}%</td>
       </tr>
       <tr class="header">
         <th class="first"></th>

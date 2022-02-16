@@ -35,10 +35,10 @@
 </template>
 
 <script>
-import {api} from "@/api/base";
 import moment from "moment";
 import 'moment/locale/zh-cn';
 import LocalStorage from "@/common/localstorage";
+import {chatComments} from "@/api/requests";
 
 export default {
   name: "MessageChild",
@@ -52,7 +52,8 @@ export default {
   methods: {
     getComments(){
       this.loading = true
-      api.post('/v2/message/', { 'port_code': this.port_code}).then(r=>{
+      let req = chatComments(this.port_code)
+      req.then(r=>{
         this.messages = r.data.map(x=>{
           return {
             date: moment(x.date).format('lll'), relativeDate: moment(x.date).fromNow(),

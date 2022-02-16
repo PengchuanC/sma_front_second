@@ -52,8 +52,7 @@
     <div v-show="showPhone" class="phone-mail-wrapper">
       <p class="phone-mail">{{sales.name}}</p>
       <p>野村东方国际证券有限公司</p>
-      <p class="phone-mail">手机：{{sales.phone}}</p>
-      <p class="phone-mail">电话：{{sales.call}}</p>
+      <p class="phone-mail">电话：{{sales.phone}}</p>
       <p class="phone-mail">邮箱：{{sales.mail}}</p>
       <p class="phone-mail">地址：上海市淮海中路381号中环广场15层</p>
     </div>
@@ -63,8 +62,8 @@
 
 <script>
 import moment from 'moment'
-import {api} from "@/api/base";
 import LocalStorage from "@/common/localstorage";
+import {chatHistory, sendMessage} from "@/api/requests"
 
 export default {
   name: "Messages",
@@ -95,9 +94,8 @@ export default {
       }
     },
     put(message, date){
-      api.put('/v2/message/', {
-        port_code: this.port_code, message: message, date: date
-      }).then()
+      let req = sendMessage(this.port_code, message, date)
+      req.then()
     },
     showMore(){
       this.$router.push({name: 'message'})
@@ -119,18 +117,22 @@ export default {
           this.showInput = true;
           this.showPhone = false;
       }
+    },
+    getHistoryChat(){
+      let req = chatHistory(this.port_code)
+      req.then(r=>{
+        this.messages = r.msg.map(x=>{
+          return {
+            date: moment(x.date).format('YYYY-MM-DD HH:MM'),
+            message: x.message, user: x.user, reply: x.reply, replyAt: x.replyAt
+          }
+        })
+        this.sales = r.sales
+      })
     }
   },
-  created() {
-    api.get('/v2/message/', { params: {'port_code': this.port_code}}).then(r=>{
-      this.messages = r.data.msg.map(x=>{
-        return {
-          date: moment(x.date).format('YYYY-MM-DD HH:MM'),
-          message: x.message, user: x.user, reply: x.reply, replyAt: x.replyAt
-        }
-      })
-      this.sales = r.data.sales
-    }).catch()
+  mounted() {
+    this.getHistoryChat()
   }
 }
 </script>

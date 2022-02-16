@@ -5,24 +5,24 @@
       <tr class="header">
         <th>序号</th>
         <th>基金代码</th>
-        <th>基金简称</th>
-        <th>最新持仓市值</th>
-        <th>申购费</th>
-        <th>赎回费</th>
-        <th>管理费</th>
-        <th>托管费</th>
-        <th>审计及其他费</th>
+        <th align="left">基金简称</th>
+        <th align="right">最新市值</th>
+        <th align="right">交易费</th>
+        <th align="right">管理费</th>
+        <th align="right">托管费</th>
+        <th align="right">审计费</th>
+        <th align="right">开户费</th>
       </tr>
       <tr :class="!r.id?'active':'row'" v-for="(r, i) in data.ret" :key="'cate' + i">
         <td>{{r.id}}</td>
         <td>{{ r.secucode }}</td>
-        <td>{{r.name}}</td>
-        <td>{{numeral(r.cap)}}</td>
-        <td>{{numeral(r.purchase)}}</td>
-        <td>{{numeral(r.redemption)}}</td>
-        <td>{{numeral(r.management)}}</td>
-        <td>{{numeral(r.custodian)}}</td>
-        <td>{{numeral(r.audit)}}</td>
+        <td align="left">{{r.name}}</td>
+        <td align="right">{{numeral(r.cap)}}</td>
+        <td align="right">{{numeral(r.trade)}}</td>
+        <td align="right">{{numeral(r.management)}}</td>
+        <td align="right">{{numeral(r.custodian)}}</td>
+        <td align="right">{{numeral(r.audit)}}</td>
+        <td align="right">{{numeral(r.other)}}</td>
       </tr>
     </table>
   </div>
@@ -80,6 +80,18 @@ tr[class='active']{
 
 td {
   text-align: center;
+  line-height: 25px;
+  font-size: 16px;
+}
+
+td[align='right'] {
+  text-align: right;
+  line-height: 25px;
+  font-size: 16px;
+}
+
+td[align='left'] {
+  text-align: left;
   line-height: 25px;
   font-size: 16px;
 }

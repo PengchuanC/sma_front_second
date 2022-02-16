@@ -50,7 +50,8 @@
 import {DatePicker} from 'view-design'
 import moment from 'moment'
 import numeral from 'numeral'
-import {getRecords} from "@/api/records"
+import { transHistory } from "@/api/requests";
+import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "Records",
@@ -64,14 +65,31 @@ export default {
   methods: {
     changeDate(value){
       this.selectedDates = value
-      getRecords(this)
+      this.records()
     },
     numeral(value){
       return numeral(value).format('0,00.00')
+    },
+    records(){
+      const port_code = LocalStorage.getPortCode()
+      const [start, end] = this.selectedDates
+      const req = transHistory(port_code, start, end)
+      req.then(r => {
+        const data = r.data
+        if (data.length === 0) {
+          return
+        }
+        let start = data[0].date
+        let end = data[data.length-1].date
+        this.selectedDates = [start, end]
+        this.data = data
+      }).catch(err=>{
+        this.$Notice.error({title: '交易记录查询失败', desc: err.data.msg, duration: 5})
+      })
     }
   },
   created() {
-    getRecords(this)
+    this.records()
   }
 }
 </script>

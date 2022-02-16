@@ -22,10 +22,8 @@
 </template>
 
 <script>
-import {api} from "@/api/base"
 import moment from 'moment'
 import 'moment/locale/zh-cn'
-import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "notice",
@@ -43,13 +41,13 @@ export default {
     },
   },
   created() {
-    api.get('/v2/notifies/', {
-      params: {
-        port_code: LocalStorage.getPortCode()
-      }
-    }).then(r=>{
-      this.data = r.data
-    }).catch()
+    // api.get('/v2/notifies/', {
+    //   params: {
+    //     port_code: LocalStorage.getPortCode()
+    //   }
+    // }).then(r=>{
+    //   this.data = r.data
+    // }).catch()
   }
 }
 </script>

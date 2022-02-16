@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import {api} from "@/api/base"
 import LocalStorage from "@/common/localstorage"
 import moment from 'moment'
+import {performanceBar} from "@/api/requests";
 
 export default {
   name: "PerformanceBar",
@@ -51,19 +51,19 @@ export default {
   methods: {
     selectPeriod(i) {
       this.period = i
-      api.get('/v2/portfolio/performance/bar/', {
-        params: {
-          port_code: LocalStorage.getPortCode(), beginDate: this.date[0],
-          endDate: this.date[1], period: i, freq: this.freq
-        }
-      }).then(resp => {
+      let req = performanceBar(LocalStorage.getPortCode(), this.date[0], this.date[1],this.freq, i)
+      req.then(resp => {
         this.data = resp.data;
         this.finished = true;
         this.drawChart()
       })
     },
     drawChart() {
-      let chart = this.$chart.init(document.getElementById('performance-bar-chart'))
+      let doc = document.getElementById('performance-bar-chart')
+      if (!doc) {
+        return
+      }
+      let chart = this.$chart.init(doc)
       let options = {
         legend: {
           show: true,
@@ -93,7 +93,6 @@ export default {
         xAxis: {
           type: 'category',
           data: this.data.map(x => {
-            console.log(this.freq)
             return this.freq !=='0' ?moment(x.date).format('YYYY-MM'):moment(x.date).format('YYYY-MM-DD')
           }),
           splitLine: {

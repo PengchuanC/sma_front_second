@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  import {api} from '@/api/base'
   import LocalStorage from "@/common/localstorage"
   import HoldingTable from "@/components/account/HoldingTable"
+  import {assetCategory} from "@/api/requests";
 
   export default {
     name: "Holding",
@@ -30,10 +30,11 @@
     },
     mounted() {
       this.height = this.getHeight()
-      api.get('/v2/portfolio/asset/category/', {
-        params:{port_code: LocalStorage.getPortCode(), date: this.selectedDate}
-      }).then(resp=>{
-        this.ratio = resp.data.map(x=> {x.show=false; return x})
+      let req = assetCategory(LocalStorage.getPortCode(), this.selectedDate)
+      req.then(resp=>{
+        this.ratio = resp.map(x=> {x.show=false; return x})
+      }).catch(()=>{
+        this.$Notice.error({title: "数据获取错误", desc: "认证信息已过期，请重新登陆"})
       })
     },
   }

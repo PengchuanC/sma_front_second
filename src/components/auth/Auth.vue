@@ -99,8 +99,6 @@
 </template>
 
 <script>
-import {loginApi} from "@/api/base";
-import {getPortfolio} from "@/api/login";
 import lunar from "@/common/lunar";
 import * as api from '@/api/requests';
 
