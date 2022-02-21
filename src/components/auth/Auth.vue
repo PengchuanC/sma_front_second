@@ -101,6 +101,7 @@
 <script>
 import lunar from "@/common/lunar";
 import * as api from '@/api/requests';
+import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "Auth",
@@ -161,6 +162,7 @@ export default {
       const next = api.verifySmsCode(this.username, this.code)
       next.then(r=>{
         if (r.code === 0) {
+          LocalStorage.setToken(r.access)
           this.loadingMsg = true
           this.codeMsg = r.msg
           this.$router.push('/user')
@@ -177,18 +179,6 @@ export default {
       let today = new Date()
       return lunar.getSeason(today.getFullYear(), today.getMonth(), today.getDay())
     },
-    getSeason2() {
-      let today = new Date()
-      let month = today.getMonth()
-      if([0, 1, 2].includes(month)) {
-        return 'spring'
-      } else if ([3, 4, 5].includes(month)) {
-        return 'summer'
-      } else if ([6, 7, 8].includes(month)) {
-        return 'autumn'
-      }
-      return 'winter'
-    }
   },
   mounted() {
     this.username = localStorage.getItem('username')
