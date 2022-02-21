@@ -24,6 +24,8 @@
 <script>
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import {notifies} from "@/api/requests";
+import LocalStorage from "@/common/localstorage";
 
 export default {
   name: "notice",
@@ -39,15 +41,16 @@ export default {
     moment(date){
       return moment(date).format('LL')
     },
+    getNotifies(){
+      const port_code = LocalStorage.getPortCode()
+      let req =notifies(port_code)
+      req.then(r=>{
+        this.data = r.data
+      })
+    }
   },
-  created() {
-    // api.get('/v2/notifies/', {
-    //   params: {
-    //     port_code: LocalStorage.getPortCode()
-    //   }
-    // }).then(r=>{
-    //   this.data = r.data
-    // }).catch()
+  mounted() {
+    this.getNotifies()
   }
 }
 </script>
