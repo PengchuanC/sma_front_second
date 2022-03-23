@@ -8,7 +8,7 @@ const MODE = Object.freeze({
     test: Symbol(3)
 })
 
-const mode = MODE.development
+const mode = MODE.production
 
 // host
 let Host

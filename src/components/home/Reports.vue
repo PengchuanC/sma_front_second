@@ -24,7 +24,14 @@
         </div>
         <div v-else>
           <a @click="openReport(news.url)" class="link-no-img">
-            <p class="title">{{news.title}}</p>
+            <p class="title">
+              <a class="hot-news content-icon" v-if="news.hot">
+                <svg class="font-icon" aria-hidden="true">
+                  <use xlink:href="#iconhot"></use>
+                </svg>
+              </a>
+              {{news.title}}
+            </p>
             <div class="source-info">
               <p class="media">{{news.category}}</p>
               <p>{{moment(news.date)}}</p>

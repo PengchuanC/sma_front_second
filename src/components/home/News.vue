@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     refresh() {
-      // getNews(this)
+      this.getNews()
     },
     openNews(link){
       window.open(link)

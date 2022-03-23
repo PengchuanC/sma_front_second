@@ -2,10 +2,7 @@
   <div class="reports-child">
     <div class="reports-child-card-header">
       <div class="reports-tab" v-show="showTab">
-        <a tab :class="activeId===i?'tab-item tab-active':'tab-item'"
-           v-for="(t, i) in tabs" :key="'rtb'+i"
-           @click="selectTab(i)"
-        >{{t}}</a>
+        <h4>专栏文章</h4>
       </div>
       <a class="close-icon" @click="close">
         <svg class="font-icon" aria-hidden="true">
@@ -22,7 +19,14 @@
               <img :src="news.image" alt="" class="cover">
             </div>
             <a @click="openReport(news.url)" class="report-link">
-              <p class="title">{{news.title}}</p>
+              <p class="title">
+                <a class="hot-news content-icon" v-if="news.hot">
+                  <svg class="font-icon" aria-hidden="true">
+                    <use xlink:href="#iconhot"></use>
+                  </svg>
+                </a>
+                {{news.title}}
+              </p>
               <div class="source-info">
                 <p class="media">{{news.category}}</p>
                 <p>{{moment(news.date)}}</p>
@@ -30,13 +34,15 @@
             </a>
           </div>
           <div class="news-wrapper-no-image" v-else>
-            <div class="pdf-cover">
-              <svg class="font-icon pdf" aria-hidden="true">
-                <use xlink:href="#iconpdf"></use>
-              </svg>
-            </div>
             <a @click="openReport(news.url)" class="link-no-img">
-              <p class="title">{{news.title}}</p>
+              <p class="title">
+                <a class="hot-news content-icon" v-if="news.hot">
+                  <svg class="font-icon" aria-hidden="true">
+                    <use xlink:href="#iconhot"></use>
+                  </svg>
+                </a>
+                {{news.title}}
+              </p>
               <div class="source-info">
                 <p class="media">{{news.category}}</p>
                 <p>{{moment(news.date)}}</p>
@@ -53,18 +59,16 @@
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import LocalStorage from "@/common/localstorage";
-import {reportsAdvance, reportsAdvanceDetail} from "@/api/requests";
+import {reportsAdvanceDetail} from "@/api/requests";
 
 export default {
   name: "ReportsChild",
   data(){
     return {
-      activeId: 0,
       page: 0,
+      prevPage: 0,
       loading: true,
-      showTab: false,
-      tabs: ['产品周报', '产品月报'],
-      reports: {},
+      showTab: true,
       renderData: [],
       port_code: LocalStorage.getPortCode()
     }
@@ -73,26 +77,15 @@ export default {
     close(){
       this.$router.history.go(-1)
     },
-    selectTab(i){
-      this.activeId = i
-      let name = this.tabs[i]
-      this.getReportsByType(name)
-    },
     getReports(){
-      let req = reportsAdvance(this.port_code)
+      let req = reportsAdvanceDetail(this.port_code, this.page)
       req.then(r=>{
-        let data = r
-        this.tabs = data.category
-        this.reports = data.reports
-        this.showTab = true
-        this.selectTab(0)
-      })
-    },
-    getReportsByType(type){
-      this.loading = true
-      let req = reportsAdvanceDetail(this.port_code, type, this.page)
-      req.then(r=>{
-        this.renderData = r.data
+        if (r.data?.length > 0){
+          this.renderData = this.renderData.concat(r.data)
+          this.page ++
+        }
+        this.loading = false
+      }).catch(()=>{
         this.loading = false
       })
     },
@@ -102,23 +95,21 @@ export default {
     },
     scroll(e){
       let bottom = e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight
-      if (bottom <= 40 && !this.loading){
-        let type = this.tabs[this.activeId]
-        this.page ++
-        let req = reportsAdvanceDetail(this.port_code, type, this.page)
+      if (bottom <= 40 && !this.loading && this.page !== this.prevPage){
+        this.loading = true
+        let req = reportsAdvanceDetail(this.port_code, this.page)
         req.then(r=>{
-          if (r.data){
-            this.renderData = r.data
+          this.prevPage = this.page
+          if (r.data?.length > 0){
+            this.page ++
+            this.renderData = this.renderData.concat(r.data)
           }
+          this.loading = false
+        }).catch(()=>{
           this.loading = false
         })
       }
     },
-    loadMore(){
-      let type = this.tabs[this.activeId]
-      this.page ++
-      this.getReportsByType(type)
-    }
   },
   created() {
     this.getReports()

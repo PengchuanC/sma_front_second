@@ -112,8 +112,8 @@ export function reportsAdvance(port_code){
     return api.get('reports/advance/', {params:{port_code}})
 }
 
-export function reportsAdvanceDetail(port_code, category, page){
-    return api.post('reports/advance/', {data: {port_code, category, page}})
+export function reportsAdvanceDetail(port_code, page){
+    return api.post('reports/advance/', {data: {port_code, page}})
 }
 
 // 产品通知
